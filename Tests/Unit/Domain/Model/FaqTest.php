@@ -1,12 +1,14 @@
 <?php
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
+use TYPO3\TestingFramework\Core\BaseTestCase;
+
 /**
  * Test case.
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class FaqTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class FaqTest extends BaseTestCase
 {
     /**
      * @var \Derhansen\PlainFaq\Domain\Model\Faq
