@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq">
+		<header/>
+		<body>
+			<trans-unit id="tx_plainfaq_domain_model_faq">
+				<source>Faq</source>
+			</trans-unit>
+			<trans-unit id="tx_plainfaq_domain_model_faq.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_plainfaq_domain_model_faq.answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_plainfaq_domain_model_faq.keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_plainfaq_domain_model_faq.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_plainfaq_domain_model_faq.files">
+				<source>Files</source>
+			</trans-unit>
+			<trans-unit id="tx_plain_faq_pi1.name">
+				<source>FAQs</source>
+			</trans-unit>
+			<trans-unit id="tx_plain_faq_pi1.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

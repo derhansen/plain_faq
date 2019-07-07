@@ -1,0 +1,10 @@
+plugin.tx_plainfaq_pi1 {
+    view {
+        templateRootPaths.0 = EXT:plain_faq/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.templateRootPath}
+        partialRootPaths.0 = EXT:plain_faq/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.partialRootPath}
+        layoutRootPaths.0 = EXT:plain_faq/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.layoutRootPath}
+    }
+}
