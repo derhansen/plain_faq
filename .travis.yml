@@ -1,0 +1,57 @@
+language: php
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - parallel
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+notifications:
+  email:
+    - derhansen@gmail.com
+
+before_install:
+  - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
+
+before_script:
+  - composer require "typo3/minimal:${TYPO3_VERSION}"
+  - composer require "typo3/testing-framework:${TESTING_FRAMEWORK}"
+  - git checkout composer.json
+
+script:
+  - >
+    if [[ "$COVERAGE" == "0" ]]; then
+      echo;
+      echo "Running unit tests";
+      .Build/bin/phpunit --colors -c Tests/Build/UnitTests.xml
+    fi
+
+jobs:
+  fast_finish: true
+  include:
+    - stage: test
+      php: 7.3
+      env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
+    - stage: test
+      php: 7.3
+      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
+    - stage: test
+      php: 7.2
+      env: TYPO3_VERSION=^9.5 COVERAGE=1 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
+    - stage: test
+      php: 7.2
+      env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
+    - stage: test
+      php: 7.2
+      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=1 TESTING_FRAMEWORK=^1.3
+    - stage: test
+      php: 7.1
+      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
+    - stage: test
+      php: 7.0
+      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
