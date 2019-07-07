@@ -18,28 +18,28 @@ namespace Derhansen\PlainFaq\Domain\Model;
 class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * question
+     * Question
      *
      * @var string
      */
     protected $question = '';
 
     /**
-     * answer
+     * Answer
      *
      * @var string
      */
     protected $answer = '';
 
     /**
-     * keywords
+     * Keywords
      *
      * @var string
      */
     protected $keywords = '';
 
     /**
-     * images
+     * Images
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @cascade remove
@@ -47,12 +47,19 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $images = null;
 
     /**
-     * files
+     * Files
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @cascade remove
      */
     protected $files = null;
+
+    /**
+     * Related
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $related = null;
 
     /**
      * __construct
@@ -64,9 +71,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Initializes all ObjectStorage properties
-     * Do not modify this method!
-     * It will be rewritten on each save in the extension builder
-     * You may modify the constructor of this class instead
      *
      * @return void
      */
@@ -74,6 +78,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->related = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -223,5 +228,48 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFiles(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $files)
     {
         $this->files = $files;
+    }
+
+    /**
+     * Adds a related FAQ
+     *
+     * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
+     * @return void
+     */
+    public function addRelated(\Derhansen\PlainFaq\Domain\Model\Faq $faq)
+    {
+        $this->related->attach($faq);
+    }
+
+    /**
+     * Removes a related FAQ
+     *
+     * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
+     * @return void
+     */
+    public function removeRelated(\Derhansen\PlainFaq\Domain\Model\Faq $faq)
+    {
+        $this->related->detach($faq);
+    }
+
+    /**
+     * Returns related FAQs
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
+     */
+    public function getRelated()
+    {
+        return $this->related;
+    }
+
+    /**
+     * Sets related FAQs
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
+     * @return void
+     */
+    public function setRelated(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $related)
+    {
+        $this->related = $related;
     }
 }

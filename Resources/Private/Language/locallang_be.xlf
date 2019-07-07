@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq">
+		<header/>
+		<body>
+			<trans-unit id="tabs.language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tabs.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tabs.media">
+				<source>Media</source>
+			</trans-unit>
+			<trans-unit id="tabs.relations">
+				<source>Relations</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

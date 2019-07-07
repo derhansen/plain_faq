@@ -1,5 +1,4 @@
 <?php
-
 namespace Derhansen\PlainFaq\Domain\Repository;
 
 /***

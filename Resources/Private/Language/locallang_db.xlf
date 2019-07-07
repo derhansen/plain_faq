@@ -21,6 +21,9 @@
 			<trans-unit id="tx_plainfaq_domain_model_faq.files">
 				<source>Files</source>
 			</trans-unit>
+			<trans-unit id="tx_plainfaq_domain_model_faq.related">
+				<source>Related FAQs</source>
+			</trans-unit>
 			<trans-unit id="tx_plain_faq_pi1.name">
 				<source>FAQs</source>
 			</trans-unit>

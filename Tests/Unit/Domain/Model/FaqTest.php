@@ -1,6 +1,7 @@
 <?php
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
+use Derhansen\PlainFaq\Domain\Model\Faq;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
@@ -122,12 +123,7 @@ class FaqTest extends BaseTestCase
         $objectStorageHoldingExactlyOneImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneImages->attach($image);
         $this->subject->setImages($objectStorageHoldingExactlyOneImages);
-
-        self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneImages,
-            'images',
-            $this->subject
-        );
+        $this->assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->getImages());
     }
 
     /**
@@ -185,12 +181,7 @@ class FaqTest extends BaseTestCase
         $objectStorageHoldingExactlyOneFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneFiles->attach($file);
         $this->subject->setFiles($objectStorageHoldingExactlyOneFiles);
-
-        self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneFiles,
-            'files',
-            $this->subject
-        );
+        $this->assertEquals($objectStorageHoldingExactlyOneFiles, $this->subject->getFiles());
     }
 
     /**
@@ -225,5 +216,63 @@ class FaqTest extends BaseTestCase
         $this->inject($this->subject, 'files', $filesObjectStorageMock);
 
         $this->subject->removeFile($file);
+    }
+
+    /**
+     * @test
+     */
+    public function getRelatedReturnsInitialValueForObjectStorage()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getRelated()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setRelatedForFileReferenceSetsRelated()
+    {
+        $faq = new Faq();
+        $objectStorageHoldingExactlyOneFaq = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneFaq->attach($faq);
+        $this->subject->setRelated($objectStorageHoldingExactlyOneFaq);
+        $this->assertEquals($objectStorageHoldingExactlyOneFaq, $this->subject->getRelated());
+    }
+
+    /**
+     * @test
+     */
+    public function addFaqToObjectStorageHoldingFaqs()
+    {
+        $faq = new Faq();
+        $faqObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $faqObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($faq));
+        $this->inject($this->subject, 'related', $faqObjectStorageMock);
+
+        $this->subject->addRelated($faq);
+    }
+
+    /**
+     * @test
+     */
+    public function removeFaqFromObjectStorageHoldingFaqs()
+    {
+        $faq = new Faq();
+        $faqObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $faqObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($faq));
+        $this->inject($this->subject, 'related', $faqObjectStorageMock);
+
+        $this->subject->removeRelated($faq);
     }
 }
