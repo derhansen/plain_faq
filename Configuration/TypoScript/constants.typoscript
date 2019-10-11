@@ -1,4 +1,3 @@
-
 plugin.tx_plainfaq_pi1 {
     view {
         # cat=plugin.tx_plainfaq_pi1/file; type=string; label=Path to template root (FE)

@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+  <h1>List</h1>
+
+  <f:for each="{faqs}" as="faq">
+    <f:link.action action="detail" arguments="{faq: faq}" pageUid="{settings.detailPid}">{faq.question}</f:link.action><br>
+  </f:for>
+
+</f:section>
+
+</html>

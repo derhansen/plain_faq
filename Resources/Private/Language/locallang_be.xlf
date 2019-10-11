@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq">
 		<header/>
 		<body>
+			<trans-unit id="plugin.pi1.title">
+				<source>FAQs</source>
+			</trans-unit>
 			<trans-unit id="tabs.language">
 				<source>Language</source>
 			</trans-unit>
@@ -14,6 +17,81 @@
 			</trans-unit>
 			<trans-unit id="tabs.relations">
 				<source>Relations</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.tab.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.tab.additional">
+				<source>Additional</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.tab.template">
+				<source>Template</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.mode">
+				<source>What to display</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.mode.listDetail">
+				<source>List view</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.mode.list">
+				<source>List view (without overloading detail view)</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.mode.detail">
+				<source>Detail view</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.orderField">
+				<source>Sort by</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.orderField.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.orderField.sorting">
+				<source>Order in TYPO3 backend</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.orderDirection">
+				<source>Sort direction</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.orderDirection.ascending">
+				<source>Ascending</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.orderDirection.descending">
+				<source>Descending</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categoryConjunction">
+				<source>Category Conjunction</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categoryConjunction.ignore">
+				<source>Ignore</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categoryConjunction.or">
+				<source>OR</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categoryConjunction.and">
+				<source>AND</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categoryConjunction.notor">
+				<source>NOT OR</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categoryConjunction.notand">
+				<source>NOT AND</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.includeSubcategories">
+				<source>Include Subcategories</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.storagePage">
+				<source>Record Storage Page</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.detailPid">
+				<source>Detail Page</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.listPid">
+				<source>List Page</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.templateLayout">
+				<source>Template Layout</source>
 			</trans-unit>
 		</body>
 	</file>

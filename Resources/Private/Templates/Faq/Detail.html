@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+  <h2>{faq.question}</h2>
+
+  <div>
+    {faq.answer -> f:format.html()}
+  </div>
+
+  <div>
+    <f:for each="{faq.categories}" as="category" iteration="i">
+      {category.title}<f:if condition="!{i.isLast}">,</f:if>
+    </f:for>
+  </div>
+
+  <f:if condition="{settings.listPid}">
+    <f:link.page pageUid="{settings.listPid}"><f:translate key="labels.backToList" /></f:link.page>
+  </f:if>
+
+</f:section>
+
+</html>

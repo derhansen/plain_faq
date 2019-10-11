@@ -7,4 +7,7 @@ plugin.tx_plainfaq_pi1 {
         layoutRootPaths.0 = EXT:plain_faq/Resources/Private/Layouts/
         layoutRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.layoutRootPath}
     }
+    settings {
+        orderFieldAllowed = uid,question,sorting
+    }
 }

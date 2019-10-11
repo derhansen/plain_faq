@@ -1,16 +1,16 @@
 <?php
+declare(strict_types = 1);
 namespace Derhansen\PlainFaq\Domain\Model;
 
-/***
- *
- * This file is part of the "Plain FAQ" Extension for TYPO3 CMS.
+/*
+ * This file is part of the Extension "plain_faq" for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
- *
- *  (c) 2019 Torben Hansen <derhansen@gmail.com>
- *
- ***/
+ */
+
+use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Faq
@@ -18,46 +18,39 @@ namespace Derhansen\PlainFaq\Domain\Model;
 class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Question
-     *
      * @var string
      */
     protected $question = '';
 
     /**
-     * Answer
-     *
      * @var string
      */
     protected $answer = '';
 
     /**
-     * Keywords
-     *
      * @var string
      */
     protected $keywords = '';
 
     /**
-     * Images
-     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     */
+    protected $categories = null;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @cascade remove
      */
     protected $images = null;
 
     /**
-     * Files
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @cascade remove
      */
     protected $files = null;
 
     /**
-     * Related
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq>
      */
     protected $related = null;
 
@@ -79,74 +72,61 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->related = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
-     * Returns the question
-     *
      * @return string $question
      */
-    public function getQuestion()
+    public function getQuestion(): string
     {
         return $this->question;
     }
 
     /**
-     * Sets the question
-     *
      * @param string $question
      * @return void
      */
-    public function setQuestion($question)
+    public function setQuestion(string $question)
     {
         $this->question = $question;
     }
 
     /**
-     * Returns the answer
-     *
      * @return string $answer
      */
-    public function getAnswer()
+    public function getAnswer(): string
     {
         return $this->answer;
     }
 
     /**
-     * Sets the answer
-     *
      * @param string $answer
      * @return void
      */
-    public function setAnswer($answer)
+    public function setAnswer(string $answer)
     {
         $this->answer = $answer;
     }
 
     /**
-     * Returns the keywords
-     *
      * @return string $keywords
      */
-    public function getKeywords()
+    public function getKeywords(): string
     {
         return $this->keywords;
     }
 
     /**
-     * Sets the keywords
-     *
      * @param string $keywords
      * @return void
      */
-    public function setKeywords($keywords)
+    public function setKeywords(string $keywords)
     {
         $this->keywords = $keywords;
     }
 
     /**
-     * Adds a FileReference
-     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      * @return void
      */
@@ -156,8 +136,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Removes a FileReference
-     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
      * @return void
      */
@@ -167,18 +145,14 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the images
-     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      */
-    public function getImages()
+    public function getImages(): ObjectStorage
     {
         return $this->images;
     }
 
     /**
-     * Sets the images
-     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      * @return void
      */
@@ -188,8 +162,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a FileReference
-     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      */
@@ -199,8 +171,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Removes a FileReference
-     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileToRemove The FileReference to be removed
      * @return void
      */
@@ -210,18 +180,14 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the files
-     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
      */
-    public function getFiles()
+    public function getFiles(): ObjectStorage
     {
         return $this->files;
     }
 
     /**
-     * Sets the files
-     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
      * @return void
      */
@@ -231,8 +197,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a related FAQ
-     *
      * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
      * @return void
      */
@@ -242,8 +206,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Removes a related FAQ
-     *
      * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
      * @return void
      */
@@ -253,23 +215,51 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns related FAQs
-     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
      */
-    public function getRelated()
+    public function getRelated(): ObjectStorage
     {
         return $this->related;
     }
 
     /**
-     * Sets related FAQs
-     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
      * @return void
      */
     public function setRelated(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $related)
     {
         $this->related = $related;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param ObjectStorage $categories
+     */
+    public function setCategories(ObjectStorage $categories)
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     */
+    public function addCategory(Category $category)
+    {
+        $this->categories->attach($category);
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     */
+    public function removeCategory(Category $category)
+    {
+        $this->categories->detach($category);
     }
 }

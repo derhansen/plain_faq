@@ -2,10 +2,11 @@
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
 use Derhansen\PlainFaq\Domain\Model\Faq;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
- * Test case.
+ * Test case for FAQ
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
@@ -275,4 +276,63 @@ class FaqTest extends BaseTestCase
 
         $this->subject->removeRelated($faq);
     }
+
+    /**
+     * @test
+     */
+    public function getCategoriesReturnsInitialValueForObjectStorage()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getCategories()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCategoriesForCategorySetsCategory()
+    {
+        $category = new Category();
+        $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneCategory->attach($category);
+        $this->subject->setCategories($objectStorageHoldingExactlyOneCategory);
+        $this->assertEquals($objectStorageHoldingExactlyOneCategory, $this->subject->getCategories());
+    }
+
+    /**
+     * @test
+     */
+    public function addCategoryToObjectStorageHoldingCategories()
+    {
+        $category = new Category();
+        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $categoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'categories', $categoryObjectStorageMock);
+
+        $this->subject->addCategory($category);
+    }
+
+    /**
+     * @test
+     */
+    public function removeCategoryFromObjectStorageHoldingFaqs()
+    {
+        $category = new Category();
+        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $categoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'categories', $categoryObjectStorageMock);
+
+        $this->subject->removeCategory($category);
+    }
+
 }

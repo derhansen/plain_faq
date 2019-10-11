@@ -21,6 +21,10 @@
 			<trans-unit id="tx_plainfaq_domain_model_faq.files">
 				<source>Files</source>
 			</trans-unit>
+
+			<trans-unit id="labels.backToList">
+				<source>Back to list view</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
