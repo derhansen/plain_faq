@@ -55,6 +55,20 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
+     * Assign contentObjectData and pageData to earch view
+     *
+     * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view
+     */
+    protected function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
+    {
+        $view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
+        if (is_object($GLOBALS['TSFE'])) {
+            $view->assign('pageData', $GLOBALS['TSFE']->page);
+        }
+        parent::initializeView($view);
+    }
+
+    /**
      * Creates an faq demand object with the given settings
      *
      * @param array $settings The settings
