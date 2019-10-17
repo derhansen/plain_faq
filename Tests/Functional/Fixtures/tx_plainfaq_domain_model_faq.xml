@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <pages>
+        <uid>1</uid>
+        <pid>0</pid>
+    </pages>
+    <pages>
+        <uid>2</uid>
+        <pid>1</pid>
+    </pages>
+    <pages>
+        <uid>3</uid>
+        <pid>2</pid>
+    </pages>
+
+    <sys_category>
+        <uid>1</uid>
+        <pid>1</pid>
+        <title>Category 1</title>
+        <parent>0</parent>
+    </sys_category>
+
+    <tx_plainfaq_domain_model_faq>
+        <uid>1</uid>
+        <pid>1</pid>
+        <question>First question</question>
+    </tx_plainfaq_domain_model_faq>
+</dataset>

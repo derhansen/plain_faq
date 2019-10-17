@@ -30,16 +30,26 @@ script:
       echo "Running unit tests";
       .Build/bin/phpunit --colors -c Tests/Build/UnitTests.xml
     fi
+  - >
+    if [[ "$FUNCTIONAL" == "1" ]]; then
+      echo;
+      echo "Running functional tests";
+      export typo3DatabaseName="typo3";
+      export typo3DatabaseHost="localhost";
+      export typo3DatabaseUsername="root";
+      export typo3DatabasePassword="";
+      find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit -c Tests/Build/FunctionalTests.xml {}'
+    fi
 
 jobs:
   fast_finish: true
   include:
     - stage: test
       php: 7.3
-      env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
+      env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=1 TESTING_FRAMEWORK=^4
     - stage: test
       php: 7.3
-      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
+      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=1 TESTING_FRAMEWORK=^1.3
     - stage: test
       php: 7.2
       env: TYPO3_VERSION=^9.5 COVERAGE=1 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
@@ -48,7 +58,7 @@ jobs:
       env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=1 TESTING_FRAMEWORK=^1.3
+      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
     - stage: test
       php: 7.1
       env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3

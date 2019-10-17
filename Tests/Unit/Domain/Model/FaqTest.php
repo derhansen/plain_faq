@@ -1,6 +1,13 @@
 <?php
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
+/*
+ * This file is part of the Extension "plain_faq" for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ */
+
 use Derhansen\PlainFaq\Domain\Model\Faq;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\TestingFramework\Core\BaseTestCase;
