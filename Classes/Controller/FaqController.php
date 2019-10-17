@@ -14,6 +14,7 @@ use Derhansen\PlainFaq\Domain\Model\Faq;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
+use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 
 /**
  * FaqController
@@ -83,13 +84,16 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * List action
      *
+     * @param array $overwriteDemand
      * @return void
      */
-    public function listAction()
+    public function listAction(array $overwriteDemand = [])
     {
         $faqDemand = $this->createFaqDemandObjectFromSettings($this->settings);
+        if ($this->isOverwriteDemand($overwriteDemand)) {
+            $faqDemand = $this->overwriteFaqDemandObject($faqDemand, $overwriteDemand);
+        }
 
-        // @todo check new isOverwriteDemand setting
         $faqs = $this->faqRepository->findDemanded($faqDemand);
 
         $values = [
@@ -125,6 +129,41 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if ($faq !== null) {
             $this->faqCacheService->addCacheTagsByFaqRecords([$faq]);
         }
+    }
+
+    /**
+     * Returns if a demand object can be overwritten with the given overwriteDemand array
+     *
+     * @param array $overwriteDemand
+     * @return bool
+     */
+    protected function isOverwriteDemand($overwriteDemand)
+    {
+        return (int)$this->settings['disableOverwriteDemand'] !== 1 && $overwriteDemand !== [];
+    }
+
+    /**
+     * Overwrites a given demand object by an propertyName =>  $propertyValue array
+     *
+     * @param FaqDemand $demand Demand
+     * @param array $overwriteDemand OwerwriteDemand
+     *
+     * @return FaqDemand
+     */
+    protected function overwriteFaqDemandObject(FaqDemand $demand, array $overwriteDemand)
+    {
+        foreach ($this->ignoredSettingsForOverwriteDemand as $property) {
+            unset($overwriteDemand[$property]);
+        }
+
+        foreach ($overwriteDemand as $propertyName => $propertyValue) {
+            if (in_array(strtolower($propertyName), $this->ignoredSettingsForOverwriteDemand, true)) {
+                continue;
+            }
+            ObjectAccess::setProperty($demand, $propertyName, $propertyValue);
+        }
+
+        return $demand;
     }
 
     /**

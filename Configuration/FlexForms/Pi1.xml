@@ -269,6 +269,18 @@
                         </TCEforms>
                     </settings.listPid>
 
+                    <!-- disable overwriteDemand -->
+                    <settings.disableOverwriteDemand>
+                        <TCEforms>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.disableOverwriteDemand</label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <config>
+                                <type>check</type>
+                                <default>1</default>
+                            </config>
+                        </TCEforms>
+                    </settings.disableOverwriteDemand>
+
                 </el>
             </ROOT>
         </additional>

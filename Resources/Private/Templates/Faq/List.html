@@ -4,7 +4,9 @@
 
 <f:section name="main">
 
-  <h1>List</h1>
+  <h1>
+    <f:translate key="labels.faqList" />
+  </h1>
 
   <f:for each="{faqs}" as="faq">
     <f:link.action action="detail" arguments="{faq: faq}" pageUid="{settings.detailPid}">{faq.question}</f:link.action><br>

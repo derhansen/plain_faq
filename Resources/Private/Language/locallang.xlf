@@ -28,6 +28,10 @@
 			<trans-unit id="labels.download">
 				<source>Download</source>
 			</trans-unit>
+
+			<trans-unit id="labels.faqList">
+				<source>List</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
