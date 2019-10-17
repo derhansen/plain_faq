@@ -18,7 +18,9 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'question,answer,keywords,images,files',
-        'iconfile' => 'EXT:plain_faq/Resources/Public/Icons/tx_plainfaq_domain_model_faq.gif'
+        'typeicon_classes' => [
+            'default' => 'ext-plainfaq-faq'
+        ],
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question, answer, keywords, 

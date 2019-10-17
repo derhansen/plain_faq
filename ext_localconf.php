@@ -31,7 +31,7 @@ call_user_func(
         $iconRegistry->registerIcon(
             'plain_faq-plugin-pi1',
             \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            ['source' => 'EXT:plain_faq/Resources/Public/Icons/user_plugin_pi1.svg']
+            ['source' => 'EXT:plain_faq/ext_icon.svg']
         );
     }
 );
