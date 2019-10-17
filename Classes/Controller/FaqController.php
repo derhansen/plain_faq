@@ -12,6 +12,7 @@ namespace Derhansen\PlainFaq\Controller;
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Domain\Model\Faq;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
+use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
 
 /**
@@ -32,11 +33,24 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $faqRepository = null;
 
     /**
+     * @var FaqCacheService
+     */
+    protected $faqCacheService = null;
+
+    /**
      * @param FaqRepository $faqRepository
      */
     public function injectFaqRepository(\Derhansen\PlainFaq\Domain\Repository\FaqRepository $faqRepository)
     {
         $this->faqRepository = $faqRepository;
+    }
+
+    /**
+     * @param FaqCacheService $cacheService
+     */
+    public function injectFaqCacheService(FaqCacheService $cacheService)
+    {
+        $this->faqCacheService = $cacheService;
     }
 
     /**
@@ -86,6 +100,8 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
 
         $this->view->assignMultiple($values);
+
+        $this->faqCacheService->addPageCacheTagsByFaqDemandObject($faqDemand);
     }
 
     /**
@@ -105,6 +121,10 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
 
         $this->view->assignMultiple($values);
+
+        if ($faq !== null) {
+            $this->faqCacheService->addCacheTagsByFaqRecords([$faq]);
+        }
     }
 
     /**

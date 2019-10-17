@@ -9,6 +9,7 @@ namespace Derhansen\PlainFaq\Hooks;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Derhansen\PlainFaq\Service\FaqCacheService;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -17,6 +18,24 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class DataHandlerHooks
 {
+    /**
+     * Flushes the cache if a faq record was edited.
+     * This happens on two levels: by UID and by PID.
+     *
+     * @param array $params
+     */
+    public function clearCachePostProc(array $params)
+    {
+        if (isset($params['table']) && $params['table'] === 'tx_plainfaq_domain_model_faq') {
+            $faqUid = $params['uid'] ?? 0;
+            $pageUid = $params['uid_page'] ?? 0;
+            if ($faqUid > 0 || $pageUid > 0) {
+                $faqCacheService = GeneralUtility::makeInstance(FaqCacheService::class);
+                $faqCacheService->flushFaqCache($faqUid, $pageUid);
+            }
+        }
+    }
+
     /**
      * Checks if the fields defined in $checkFields are set in the data-array of pi_flexform.
      * If a field is present and contains an empty value, the field is unset.
