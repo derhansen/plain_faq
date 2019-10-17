@@ -10,11 +10,38 @@
     {faq.answer -> f:format.html()}
   </div>
 
-  <div>
-    <f:for each="{faq.categories}" as="category" iteration="i">
-      {category.title}<f:if condition="!{i.isLast}">,</f:if>
-    </f:for>
-  </div>
+  <f:if condition="{faq.categories}">
+    <div>
+      <f:for each="{faq.categories}" as="category" iteration="i">
+        {category.title}<f:if condition="!{i.isLast}">,</f:if>
+      </f:for>
+    </div>
+  </f:if>
+
+  <f:if condition="{faq.images}">
+    <div>
+      <f:for each="{faq.images}" as="image">
+        <div>
+          <f:image src="{image.uid}" treatIdAsReference="1" />
+        </div>
+      </f:for>
+    </div>
+  </f:if>
+
+  <f:if condition="{faq.files}">
+    <div>
+      <f:for each="{faq.files}" as="file">
+        <f:if condition="{file.originalResource.title}">
+          <f:then>
+            <a href="{file.originalResource.publicUrl}" target="_blank">{file.originalResource.title}</a>
+          </f:then>
+          <f:else>
+            <a href="{file.originalResource.publicUrl}" target="_blank"><f:translate key="labels.download"/></a>
+          </f:else>
+        </f:if>
+      </f:for>
+    </div>
+  </f:if>
 
   <f:if condition="{settings.listPid}">
     <f:link.page pageUid="{settings.listPid}"><f:translate key="labels.backToList" /></f:link.page>

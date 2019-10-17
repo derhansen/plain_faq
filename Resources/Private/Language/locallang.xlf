@@ -25,6 +25,9 @@
 			<trans-unit id="labels.backToList">
 				<source>Back to list view</source>
 			</trans-unit>
+			<trans-unit id="labels.download">
+				<source>Download</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
