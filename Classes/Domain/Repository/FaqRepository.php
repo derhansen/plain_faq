@@ -14,6 +14,7 @@ use Derhansen\PlainFaq\Utility\CategoryUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 /**
  * The repository for Faqs
@@ -54,6 +55,14 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         $this->setStoragePageConstraint($query, $faqDemand, $constraints);
         $this->setCategoryConstraint($query, $faqDemand, $constraints);
+
+        /** @var Dispatcher $signalSlotDispatcher */
+        $signalSlotDispatcher = $this->objectManager->get(Dispatcher::class);
+        $signalSlotDispatcher->dispatch(
+            __CLASS__,
+            __FUNCTION__ . 'ModifyQueryConstraints',
+            [&$constraints, $query, $faqDemand, $this]
+        );
 
         $this->setOrderingsFromDemand($query, $faqDemand);
 

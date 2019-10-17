@@ -78,10 +78,14 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         // @todo check new isOverwriteDemand setting
         $faqs = $this->faqRepository->findDemanded($faqDemand);
 
-        $this->view->assignMultiple([
+        $values = [
             'faqs' => $faqs,
             'faqDemand' => $faqDemand,
-        ]);
+        ];
+
+        $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
+
+        $this->view->assignMultiple($values);
     }
 
     /**
@@ -97,9 +101,8 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->getTypoScriptFrontendController()->pageNotFoundAndExit('FAQ article not found.');
         }
 
-        $values = [
-            'faq' => $faq
-        ];
+        $values = ['faq' => $faq];
+        $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
 
         $this->view->assignMultiple($values);
     }
