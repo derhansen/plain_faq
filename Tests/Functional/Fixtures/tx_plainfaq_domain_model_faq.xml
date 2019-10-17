@@ -19,10 +19,87 @@
         <title>Category 1</title>
         <parent>0</parent>
     </sys_category>
+    <sys_category>
+        <uid>2</uid>
+        <pid>1</pid>
+        <title>Category 2</title>
+        <parent>0</parent>
+    </sys_category>
+    <sys_category>
+        <uid>3</uid>
+        <pid>1</pid>
+        <title>Category 3</title>
+        <parent>0</parent>
+    </sys_category>
+    <sys_category>
+        <uid>4</uid>
+        <pid>1</pid>
+        <title>Category 1.1</title>
+        <parent>1</parent>
+    </sys_category>
 
     <tx_plainfaq_domain_model_faq>
         <uid>1</uid>
         <pid>1</pid>
-        <question>First question</question>
+        <question>First question on Page UID 1</question>
     </tx_plainfaq_domain_model_faq>
+    <tx_plainfaq_domain_model_faq>
+        <uid>2</uid>
+        <pid>1</pid>
+        <question>Second question on Page UID 1</question>
+    </tx_plainfaq_domain_model_faq>
+    <tx_plainfaq_domain_model_faq>
+        <uid>3</uid>
+        <pid>1</pid>
+        <question>Third question on Page UID 1</question>
+    </tx_plainfaq_domain_model_faq>
+    <tx_plainfaq_domain_model_faq>
+        <uid>4</uid>
+        <pid>1</pid>
+        <question>Fourth question on Page UID 1 (has subcategory)</question>
+    </tx_plainfaq_domain_model_faq>
+
+    <tx_plainfaq_domain_model_faq>
+        <uid>5</uid>
+        <pid>2</pid>
+        <question>First question on Page UID 2</question>
+    </tx_plainfaq_domain_model_faq>
+
+    <sys_category_record_mm>
+        <uid_local>1</uid_local>
+        <uid_foreign>1</uid_foreign>
+        <tablenames>tx_plainfaq_domain_model_faq</tablenames>
+        <fieldname>categories</fieldname>
+    </sys_category_record_mm>
+    <sys_category_record_mm>
+        <uid_local>1</uid_local>
+        <uid_foreign>2</uid_foreign>
+        <tablenames>tx_plainfaq_domain_model_faq</tablenames>
+        <fieldname>categories</fieldname>
+    </sys_category_record_mm>
+    <sys_category_record_mm>
+        <uid_local>1</uid_local>
+        <uid_foreign>3</uid_foreign>
+        <tablenames>tx_plainfaq_domain_model_faq</tablenames>
+        <fieldname>categories</fieldname>
+    </sys_category_record_mm>
+    <sys_category_record_mm>
+        <uid_local>2</uid_local>
+        <uid_foreign>1</uid_foreign>
+        <tablenames>tx_plainfaq_domain_model_faq</tablenames>
+        <fieldname>categories</fieldname>
+    </sys_category_record_mm>
+    <sys_category_record_mm>
+        <uid_local>3</uid_local>
+        <uid_foreign>1</uid_foreign>
+        <tablenames>tx_plainfaq_domain_model_faq</tablenames>
+        <fieldname>categories</fieldname>
+    </sys_category_record_mm>
+    <sys_category_record_mm>
+        <uid_local>4</uid_local>
+        <uid_foreign>4</uid_foreign>
+        <tablenames>tx_plainfaq_domain_model_faq</tablenames>
+        <fieldname>categories</fieldname>
+    </sys_category_record_mm>
+
 </dataset>

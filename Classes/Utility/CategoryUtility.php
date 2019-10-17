@@ -70,7 +70,7 @@ class CategoryUtility
 
                 return implode(',', $result);
             }
-            $subcategories = self::getChildrenCategoriesRecursive($row['uid'], $counter);
+            $subcategories = self::getChildrenCategoriesRecursive((string)$row['uid'], $counter);
             $result[] = $row['uid'] . ($subcategories ? ',' . $subcategories : '');
         }
 
