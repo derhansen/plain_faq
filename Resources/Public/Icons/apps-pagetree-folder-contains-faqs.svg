@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>apps-pagetree-folder-contains</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="apps-pagetree-folder-contains" fill-rule="nonzero">
+            <polygon id="Path" fill="#888888" points="0 2 0 14 12.69 14 12.69 3.81 5.08 3.81 3.95 2"></polygon>
+            <g id="comment-alt-regular" transform="translate(5.000000, 0.000000)">
+                <path d="M8.75,0 L1.25,0 C0.560546875,0 0,0.560546875 0,1.25 L0,6.875 C0,7.56445312 0.560546875,8.125 1.25,8.125 L3.125,8.125 L3.125,9.765625 C3.125,9.90429688 3.23828125,10 3.359375,10 C3.40625,10 3.45507812,9.98632812 3.49804688,9.953125 L5.9375,8.125 L8.75,8.125 C9.43945312,8.125 10,7.56445312 10,6.875 L10,1.25 C10,0.560546875 9.43945312,0 8.75,0 Z" id="Shape" fill="#4098FF"></path>
+                <g id="Dots" transform="translate(2.000000, 2.000000)" fill="#FFFFFF">
+                    <path d="M0.5,1 C0.2234375,1 0,0.7765625 0,0.5 C0,0.2234375 0.2234375,0 0.5,0 C0.7765625,0 1,0.2234375 1,0.5 C1,0.7765625 0.7765625,1 0.5,1 Z" id="Path"></path>
+                    <path d="M2.5,1 C2.2234375,1 2,0.7765625 2,0.5 C2,0.2234375 2.2234375,0 2.5,0 C2.7765625,0 3,0.2234375 3,0.5 C3,0.7765625 2.7765625,1 2.5,1 Z" id="Path"></path>
+                    <path d="M4.5,1 C4.2234375,1 4,0.7765625 4,0.5 C4,0.2234375 4.2234375,0 4.5,0 C4.7765625,0 5,0.2234375 5,0.5 C5,0.7765625 4.7765625,1 4.5,1 Z" id="Path"></path>
+                </g>
+            </g>
+            <polygon id="Path" fill="#AAAAAA" points="8.26 6.08 6.55 7.4 2.53 7.4 0 14 12.96 14 16 6.08"></polygon>
+        </g>
+    </g>
+</svg>

@@ -6,6 +6,9 @@
 			<trans-unit id="plugin.pi1.title">
 				<source>FAQs</source>
 			</trans-unit>
+			<trans-unit id="faq-folder">
+				<source>FAQs</source>
+			</trans-unit>
 			<trans-unit id="tabs.language">
 				<source>Language</source>
 			</trans-unit>

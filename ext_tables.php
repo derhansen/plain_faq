@@ -9,10 +9,24 @@ call_user_func(
         $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
             \TYPO3\CMS\Core\Imaging\IconRegistry::class
         );
-        $iconRegistry->registerIcon(
-            'ext-plainfaq-faq',
-            \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-            ['source' => 'EXT:plain_faq/Resources/Public/Icons/tx_plainfaq_domain_model_faq.svg']
+
+        /**
+         * Register icons
+         */
+        /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
+        $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            \TYPO3\CMS\Core\Imaging\IconRegistry::class
         );
+        $icons = [
+            'apps-pagetree-folder-contains-faqs' => 'apps-pagetree-folder-contains-faqs.svg',
+            'ext-plainfaq-faq' => 'tx_plainfaq_domain_model_faq.svg',
+        ];
+        foreach ($icons as $identifier => $path) {
+            $iconRegistry->registerIcon(
+                $identifier,
+                \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+                ['source' => 'EXT:plain_faq/Resources/Public/Icons/' . $path]
+            );
+        }
     }
 );
