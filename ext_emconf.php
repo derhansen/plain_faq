@@ -2,11 +2,11 @@
 
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Plain FAQ',
-    'description' => '',
+    'description' => 'Plain FAQ with list and detail view',
     'category' => 'plugin',
     'author' => 'Torben Hansen',
-    'author_email' => 'derhansen@gmail.com',
-    'state' => 'alpha',
+    'author_email' => 'torben@derhansen.com',
+    'state' => 'beta',
     'uploadfolder' => 0,
     'createDirs' => '',
     'clearCacheOnLoad' => 0,

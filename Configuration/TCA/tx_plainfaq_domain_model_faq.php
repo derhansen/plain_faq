@@ -77,8 +77,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_sfeventmgt_domain_model_event',
-                'foreign_table_where' => 'AND tx_sfeventmgt_domain_model_event.pid=###CURRENT_PID### AND tx_sfeventmgt_domain_model_event.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_plainfaq_domain_model_faq',
+                'foreign_table_where' => 'AND tx_plainfaq_domain_model_faq.pid=###CURRENT_PID### AND tx_plainfaq_domain_model_faq.sys_language_uid IN (-1,0)',
                 'default' => 0,
             ],
         ],
