@@ -20,6 +20,10 @@ call_user_func(
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['faq_clearcache'] =
             \Derhansen\PlainFaq\Hooks\DataHandlerHooks::class . '->clearCachePostProc';
 
+        // Page layout hooks to show preview of plugins
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['list_type_Info']['plainfaq_pi1']['faq'] =
+            \Derhansen\PlainFaq\Hooks\PageLayoutView::class . '->getPi1PluginSummary';
+
         // Icon Registry
         $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
             \TYPO3\CMS\Core\Imaging\IconRegistry::class
