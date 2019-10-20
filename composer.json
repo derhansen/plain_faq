@@ -23,7 +23,6 @@
         }
     },
     "replace": {
-        "plain_faq": "self.version",
         "typo3-ter/plain-faq": "self.version"
     },
     "extra": {
