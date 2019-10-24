@@ -16,6 +16,7 @@ return [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
+            'fe_group' => 'fe_group',
         ],
         'searchFields' => 'question,answer,keywords,images,files',
         'typeicon_classes' => [
@@ -43,7 +44,7 @@ return [
                 --palette--;;language,
 
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,
-                hidden, starttime, endtime'
+                hidden, starttime, endtime, fe_group'
         ],
     ],
     'palettes' => [
@@ -125,6 +126,37 @@ return [
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'fe_group' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.fe_group',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'enableMultiSelectFilterTextfield' => true,
+                'size' => 5,
+                'maxitems' => 20,
+                'items' => [
+                    [
+                        'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hide_at_login',
+                        -1,
+                    ],
+                    [
+                        'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.any_login',
+                        -2,
+                    ],
+                    [
+                        'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.usergroups',
+                        '--div--',
+                    ],
+                ],
+                'exclusiveKeys' => '-1,-2',
+                'foreign_table' => 'fe_groups',
+                'foreign_table_where' => 'ORDER BY fe_groups.title',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],

@@ -14,6 +14,7 @@ CREATE TABLE tx_plainfaq_domain_model_faq (
 	categories int(11) unsigned DEFAULT '0' NOT NULL,
 	related int(11) DEFAULT '0' NOT NULL,
 	slug varchar(2048),
+	faq_import_id varchar(100) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -22,6 +23,7 @@ CREATE TABLE tx_plainfaq_domain_model_faq (
 	hidden smallint(5) unsigned DEFAULT '0' NOT NULL,
 	starttime int(11) unsigned DEFAULT '0' NOT NULL,
 	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+	fe_group varchar(100) DEFAULT '0' NOT NULL,
 
 	t3ver_oid int(11) DEFAULT '0' NOT NULL,
 	t3ver_id int(11) DEFAULT '0' NOT NULL,
@@ -43,7 +45,8 @@ CREATE TABLE tx_plainfaq_domain_model_faq (
 	PRIMARY KEY (uid),
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
-	KEY language (l10n_parent,sys_language_uid)
+	KEY language (l10n_parent,sys_language_uid),
+	KEY faqimport (faq_import_id)
 
 );
 
@@ -57,4 +60,13 @@ CREATE TABLE tx_plainfaq_domain_model_faq_related_mm (
 	sorting_foreign int(11) DEFAULT '0' NOT NULL,
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Extend table structure of table 'sys_category'
+#
+CREATE TABLE sys_category (
+	faq_import_id varchar(100) DEFAULT '' NOT NULL,
+
+	KEY faqimport (faq_import_id)
 );
