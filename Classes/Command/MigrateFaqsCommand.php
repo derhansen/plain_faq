@@ -9,7 +9,6 @@ namespace Derhansen\PlainFaq\Command;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,7 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class MigrateFaqsCommand extends Command
+class MigrateFaqsCommand extends AbstractMigrateCommand
 {
     /**
      * Configuring the command options
@@ -255,31 +254,6 @@ class MigrateFaqsCommand extends Command
         $res = $queryBuilder
             ->select('*')
             ->from('tx_plainfaq_domain_model_faq')
-            ->where(
-                $queryBuilder->expr()->eq(
-                    'faq_import_id',
-                    $queryBuilder->createNamedParameter($id, Connection::PARAM_STR)
-                )
-            )
-            ->execute();
-
-        return $res->fetch(0);
-    }
-
-    /**
-     * Returns the sys_category record for the given id-string in the field "faq_import_id"
-     *
-     * @param string $id
-     * @return mixed
-     */
-    protected function getCategoryByFaqImportId(string $id)
-    {
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $queryBuilder = $connectionPool->getQueryBuilderForTable('sys_category');
-        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
-        $res = $queryBuilder
-            ->select('*')
-            ->from('sys_category')
             ->where(
                 $queryBuilder->expr()->eq(
                     'faq_import_id',

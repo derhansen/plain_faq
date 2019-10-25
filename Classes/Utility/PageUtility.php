@@ -10,6 +10,7 @@ namespace Derhansen\PlainFaq\Utility;
  */
 
 use TYPO3\CMS\Core\Database\QueryGenerator;
+use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -37,7 +38,7 @@ class PageUtility
         $storagePids = GeneralUtility::intExplode(',', $pidList);
         foreach ($storagePids as $startPid) {
             $pids = $queryGenerator->getTreeList($startPid, $recursive, 0, 1);
-            if (strlen($pids) > 0) {
+            if (strlen((string)$pids) > 0) {
                 $recursiveStoragePids .= ',' . $pids;
             }
         }

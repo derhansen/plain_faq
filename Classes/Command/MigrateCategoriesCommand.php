@@ -9,12 +9,10 @@ namespace Derhansen\PlainFaq\Command;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -24,7 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class MigrateCategoriesCommand extends Command
+class MigrateCategoriesCommand extends AbstractMigrateCommand
 {
     const ROOT_CATEGORY_FAQ_IMPORT_ID = 'ROOT';
     const ROOT_CATEGORY_PID = 0;
@@ -218,30 +216,5 @@ class MigrateCategoriesCommand extends Command
         );
 
         return (int)$databaseConnectionForSysCategory->lastInsertId('sys_category');
-    }
-
-    /**
-     * Returns the sys_category record for the given id-string in the field "faq_import_id"
-     *
-     * @param string $id
-     * @return mixed
-     */
-    protected function getCategoryByFaqImportId(string $id)
-    {
-        $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
-        $queryBuilder = $connectionPool->getQueryBuilderForTable('sys_category');
-        $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
-        $res = $queryBuilder
-            ->select('*')
-            ->from('sys_category')
-            ->where(
-                $queryBuilder->expr()->eq(
-                    'faq_import_id',
-                    $queryBuilder->createNamedParameter($id, Connection::PARAM_STR)
-                )
-            )
-            ->execute();
-
-        return $res->fetch(0);
     }
 }
