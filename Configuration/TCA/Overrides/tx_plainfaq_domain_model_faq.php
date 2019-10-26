@@ -8,6 +8,9 @@ $tableName = 'tx_plainfaq_domain_model_faq';
     $tableName
 );
 
+// Enable language synchronisation for the categories field
+$GLOBALS['TCA'][$tableName]['columns']['categories']['config']['behaviour']['allowLanguageSynchronization'] = true;
+
 // Register slug field for TYPO3 9.5
 if (\Derhansen\PlainFaq\Utility\MiscUtility::isV9Lts()) {
     $faqColumns['slug'] = [
