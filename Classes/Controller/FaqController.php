@@ -113,6 +113,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $values = [
             'faqs' => $faqs,
             'faqDemand' => $faqDemand,
+            'overwriteDemand' => $overwriteDemand,
         ];
 
         $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
