@@ -14,7 +14,7 @@ Migration from "irfaq"
 If you use the TYPO3 extension "irfaq", then you migrate to "Plain FAQ" using 3 Symfony Console commands.
 Note, that the migration has some limits and does not support all fields "irfaq" has.
 
-Migration is done in 3 steps:
+Migration is done in 4 steps:
 
 Step 1 - Migrate categories
 ---------------------------
@@ -84,6 +84,16 @@ The migration migrates the following settings:
 * categoryConjunction
 * categories
 
+Step 4 - Update module icon for pages
+-------------------------------------
 
-After all 3 migration steps are processed, you should check, if the migration worked as expected. Feel free to
+In order to update the folder icon on the pagetree, you must execute the following SQL query.
+
+SQL::
+
+  UPDATE pages SET module="faqs" WHERE module="irfaq"
+
+Note, that this step is only necessary when you have used the folder icon from ext:irfaq
+
+After all migration steps (1 to 3) are processed, you should check, if the migration worked as expected. Feel free to
 modify the migrator to suite your own needs.
