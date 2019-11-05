@@ -64,19 +64,19 @@
 				<source>Category Conjunction</source>
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categoryConjunction.ignore">
-				<source>Ignore</source>
+				<source>Ignore category selection</source>
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categoryConjunction.or">
-				<source>OR</source>
+				<source>Show FAQs with selected categories (OR)</source>
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categoryConjunction.and">
-				<source>AND</source>
+				<source>Show FAQs with selected categories (AND)</source>
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categoryConjunction.notor">
-				<source>NOT OR</source>
+				<source>Do NOT show FAQs with selected categories (NOTOR)</source>
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categoryConjunction.notand">
-				<source>NOT AND</source>
+				<source>Do NOT show FAQs with selected categories (NOTAND)</source>
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categories">
 				<source>Categories</source>
