@@ -98,7 +98,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
         $data = $this->getFlexFormAsArray($contentElement['pi_flexform']);
 
         // Migrate pages (storagePage)
-        if (isset($data['pages'])) {
+        if (isset($data['pages']) && $data['pages'] !== null && $data['pages'] !== '') {
             $newFlexform['data']['sDEF']['lDEF']['settings.storagePage'] = ['vDEF' => $data['pages']];
         } else {
             // If no pages are configured, ext:irfaq selects FAQs from the current PID
