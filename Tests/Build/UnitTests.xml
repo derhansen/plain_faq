@@ -15,7 +15,7 @@
         beStrictAboutTestsThatDoNotTestAnything="false"
 >
     <testsuites>
-        <testsuite name="tests">
+        <testsuite name="unit">
             <directory>../Unit/</directory>
         </testsuite>
     </testsuites>
