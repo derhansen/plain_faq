@@ -52,3 +52,17 @@ Signals
 
    :Description:
          Signal is called before rendering the calendar view. An array with all view values is passed by reference.
+
+ - :Class:
+         Derhansen\\PlainFaq\\Domain\\Repository\\FaqRepository
+
+   :Name:
+         findDemandedModifyQueryConstraints
+
+   :Arguments:
+         &$constraints, $query, $faqDemand, $this
+
+   :Description:
+         Signal is called after all query constraints are collected. The signal enables the possibility to add/modify
+         the query constraints for the findDemanded function. Very usefull, when you extend the faqDemand with custom
+         properties.
