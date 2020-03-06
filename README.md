@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/derhansen/plain_faq.svg?branch=master)](https://travis-ci.org/derhansen/plain_faq/)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 # Plain FAQ 
 
