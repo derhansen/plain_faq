@@ -38,7 +38,7 @@ The general tab is used to add general information about the FAQ like a question
          The Question
 
  - :Field:
-         URL Segment (only TYPO3 v9.5+
+         URL Segment
 
    :Description:
          URL slug field
