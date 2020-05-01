@@ -4,7 +4,7 @@ defined('TYPO3_MODE') or die();
 call_user_func(
     function () {
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-            'Derhansen.PlainFaq',
+            'PlainFaq',
             'Pi1',
             [
                 'Faq' => 'list, detail'

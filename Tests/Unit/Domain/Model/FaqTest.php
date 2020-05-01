@@ -24,13 +24,13 @@ class FaqTest extends BaseTestCase
      */
     protected $subject = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->subject = new \Derhansen\PlainFaq\Domain\Model\Faq();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
@@ -52,12 +52,7 @@ class FaqTest extends BaseTestCase
     public function setQuestionForStringSetsQuestion()
     {
         $this->subject->setQuestion('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'question',
-            $this->subject
-        );
+        $this->assertEquals('Conceived at T3CON10', $this->subject->getQuestion());
     }
 
     /**
@@ -77,12 +72,7 @@ class FaqTest extends BaseTestCase
     public function setAnswerForStringSetsAnswer()
     {
         $this->subject->setAnswer('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'answer',
-            $this->subject
-        );
+        $this->assertEquals('Conceived at T3CON10', $this->subject->getAnswer());
     }
 
     /**
@@ -102,12 +92,7 @@ class FaqTest extends BaseTestCase
     public function setKeywordsForStringSetsKeywords()
     {
         $this->subject->setKeywords('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'keywords',
-            $this->subject
-        );
+        $this->assertEquals('Conceived at T3CON10', $this->subject->getKeywords());
     }
 
     /**
@@ -141,7 +126,6 @@ class FaqTest extends BaseTestCase
     {
         $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
         $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -158,7 +142,6 @@ class FaqTest extends BaseTestCase
     {
         $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
         $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -257,7 +240,6 @@ class FaqTest extends BaseTestCase
     {
         $faq = new Faq();
         $faqObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 

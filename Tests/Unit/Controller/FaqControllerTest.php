@@ -19,29 +19,14 @@ use TYPO3\TestingFramework\Core\BaseTestCase;
 class FaqControllerTest extends BaseTestCase
 {
     /**
-     * @var \Derhansen\PlainFaq\Controller\FaqController
-     */
-    protected $subject = null;
-
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->subject = new \Derhansen\PlainFaq\Controller\FaqController();
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
-    }
-
-    /**
      * @test
      * @return void
      */
-    public function createEventDemandObjectFromSettingsWithoutEmptySettings()
+    public function createFaqDemandObjectFromSettingsWithEmptySettings()
     {
+        /** @var FaqController $mockController */
         $mockController = $this->getMockBuilder(FaqController::class)
-            ->setMethods(['redirect', 'forward', 'addFlashMessage'])
+            ->onlyMethods(['redirect', 'forward', 'addFlashMessage'])
             ->getMock();
 
         $settings = [];
@@ -55,7 +40,7 @@ class FaqControllerTest extends BaseTestCase
         $mockDemand->expects($this->at(5))->method('setOrderFieldAllowed')->with('');
         $mockDemand->expects($this->at(6))->method('setOrderDirection')->with('asc');
 
-        $objectManager = $this->getMockBuilder(ObjectManager::class)->getMock();
+        $objectManager = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
         $objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
         $this->inject($mockController, 'objectManager', $objectManager);
 

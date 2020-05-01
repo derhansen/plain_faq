@@ -236,13 +236,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
      */
     protected function getFlexFormAsArray(string $flexform)
     {
-        if (version_compare(TYPO3_branch, '8.7', '=')) {
-            $flexformService = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
-        } elseif (version_compare(TYPO3_branch, '9.5', '=')) {
-            $flexformService = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
-        } else {
-            throw new \Exception('FlexFormService could not be initialized. Ensure you use TYPO3 8.7 or 9.5.');
-        }
+        $flexformService = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
         return $flexformService->convertFlexFormContentToArray($flexform);
     }
 

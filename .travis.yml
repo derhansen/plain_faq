@@ -43,23 +43,11 @@ jobs:
   fast_finish: true
   include:
     - stage: test
-      php: 7.3
-      env: TYPO3_VERSION=^9.5 COVERAGE=1 FUNCTIONAL=1 TESTING_FRAMEWORK=^4
+      php: 7.4
+      env: TYPO3_VERSION=^10.4 COVERAGE=0 FUNCTIONAL=1 TESTING_FRAMEWORK=^5
     - stage: test
       php: 7.3
-      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
+      env: TYPO3_VERSION=^10.4 COVERAGE=1 FUNCTIONAL=1 TESTING_FRAMEWORK=^5
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
-    - stage: test
-      php: 7.2
-      env: TYPO3_VERSION=^9.5 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^4
-    - stage: test
-      php: 7.2
-      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
-    - stage: test
-      php: 7.1
-      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
-    - stage: test
-      php: 7.0
-      env: TYPO3_VERSION=^8.7 COVERAGE=0 FUNCTIONAL=0 TESTING_FRAMEWORK=^1.3
+      env: TYPO3_VERSION=^10.4 COVERAGE=1 FUNCTIONAL=1 TESTING_FRAMEWORK=^5

@@ -18,6 +18,7 @@
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="1">
                                         <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.mode.listDetail</numIndex>
@@ -43,6 +44,7 @@
                             <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
                                         <numIndex index="0"></numIndex>
@@ -68,6 +70,7 @@
                             <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
                                         <numIndex index="0"></numIndex>
@@ -93,6 +96,7 @@
                             <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction.ignore</numIndex>
@@ -180,10 +184,11 @@
                     <!-- recursive -->
                     <settings.recursive>
                         <TCEforms>
-                            <label>LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.recursive</label>
+                            <label>LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.recursive</label>
                             <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items type="array">
                                     <numIndex index="2" type="array">
                                         <numIndex index="0">LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.0</numIndex>
@@ -300,6 +305,7 @@
                             <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.templateLayout</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <itemsProcFunc>Derhansen\PlainFaq\Hooks\TemplateLayouts->userTemplateLayout</itemsProcFunc>
                                 <items>
                                     <numIndex index="0" type="array">

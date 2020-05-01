@@ -5,7 +5,7 @@ defined('TYPO3_MODE') or die();
  * Plugins
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Derhansen.PlainFaq',
+    'PlainFaq',
     'Pi1',
     'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pi1.title'
 );

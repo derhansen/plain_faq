@@ -31,7 +31,7 @@ class FaqTest extends FunctionalTestCase
 
     protected $coreExtensionsToLoad = ['fluid', 'extensionmanager'];
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);

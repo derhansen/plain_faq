@@ -23,13 +23,9 @@ return [
             'default' => 'ext-plainfaq-faq'
         ],
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, question, answer, keywords, 
-        images, files, related',
-    ],
     'types' => [
         '1' => ['showitem' => '
-            question, answer, keywords,
+            question, slug, answer, keywords,
 
             --div--;LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:tabs.categories,
                 categories,
@@ -70,7 +66,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => 1,
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
@@ -137,7 +132,6 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'enableMultiSelectFilterTextfield' => true,
                 'size' => 5,
                 'maxitems' => 20,
                 'items' => [
@@ -171,6 +165,23 @@ return [
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
+        ],
+        'slug' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:pages.slug',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['question'],
+                    'replacements' => [
+                        '/' => '-'
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
+            ]
         ],
         'answer' => [
             'exclude' => true,

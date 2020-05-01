@@ -81,12 +81,12 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $demand = $this->objectManager->get(FaqDemand::class);
         $demand->setStoragePage(PageUtility::extendPidListByChildren(
             $settings['storagePage'] ?? '',
-            $settings['recursive'] !== null ? (int)$settings['recursive'] : 0
+            isset($settings['recursive']) ? (int)$settings['recursive'] : 0
         ));
         $demand->setCategoryConjunction($settings['categoryConjunction'] ?? '');
         $demand->setCategories($settings['categories'] ?? '');
         $demand->setIncludeSubcategories(
-            $settings['includeSubcategories'] !== null ? (bool)$settings['includeSubcategories'] : false
+            isset($settings['includeSubcategories']) ? (bool)$settings['includeSubcategories'] : false
         );
         $demand->setOrderField($settings['orderField'] ?? '');
         $demand->setOrderFieldAllowed($settings['orderFieldAllowed'] ?? '');

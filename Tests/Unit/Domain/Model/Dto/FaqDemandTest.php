@@ -22,13 +22,13 @@ class FaqDemandTest extends BaseTestCase
      */
     protected $subject = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->subject = new \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
     }
