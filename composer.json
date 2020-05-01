@@ -22,6 +22,10 @@
         "typo3/cms-core": "^10.4",
         "php": ">=7.2"
     },
+    "require-dev": {
+        "typo3/testing-framework": "^5",
+        "friendsofphp/php-cs-fixer": "^2.16.1"
+    },
     "autoload": {
         "psr-4": {
             "Derhansen\\PlainFaq\\": "Classes"

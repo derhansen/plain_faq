@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Domain\Model\Dto;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Domain\Model\Dto;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Domain\Model\Dto;
 
 /**
  * FaqDemand

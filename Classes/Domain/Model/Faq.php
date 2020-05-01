@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Domain\Model;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Domain\Model;
 
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -35,24 +37,24 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      */
-    protected $categories = null;
+    protected $categories;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $images = null;
+    protected $images;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $files = null;
+    protected $files;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq>
      */
-    protected $related = null;
+    protected $related;
 
     /**
      * __construct
@@ -64,8 +66,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Initializes all ObjectStorage properties
-     *
-     * @return void
      */
     protected function initStorageObjects()
     {
@@ -85,7 +85,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $question
-     * @return void
      */
     public function setQuestion(string $question)
     {
@@ -102,7 +101,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $answer
-     * @return void
      */
     public function setAnswer(string $answer)
     {
@@ -119,7 +117,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $keywords
-     * @return void
      */
     public function setKeywords(string $keywords)
     {
@@ -128,7 +125,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
-     * @return void
      */
     public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
     {
@@ -137,7 +133,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
-     * @return void
      */
     public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove)
     {
@@ -154,7 +149,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
-     * @return void
      */
     public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
     {
@@ -163,7 +157,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
-     * @return void
      */
     public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
     {
@@ -172,7 +165,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileToRemove The FileReference to be removed
-     * @return void
      */
     public function removeFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $fileToRemove)
     {
@@ -189,7 +181,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
-     * @return void
      */
     public function setFiles(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $files)
     {
@@ -198,7 +189,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
-     * @return void
      */
     public function addRelated(\Derhansen\PlainFaq\Domain\Model\Faq $faq)
     {
@@ -207,7 +197,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
-     * @return void
      */
     public function removeRelated(\Derhansen\PlainFaq\Domain\Model\Faq $faq)
     {
@@ -224,7 +213,6 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
-     * @return void
      */
     public function setRelated(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $related)
     {

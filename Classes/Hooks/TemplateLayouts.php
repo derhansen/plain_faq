@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Hooks;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Hooks;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Hooks;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
@@ -20,8 +22,6 @@ class TemplateLayouts
      * Itemsproc function to extend the selection of templateLayouts in the plugin
      *
      * @param array $config Configuration array
-     *
-     * @return void
      */
     public function userTemplateLayout(array &$config)
     {

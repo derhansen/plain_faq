@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Command;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Command;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -120,7 +122,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
         // We only migrate categories, when a new FAQ record with categories has been created
         if ((int)$oldFaq['cat'] > 0 && $created && $newFaqUid > 0) {
             $amountMigrated = $this->migrateCategoryRelations((int)$oldFaq['uid'], $newFaqUid, $io);
-            $io->text('Migrated ' . $amountMigrated .' category releations');
+            $io->text('Migrated ' . $amountMigrated . ' category releations');
         }
 
         return $created;
@@ -154,7 +156,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
             } else {
                 $io->note(
                     'Unable to migrate category relation for uid_local: ' . $faqRelation['uid_local'] .
-                    ' and uid_foreign: '. $faqRelation['uid_foreign'] . '. ext:irfaq category record propably deleted.'
+                    ' and uid_foreign: ' . $faqRelation['uid_foreign'] . '. ext:irfaq category record propably deleted.'
                 );
             }
         }

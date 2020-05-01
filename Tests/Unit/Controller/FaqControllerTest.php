@@ -1,4 +1,5 @@
 <?php
+
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
 /*
@@ -20,7 +21,6 @@ class FaqControllerTest extends BaseTestCase
 {
     /**
      * @test
-     * @return void
      */
     public function createFaqDemandObjectFromSettingsWithEmptySettings()
     {
@@ -32,16 +32,16 @@ class FaqControllerTest extends BaseTestCase
         $settings = [];
 
         $mockDemand = $this->getMockBuilder(FaqDemand::class)->getMock();
-        $mockDemand->expects($this->at(0))->method('setStoragePage')->with('');
-        $mockDemand->expects($this->at(1))->method('setCategoryConjunction')->with('');
-        $mockDemand->expects($this->at(2))->method('setCategories')->with('');
-        $mockDemand->expects($this->at(3))->method('setIncludeSubcategories')->with('');
-        $mockDemand->expects($this->at(4))->method('setOrderField')->with('');
-        $mockDemand->expects($this->at(5))->method('setOrderFieldAllowed')->with('');
-        $mockDemand->expects($this->at(6))->method('setOrderDirection')->with('asc');
+        $mockDemand->expects(self::at(0))->method('setStoragePage')->with('');
+        $mockDemand->expects(self::at(1))->method('setCategoryConjunction')->with('');
+        $mockDemand->expects(self::at(2))->method('setCategories')->with('');
+        $mockDemand->expects(self::at(3))->method('setIncludeSubcategories')->with('');
+        $mockDemand->expects(self::at(4))->method('setOrderField')->with('');
+        $mockDemand->expects(self::at(5))->method('setOrderFieldAllowed')->with('');
+        $mockDemand->expects(self::at(6))->method('setOrderDirection')->with('asc');
 
         $objectManager = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
-        $objectManager->expects($this->any())->method('get')->will($this->returnValue($mockDemand));
+        $objectManager->expects(self::any())->method('get')->willReturn($mockDemand);
         $this->inject($mockController, 'objectManager', $objectManager);
 
         $mockController->createFaqDemandObjectFromSettings($settings);

@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Hooks;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -9,7 +9,8 @@ namespace Derhansen\PlainFaq\Hooks;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-use TYPO3\CMS\Backend\Template\DocumentTemplate;
+namespace Derhansen\PlainFaq\Hooks;
+
 use TYPO3\CMS\Backend\Utility\BackendUtility as BackendUtilityCore;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Imaging\IconFactory;
@@ -259,7 +260,6 @@ class PageLayoutView
 
     /**
      * Get category conjunction if a category is selected
-     * @return void
      */
     public function getCategoryConjuction()
     {

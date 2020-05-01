@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3_MODE') or die();
 
 $tableName = 'tx_plainfaq_domain_model_faq';

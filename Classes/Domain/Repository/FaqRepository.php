@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Domain\Repository;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Domain\Repository;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Domain\Repository;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Utility\CategoryUtility;
@@ -33,8 +35,6 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * Disable the use of storage records, because the StoragePage can be set
      * in the plugin
-     *
-     * @return void
      */
     public function initializeObject()
     {
@@ -79,8 +79,6 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
      * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
      * @param array $constraints Constraints
-     *
-     * @return void
      */
     protected function setStoragePageConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints)
     {
@@ -96,8 +94,6 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
      * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
      * @param array $constraints Constraints
-     *
-     * @return void
      */
     protected function setCategoryConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints)
     {
@@ -156,8 +152,6 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
      * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
-     *
-     * @return void
      */
     protected function setOrderingsFromDemand(QueryInterface $query, FaqDemand $faqDemand)
     {

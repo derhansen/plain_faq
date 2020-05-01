@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Command;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Command;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -286,8 +288,8 @@ class MigratePluginsCommand extends AbstractMigrateCommand
      */
     protected function array2xml($input)
     {
-        $options = array(
-            'parentTagMap' => array(
+        $options = [
+            'parentTagMap' => [
                 'data' => 'sheet',
                 'sheet' => 'language',
                 'language' => 'field',
@@ -296,9 +298,9 @@ class MigratePluginsCommand extends AbstractMigrateCommand
                 'field:el' => 'el',
                 'el:_IS_NUM' => 'section',
                 'section' => 'itemType'
-            ),
+            ],
             'disableTypeAttrib' => 2
-        );
+        ];
         $spaceInd = 4;
         $output = GeneralUtility::array2xml($input, '', 0, 'T3FlexForms', $spaceInd, $options);
         $output = '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>' . LF . $output;

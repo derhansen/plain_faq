@@ -1,4 +1,5 @@
 <?php
+
 namespace Derhansen\PlainFaq\Tests\Functional\Repository;
 
 /*
@@ -39,14 +40,13 @@ class FaqTest extends FunctionalTestCase
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_plainfaq_domain_model_faq.xml');
     }
 
-
     /**
      * @test
      */
     public function findRecordsByUid()
     {
         $faq = $this->faqRepository->findByUid(1);
-        $this->assertEquals($faq->getQuestion(), 'First question on Page UID 1');
+        self::assertEquals($faq->getQuestion(), 'First question on Page UID 1');
     }
 
     /**
@@ -80,7 +80,7 @@ class FaqTest extends FunctionalTestCase
         $demand->setStoragePage($storagePage);
 
         $result = $this->faqRepository->findDemanded($demand);
-        $this->assertEquals($expected, $result->count());
+        self::assertEquals($expected, $result->count());
     }
 
     /**
@@ -141,7 +141,7 @@ class FaqTest extends FunctionalTestCase
         $demand->setIncludeSubcategories($includeSub);
 
         $result = $this->faqRepository->findDemanded($demand);
-        $this->assertEquals($expected, $result->count());
+        self::assertEquals($expected, $result->count());
     }
 
     /**
@@ -167,7 +167,7 @@ class FaqTest extends FunctionalTestCase
             ]
         ];
     }
-    
+
     /**
      * @dataProvider findDemandedRespectsOrderingDataProvider
      * @test
@@ -181,8 +181,6 @@ class FaqTest extends FunctionalTestCase
         $demand->setOrderDirection($orderDirection);
 
         $result = $this->faqRepository->findDemanded($demand);
-        $this->assertEquals($expected, $result->getFirst()->getUid());
+        self::assertEquals($expected, $result->getFirst()->getUid());
     }
-
-
 }

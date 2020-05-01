@@ -1,4 +1,5 @@
 <?php
+
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
 /*
@@ -20,7 +21,7 @@ class FaqDemandTest extends BaseTestCase
     /**
      * @var \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand
      */
-    protected $subject = null;
+    protected $subject;
 
     protected function setUp(): void
     {
@@ -38,7 +39,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function orderFieldReturnsInitialValue()
     {
-        $this->assertEquals('', $this->subject->getOrderField());
+        self::assertEquals('', $this->subject->getOrderField());
     }
 
     /**
@@ -47,7 +48,7 @@ class FaqDemandTest extends BaseTestCase
     public function orderFieldCanBeSet()
     {
         $this->subject->setOrderField('order');
-        $this->assertEquals('order', $this->subject->getOrderField());
+        self::assertEquals('order', $this->subject->getOrderField());
     }
 
     /**
@@ -55,7 +56,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function orderFieldAllowedReturnsInitialValue()
     {
-        $this->assertEquals('', $this->subject->getOrderFieldAllowed());
+        self::assertEquals('', $this->subject->getOrderFieldAllowed());
     }
 
     /**
@@ -64,7 +65,7 @@ class FaqDemandTest extends BaseTestCase
     public function orderFieldAllowedCanBeSet()
     {
         $this->subject->setOrderFieldAllowed('title');
-        $this->assertEquals('title', $this->subject->getOrderFieldAllowed());
+        self::assertEquals('title', $this->subject->getOrderFieldAllowed());
     }
 
     /**
@@ -72,7 +73,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function orderDirectionReturnsInitalValue()
     {
-        $this->assertEquals('', $this->subject->getOrderDirection());
+        self::assertEquals('', $this->subject->getOrderDirection());
     }
 
     /**
@@ -81,7 +82,7 @@ class FaqDemandTest extends BaseTestCase
     public function orderDirectionCanBeSet()
     {
         $this->subject->setOrderDirection('asc');
-        $this->assertEquals('asc', $this->subject->getOrderDirection());
+        self::assertEquals('asc', $this->subject->getOrderDirection());
     }
 
     /**
@@ -89,7 +90,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function categoriesReturnsInitialValue()
     {
-        $this->assertEquals('', $this->subject->getCategories());
+        self::assertEquals('', $this->subject->getCategories());
     }
 
     /**
@@ -98,7 +99,7 @@ class FaqDemandTest extends BaseTestCase
     public function categoriesCanBeSet()
     {
         $this->subject->setCategories('1,2,3');
-        $this->assertEquals('1,2,3', $this->subject->getCategories());
+        self::assertEquals('1,2,3', $this->subject->getCategories());
     }
 
     /**
@@ -106,7 +107,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function includeSubcategoriesReturnsInitialValue()
     {
-        $this->assertFalse($this->subject->getIncludeSubcategories());
+        self::assertFalse($this->subject->getIncludeSubcategories());
     }
 
     /**
@@ -115,7 +116,7 @@ class FaqDemandTest extends BaseTestCase
     public function includeSubcategoriesCanBeSet()
     {
         $this->subject->setIncludeSubcategories(true);
-        $this->assertTrue($this->subject->getIncludeSubcategories());
+        self::assertTrue($this->subject->getIncludeSubcategories());
     }
 
     /**
@@ -123,7 +124,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function categoryConjunctionReturnsInitialValue()
     {
-        $this->assertEquals('', $this->subject->getCategoryConjunction());
+        self::assertEquals('', $this->subject->getCategoryConjunction());
     }
 
     /**
@@ -132,7 +133,7 @@ class FaqDemandTest extends BaseTestCase
     public function categoryConjunctionCanBeSet()
     {
         $this->subject->setCategoryConjunction('and');
-        $this->assertEquals('and', $this->subject->getCategoryConjunction());
+        self::assertEquals('and', $this->subject->getCategoryConjunction());
     }
 
     /**
@@ -140,7 +141,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function storagePageReturnsInitialValue()
     {
-        $this->assertEquals('', $this->subject->getStoragePage());
+        self::assertEquals('', $this->subject->getStoragePage());
     }
 
     /**
@@ -149,6 +150,6 @@ class FaqDemandTest extends BaseTestCase
     public function storagePageCanBeSet()
     {
         $this->subject->setStoragePage('1,2,3');
-        $this->assertEquals('1,2,3', $this->subject->getStoragePage());
+        self::assertEquals('1,2,3', $this->subject->getStoragePage());
     }
 }

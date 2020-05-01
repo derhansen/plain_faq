@@ -18,7 +18,6 @@ before_install:
 
 before_script:
   - composer require "typo3/minimal:${TYPO3_VERSION}"
-  - composer require "typo3/testing-framework:${TESTING_FRAMEWORK}"
   - git checkout composer.json
 
 script:
@@ -44,10 +43,10 @@ jobs:
   include:
     - stage: test
       php: 7.4
-      env: TYPO3_VERSION=^10.4 COVERAGE=0 FUNCTIONAL=1 TESTING_FRAMEWORK=^5
+      env: TYPO3_VERSION=^10.4 COVERAGE=0 FUNCTIONAL=1
     - stage: test
       php: 7.3
-      env: TYPO3_VERSION=^10.4 COVERAGE=1 FUNCTIONAL=1 TESTING_FRAMEWORK=^5
+      env: TYPO3_VERSION=^10.4 COVERAGE=1 FUNCTIONAL=1
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION=^10.4 COVERAGE=1 FUNCTIONAL=1 TESTING_FRAMEWORK=^5
+      env: TYPO3_VERSION=^10.4 COVERAGE=1 FUNCTIONAL=1

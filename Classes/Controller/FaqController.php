@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Controller;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Controller;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Controller;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Domain\Model\Faq;
@@ -31,12 +33,12 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * @var FaqRepository
      */
-    protected $faqRepository = null;
+    protected $faqRepository;
 
     /**
      * @var FaqCacheService
      */
-    protected $faqCacheService = null;
+    protected $faqCacheService;
 
     /**
      * @param FaqRepository $faqRepository
@@ -99,7 +101,6 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * List action
      *
      * @param array $overwriteDemand
-     * @return void
      */
     public function listAction(array $overwriteDemand = [])
     {
@@ -127,8 +128,6 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * Detail action
      *
      * @param Faq|null $faq
-     *
-     * @return void
      */
     public function detailAction(Faq $faq = null)
     {

@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
-namespace Derhansen\PlainFaq\Service;
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Extension "plain_faq" for TYPO3 CMS.
@@ -8,6 +8,8 @@ namespace Derhansen\PlainFaq\Service;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Derhansen\PlainFaq\Service;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -25,7 +27,6 @@ class FaqCacheService
      * "tx_plainfaq_uid_[faq:uid]"
      *
      * @param array $faqRecords array with faq records
-     * @return void
      */
     public function addCacheTagsByFaqRecords(array $faqRecords)
     {
@@ -44,7 +45,6 @@ class FaqCacheService
      * This adds tags with the scheme tx_plainfaq_pid_[faq:pid]
      *
      * @param FaqDemand $demand
-     * @return void
      */
     public function addPageCacheTagsByFaqDemandObject(FaqDemand $demand)
     {
@@ -65,7 +65,6 @@ class FaqCacheService
      *
      * @param int $faqUid
      * @param int $faqPid
-     * @return void
      */
     public function flushFaqCache(int $faqUid = 0, int $faqPid = 0)
     {

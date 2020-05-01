@@ -1,4 +1,5 @@
 <?php
+
 namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
 /*
@@ -22,7 +23,7 @@ class FaqTest extends BaseTestCase
     /**
      * @var \Derhansen\PlainFaq\Domain\Model\Faq
      */
-    protected $subject = null;
+    protected $subject;
 
     protected function setUp(): void
     {
@@ -52,7 +53,7 @@ class FaqTest extends BaseTestCase
     public function setQuestionForStringSetsQuestion()
     {
         $this->subject->setQuestion('Conceived at T3CON10');
-        $this->assertEquals('Conceived at T3CON10', $this->subject->getQuestion());
+        self::assertEquals('Conceived at T3CON10', $this->subject->getQuestion());
     }
 
     /**
@@ -72,7 +73,7 @@ class FaqTest extends BaseTestCase
     public function setAnswerForStringSetsAnswer()
     {
         $this->subject->setAnswer('Conceived at T3CON10');
-        $this->assertEquals('Conceived at T3CON10', $this->subject->getAnswer());
+        self::assertEquals('Conceived at T3CON10', $this->subject->getAnswer());
     }
 
     /**
@@ -92,7 +93,7 @@ class FaqTest extends BaseTestCase
     public function setKeywordsForStringSetsKeywords()
     {
         $this->subject->setKeywords('Conceived at T3CON10');
-        $this->assertEquals('Conceived at T3CON10', $this->subject->getKeywords());
+        self::assertEquals('Conceived at T3CON10', $this->subject->getKeywords());
     }
 
     /**
@@ -116,7 +117,7 @@ class FaqTest extends BaseTestCase
         $objectStorageHoldingExactlyOneImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneImages->attach($image);
         $this->subject->setImages($objectStorageHoldingExactlyOneImages);
-        $this->assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->getImages());
+        self::assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->getImages());
     }
 
     /**
@@ -172,7 +173,7 @@ class FaqTest extends BaseTestCase
         $objectStorageHoldingExactlyOneFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneFiles->attach($file);
         $this->subject->setFiles($objectStorageHoldingExactlyOneFiles);
-        $this->assertEquals($objectStorageHoldingExactlyOneFiles, $this->subject->getFiles());
+        self::assertEquals($objectStorageHoldingExactlyOneFiles, $this->subject->getFiles());
     }
 
     /**
@@ -230,7 +231,7 @@ class FaqTest extends BaseTestCase
         $objectStorageHoldingExactlyOneFaq = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneFaq->attach($faq);
         $this->subject->setRelated($objectStorageHoldingExactlyOneFaq);
-        $this->assertEquals($objectStorageHoldingExactlyOneFaq, $this->subject->getRelated());
+        self::assertEquals($objectStorageHoldingExactlyOneFaq, $this->subject->getRelated());
     }
 
     /**
@@ -287,7 +288,7 @@ class FaqTest extends BaseTestCase
         $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneCategory->attach($category);
         $this->subject->setCategories($objectStorageHoldingExactlyOneCategory);
-        $this->assertEquals($objectStorageHoldingExactlyOneCategory, $this->subject->getCategories());
+        self::assertEquals($objectStorageHoldingExactlyOneCategory, $this->subject->getCategories());
     }
 
     /**
@@ -323,5 +324,4 @@ class FaqTest extends BaseTestCase
 
         $this->subject->removeCategory($category);
     }
-
 }
