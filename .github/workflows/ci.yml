@@ -18,10 +18,12 @@ jobs:
         run: |
           sudo update-alternatives --set php /usr/bin/php${{ matrix.php }}
           php -v
+
       - name: Update Composer
         run: |
           sudo composer self-update
           composer --version
+
       - name: Validate composer.json and composer.lock
         run: composer validate
 
@@ -30,8 +32,5 @@ jobs:
           composer require typo3/minimal:${{ matrix.typo3 }}
           git checkout composer.json
 
-      - name: Lint PHP
-        run: composer test:php:lint
-
-      - name: Unit Tests
-        run: composer test:php:unit
+      - name: Unit tests
+        run: .Build/bin/phpunit --colors -c Tests/Build/UnitTests.xml
