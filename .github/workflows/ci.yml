@@ -15,10 +15,10 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: typo3
         ports:
-          - 3306
+          - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
@@ -56,5 +56,5 @@ jobs:
           export typo3DatabaseName="typo3";
           export typo3DatabaseHost="mysql";
           export typo3DatabaseUsername="root";
-          export typo3DatabasePassword="";
+          export typo3DatabasePassword="root";
           .Build/bin/phpunit --colors -c Tests/Build/FunctionalTests.xml
