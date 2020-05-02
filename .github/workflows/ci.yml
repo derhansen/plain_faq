@@ -11,8 +11,18 @@ jobs:
         typo3: ['^10.4']
         php: ['7.2', '7.3', '7.4']
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: typo3
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
       - name: Set up PHP Version
         run: |
@@ -27,16 +37,11 @@ jobs:
       - name: Validate composer.json and composer.lock
         run: composer validate
 
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
+      - name: Cache dependencies
+        uses: actions/cache@v1
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+          path: ~/.composer/cache/files
+          key: dependencies-typo3-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Install dependencies
         run: |
@@ -51,5 +56,5 @@ jobs:
           export typo3DatabaseName="typo3";
           export typo3DatabaseHost="127.0.0.1";
           export typo3DatabaseUsername="root";
-          export typo3DatabasePassword="root";
+          export typo3DatabasePassword="";
           .Build/bin/phpunit --colors -c Tests/Build/FunctionalTests.xml
