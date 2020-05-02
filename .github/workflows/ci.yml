@@ -11,16 +11,6 @@ jobs:
         typo3: ['^10.4']
         php: ['7.2', '7.3', '7.4']
 
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: typo3
-        ports:
-          - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
       - uses: actions/checkout@v1
 
@@ -54,7 +44,7 @@ jobs:
       - name: Functional tests
         run: |
           export typo3DatabaseName="typo3";
-          export typo3DatabaseHost="mysql";
+          export typo3DatabaseHost="127.0.0.1";
           export typo3DatabaseUsername="root";
           export typo3DatabasePassword="root";
           .Build/bin/phpunit --colors -c Tests/Build/FunctionalTests.xml
