@@ -6,3 +6,19 @@ services:
 
     Derhansen\PlainFaq\:
         resource: '../Classes/*'
+
+    Derhansen\PlainFaq\Command\MigrateCategoriesCommand:
+        tags:
+            - name: 'console.command'
+              command: 'plain_faq:migrate_categories'
+              schedulable: false
+    Derhansen\PlainFaq\Command\MigrateFaqsCommand:
+        tags:
+            - name: 'console.command'
+              command: 'plain_faq:migrate_faqs'
+              schedulable: false
+    Derhansen\PlainFaq\Command\MigratePluginsCommand:
+        tags:
+            - name: 'console.command'
+              command: 'plain_faq:migrate_plugins'
+              schedulable: false
