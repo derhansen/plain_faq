@@ -8,7 +8,7 @@ call_user_func(
             'PlainFaq',
             'Pi1',
             [
-                'Faq' => 'list, detail'
+                \Derhansen\PlainFaq\Controller\FaqController::class => 'list, detail'
             ],
             // non-cacheable actions
             []
