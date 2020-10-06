@@ -40,7 +40,7 @@ ext:sphinx to view the documentation directly in your TYPO3 installation.
 
 ### Installation using Composer
 
-The recommended way to install the extension is by using [Composer](https://getcomposer.org/). In your Composer based TYPO3 project root, just do `composer require derhansen/plain_faq`. 
+The recommended way to install the extension is by using [Composer](https://getcomposer.org/). In your Composer based TYPO3 project root, just do `composer require derhansen/plain-faq`. 
 
 ### Installation as extension from TYPO3 Extension Repository (TER)
 
