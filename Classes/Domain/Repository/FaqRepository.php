@@ -14,6 +14,7 @@ namespace Derhansen\PlainFaq\Domain\Repository;
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Utility\CategoryUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
@@ -69,6 +70,8 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (count($constraints) > 0) {
             $query->matching($query->logicalAnd($constraints));
         }
+
+        $this->setQueryLimitFromDemand($query, $faqDemand);
 
         return $query->execute();
     }
@@ -163,6 +166,22 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING :
                 \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING);
             $query->setOrderings($orderings);
+        }
+    }
+
+    /**
+     * Sets a query limit to the given query for the given demand
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query Query
+     * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
+     */
+    protected function setQueryLimitFromDemand(QueryInterface$query, FaqDemand $faqDemand)
+    {
+        if ($faqDemand->getQueryLimit() !== null &&
+            MathUtility::canBeInterpretedAsInteger($faqDemand->getQueryLimit()) &&
+            (int)$faqDemand->getQueryLimit() > 0
+        ) {
+            $query->setLimit((int)$faqDemand->getQueryLimit());
         }
     }
 }

@@ -76,7 +76,7 @@ class FaqTest extends FunctionalTestCase
      */
     public function findDemandedRespectsStoragePage($storagePage, $expected)
     {
-        $demand = $this->objectManager->get(FaqDemand::class);
+        $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage($storagePage);
 
         $result = $this->faqRepository->findDemanded($demand);
@@ -134,7 +134,7 @@ class FaqTest extends FunctionalTestCase
      */
     public function findDemandedRespectsCategory($categories, $conjunction, $includeSub, $expected)
     {
-        $demand = $this->objectManager->get(FaqDemand::class);
+        $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(1);
         $demand->setCategoryConjunction($conjunction);
         $demand->setCategories($categories);
@@ -174,7 +174,7 @@ class FaqTest extends FunctionalTestCase
      */
     public function findDemandedRespectsOrdering($orderField, $orderDirection, $expected)
     {
-        $demand = $this->objectManager->get(FaqDemand::class);
+        $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(1);
         $demand->setOrderField($orderField);
         $demand->setOrderFieldAllowed($orderField);
@@ -182,5 +182,18 @@ class FaqTest extends FunctionalTestCase
 
         $result = $this->faqRepository->findDemanded($demand);
         self::assertEquals($expected, $result->getFirst()->getUid());
+    }
+
+    /**
+     * @test
+     */
+    public function findDemandedRespectsQueryLimit()
+    {
+        $demand = GeneralUtility::makeInstance(FaqDemand::class);
+        $demand->setStoragePage(1);
+        $demand->setQueryLimit(2);
+
+        $result = $this->faqRepository->findDemanded($demand);
+        self::assertEquals(2, $result->count());
     }
 }

@@ -152,4 +152,21 @@ class FaqDemandTest extends BaseTestCase
         $this->subject->setStoragePage('1,2,3');
         self::assertEquals('1,2,3', $this->subject->getStoragePage());
     }
+
+    /**
+     * @test
+     */
+    public function queryLimitReturnsDefaultValue()
+    {
+        $this->assertSame(0, $this->subject->getQueryLimit());
+    }
+
+    /**
+     * @test
+     */
+    public function queryLimitCanBeSet()
+    {
+        $this->subject->setQueryLimit(2);
+        $this->assertSame(2, $this->subject->getQueryLimit());
+    }
 }

@@ -60,6 +60,9 @@
 			<trans-unit id="flexforms.pi1.field.orderDirection.descending">
 				<source>Descending</source>
 			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.queryLimit">
+				<source>Max records displayed</source>
+			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.categoryConjunction">
 				<source>Category Conjunction</source>
 			</trans-unit>

@@ -84,6 +84,18 @@ Tab settings
          orderDirection
 
  - :Property:
+         Max records displayed
+
+   :View:
+         List
+
+   :Description:
+         Maximum amount of FAQ articles to return
+
+   :Key:
+         queryLimit
+
+ - :Property:
          Category mode
 
    :View:

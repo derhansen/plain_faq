@@ -45,6 +45,11 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $categories = '';
 
     /**
+     * @var int
+     */
+    protected $queryLimit = 0;
+
+    /**
      * Include subcategories
      *
      * @var bool
@@ -143,6 +148,22 @@ class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setIncludeSubcategories(bool $includeSubcategories)
     {
         $this->includeSubcategories = $includeSubcategories;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQueryLimit(): int
+    {
+        return $this->queryLimit;
+    }
+
+    /**
+     * @param int $queryLimit
+     */
+    public function setQueryLimit(int $queryLimit): void
+    {
+        $this->queryLimit = $queryLimit;
     }
 
     /**

@@ -89,6 +89,20 @@
                         </TCEforms>
                     </settings.orderDirection>
 
+                    <!-- Query Limit -->
+                    <settings.queryLimit>
+                        <TCEforms>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.queryLimit</label>
+                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>num</eval>
+                                <size>5</size>
+                            </config>
+                        </TCEforms>
+                    </settings.queryLimit>
+
+
                     <!-- Category conjunction -->
                     <settings.categoryConjunction>
                         <TCEforms>
