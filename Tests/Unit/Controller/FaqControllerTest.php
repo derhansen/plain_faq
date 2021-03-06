@@ -39,6 +39,7 @@ class FaqControllerTest extends BaseTestCase
         $mockDemand->expects(self::at(4))->method('setOrderField')->with('');
         $mockDemand->expects(self::at(5))->method('setOrderFieldAllowed')->with('');
         $mockDemand->expects(self::at(6))->method('setOrderDirection')->with('asc');
+        $mockDemand->expects(self::at(7))->method('setQueryLimit')->with(0);
 
         $objectManager = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
         $objectManager->expects(self::any())->method('get')->willReturn($mockDemand);

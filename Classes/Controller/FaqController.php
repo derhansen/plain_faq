@@ -96,7 +96,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $demand->setOrderField($settings['orderField'] ?? '');
         $demand->setOrderFieldAllowed($settings['orderFieldAllowed'] ?? '');
         $demand->setOrderDirection($settings['orderDirection'] ?? 'asc');
-        $demand->setQueryLimit($settings['queryLimit'] ? (int)$settings['queryLimit'] : 0);
+        $demand->setQueryLimit(isset($settings['queryLimit']) ? (int)$settings['queryLimit'] : 0);
 
         return $demand;
     }
