@@ -79,6 +79,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
         }
 
         $io->success('All done!');
+        return 1;
     }
 
     /**

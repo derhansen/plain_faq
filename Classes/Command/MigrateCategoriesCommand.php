@@ -80,6 +80,7 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
         }
 
         $io->success('All done!');
+        return 1;
     }
 
     /**

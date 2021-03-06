@@ -82,6 +82,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
         }
 
         $io->success('All done!');
+        return 1;
     }
 
     /**
