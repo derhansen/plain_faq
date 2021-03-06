@@ -231,9 +231,8 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
      * Creates a record in the table "tx_plainfaq_domain_model_faq_related_mm" with the given data
      *
      * @param array $data
-     * @return int
      */
-    protected function createFaqCategoryRelation(array $data)
+    protected function createFaqCategoryRelation(array $data): void
     {
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $databaseConnectionForFaq = $connectionPool->getConnectionForTable('tx_plainfaq_domain_model_faq_related_mm');

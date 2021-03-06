@@ -284,10 +284,10 @@ class MigratePluginsCommand extends AbstractMigrateCommand
     /**
      * Transforms the given array to FlexForm XML
      *
-     * @param $input
+     * @param array $input
      * @return string
      */
-    protected function array2xml($input)
+    protected function array2xml(array $input = []): string
     {
         $options = [
             'parentTagMap' => [

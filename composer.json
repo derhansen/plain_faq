@@ -24,7 +24,10 @@
     },
     "require-dev": {
         "typo3/testing-framework": "^5",
-        "friendsofphp/php-cs-fixer": "^2.16.1"
+        "friendsofphp/php-cs-fixer": "^2.16.1",
+        "saschaegerer/phpstan-typo3": "^0.13.1",
+        "phpstan/extension-installer": "^1.1",
+        "jangregor/phpstan-prophecy": "^0.8.1"
     },
     "autoload": {
         "psr-4": {
