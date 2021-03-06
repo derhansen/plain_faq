@@ -11,10 +11,12 @@ declare(strict_types=1);
 
 namespace Derhansen\PlainFaq\Domain\Model\Dto;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /**
  * FaqDemand
  */
-class FaqDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class FaqDemand extends AbstractEntity
 {
     /**
      * Order field

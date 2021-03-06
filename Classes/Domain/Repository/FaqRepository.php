@@ -17,12 +17,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 
 /**
  * The repository for Faqs
  */
-class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class FaqRepository extends Repository
 {
     /**
      * Set default sorting
@@ -30,7 +31,7 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @var array
      */
     protected $defaultOrderings = [
-        'question' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+        'question' => QueryInterface::ORDER_ASCENDING,
     ];
 
     /**
@@ -163,8 +164,8 @@ class FaqRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if ($faqDemand->getOrderField() !== '' && $faqDemand->getOrderDirection() !== '' &&
             !empty($orderFieldAllowed) && in_array($faqDemand->getOrderField(), $orderFieldAllowed, true)) {
             $orderings[$faqDemand->getOrderField()] = ((strtolower($faqDemand->getOrderDirection()) == 'desc') ?
-                \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING :
-                \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING);
+                QueryInterface::ORDER_DESCENDING :
+                QueryInterface::ORDER_ASCENDING);
             $query->setOrderings($orderings);
         }
     }

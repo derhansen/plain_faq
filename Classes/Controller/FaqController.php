@@ -18,13 +18,15 @@ use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /**
  * FaqController
  */
-class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class FaqController extends ActionController
 {
     /**
      * Properties in this array will be ignored by overwriteDemandObject()
@@ -46,7 +48,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * @param FaqRepository $faqRepository
      */
-    public function injectFaqRepository(\Derhansen\PlainFaq\Domain\Repository\FaqRepository $faqRepository)
+    public function injectFaqRepository(FaqRepository $faqRepository)
     {
         $this->faqRepository = $faqRepository;
     }
@@ -64,7 +66,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view
      */
-    protected function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
+    protected function initializeView(ViewInterface $view)
     {
         $view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
         if (is_object($GLOBALS['TSFE'])) {
@@ -78,7 +80,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @param array $settings The settings
      *
-     * @return \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand
+     * @return FaqDemand
      */
     public function createFaqDemandObjectFromSettings(array $settings): FaqDemand
     {
@@ -159,7 +161,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @param array $overwriteDemand
      * @return bool
      */
-    protected function isOverwriteDemand($overwriteDemand)
+    protected function isOverwriteDemand(array $overwriteDemand): bool
     {
         return (int)$this->settings['disableOverwriteDemand'] !== 1 && $overwriteDemand !== [];
     }
@@ -172,7 +174,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @return FaqDemand
      */
-    protected function overwriteFaqDemandObject(FaqDemand $demand, array $overwriteDemand)
+    protected function overwriteFaqDemandObject(FaqDemand $demand, array $overwriteDemand): FaqDemand
     {
         foreach ($this->ignoredSettingsForOverwriteDemand as $property) {
             unset($overwriteDemand[$property]);
@@ -197,7 +199,7 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @return mixed
      */
-    protected function signalDispatch($signalClassName, $signalName, array $arguments)
+    protected function signalDispatch(string $signalClassName, string $signalName, array $arguments)
     {
         return $this->signalSlotDispatcher->dispatch($signalClassName, $signalName, $arguments);
     }

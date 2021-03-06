@@ -84,9 +84,7 @@ class PageLayoutView
             $this->getCategorySettings();
         }
 
-        $result = $this->renderSettingsAsTable($header, $action, $this->data);
-
-        return $result;
+        return $this->renderSettingsAsTable($header, $action, $this->data);
     }
 
     /**
@@ -94,7 +92,7 @@ class PageLayoutView
      *
      * @return string
      */
-    protected function getSwitchableControllerActionTitle()
+    protected function getSwitchableControllerActionTitle(): string
     {
         $title = '';
         $actions = $this->getFieldFromFlexform('switchableControllerActions');
@@ -119,7 +117,7 @@ class PageLayoutView
      *
      * @return bool
      */
-    protected function showFieldsForListViewOnly()
+    protected function showFieldsForListViewOnly(): bool
     {
         $actions = $this->getFieldFromFlexform('switchableControllerActions');
         switch ($actions) {
@@ -156,7 +154,7 @@ class PageLayoutView
      * @param string $table
      * @return string
      */
-    public function getRecordData($id, $table = 'pages')
+    public function getRecordData($id, $table = 'pages'): string
     {
         $content = '';
         $record = BackendUtilityCore::getRecord($table, $id);
@@ -179,7 +177,7 @@ class PageLayoutView
      *
      * @param string $field
      */
-    public function getStoragePage($field)
+    public function getStoragePage(string $field)
     {
         $value = $this->getFieldFromFlexform($field);
 
@@ -220,7 +218,7 @@ class PageLayoutView
      * @param string $orderByField
      * @param string $orderDirectionField
      */
-    public function getOrderSettings($orderByField, $orderDirectionField)
+    public function getOrderSettings(string $orderByField, string $orderDirectionField)
     {
         $orderField = $this->getFieldFromFlexform($orderByField);
         if (!empty($orderField)) {
@@ -244,7 +242,7 @@ class PageLayoutView
      * @param string $orderDirectionField
      * @return string
      */
-    public function getOrderDirectionSetting($orderDirectionField)
+    public function getOrderDirectionSetting(string $orderDirectionField): string
     {
         $text = '';
 
@@ -345,7 +343,7 @@ class PageLayoutView
      * @param array $data
      * @return string
      */
-    protected function renderSettingsAsTable($header, $action, $data)
+    protected function renderSettingsAsTable(string $header, string $action, array $data): string
     {
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->loadRequireJsModule('TYPO3/CMS/News/PageLayout');
@@ -372,7 +370,7 @@ class PageLayoutView
      * @param string $sheet name of the sheet
      * @return string|null if nothing found, value if found
      */
-    public function getFieldFromFlexform($key, $sheet = 'sDEF')
+    public function getFieldFromFlexform(string $key, string $sheet = 'sDEF'): ?string
     {
         $flexform = $this->flexformData;
         if (isset($flexform['data'])) {

@@ -12,12 +12,14 @@ declare(strict_types=1);
 namespace Derhansen\PlainFaq\Domain\Model;
 
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Faq
  */
-class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Faq extends AbstractEntity
 {
     /**
      * @var string
@@ -69,10 +71,10 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->related = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->images = new ObjectStorage();
+        $this->files = new ObjectStorage();
+        $this->related = new ObjectStorage();
+        $this->categories = new ObjectStorage();
     }
 
     /**
@@ -126,7 +128,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
      */
-    public function addImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
+    public function addImage(FileReference $image)
     {
         $this->images->attach($image);
     }
@@ -134,7 +136,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
      */
-    public function removeImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove)
+    public function removeImage(FileReference $imageToRemove)
     {
         $this->images->detach($imageToRemove);
     }
@@ -150,7 +152,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      */
-    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
+    public function setImages(ObjectStorage $images)
     {
         $this->images = $images;
     }
@@ -158,7 +160,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      */
-    public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
+    public function addFile(FileReference $file)
     {
         $this->files->attach($file);
     }
@@ -166,7 +168,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileToRemove The FileReference to be removed
      */
-    public function removeFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $fileToRemove)
+    public function removeFile(FileReference $fileToRemove)
     {
         $this->files->detach($fileToRemove);
     }
@@ -182,7 +184,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
      */
-    public function setFiles(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $files)
+    public function setFiles(ObjectStorage $files)
     {
         $this->files = $files;
     }
@@ -190,7 +192,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
      */
-    public function addRelated(\Derhansen\PlainFaq\Domain\Model\Faq $faq)
+    public function addRelated(Faq $faq)
     {
         $this->related->attach($faq);
     }
@@ -198,7 +200,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
      */
-    public function removeRelated(\Derhansen\PlainFaq\Domain\Model\Faq $faq)
+    public function removeRelated(Faq $faq)
     {
         $this->related->detach($faq);
     }
@@ -214,7 +216,7 @@ class Faq extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
      */
-    public function setRelated(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $related)
+    public function setRelated(ObjectStorage $related)
     {
         $this->related = $related;
     }
