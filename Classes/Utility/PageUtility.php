@@ -38,7 +38,7 @@ class PageUtility
         $recursiveStoragePids = $pidList;
         $storagePids = GeneralUtility::intExplode(',', $pidList);
         foreach ($storagePids as $startPid) {
-            $pids = $queryGenerator->getTreeList($startPid, $recursive, 0, 1);
+            $pids = $queryGenerator->getTreeList($startPid, $recursive);
             if (strlen((string)$pids) > 0) {
                 $recursiveStoragePids .= ',' . $pids;
             }
