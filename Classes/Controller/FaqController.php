@@ -16,7 +16,10 @@ use Derhansen\PlainFaq\Domain\Model\Faq;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /**
  * FaqController
@@ -132,7 +135,11 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function detailAction(Faq $faq = null)
     {
         if (is_null($faq)) {
-            $this->getTypoScriptFrontendController()->pageNotFoundAndExit('FAQ article not found.');
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $GLOBALS['TYPO3_REQUEST'],
+                'FAQ not found.'
+            );
+            throw new ImmediateResponseException($response, 1549896549734);
         }
 
         $values = ['faq' => $faq];
@@ -192,13 +199,5 @@ class FaqController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected function signalDispatch($signalClassName, $signalName, array $arguments)
     {
         return $this->signalSlotDispatcher->dispatch($signalClassName, $signalName, $arguments);
-    }
-
-    /**
-     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
-     */
-    protected function getTypoScriptFrontendController()
-    {
-        return $GLOBALS['TSFE'] ?: null;
     }
 }
