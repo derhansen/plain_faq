@@ -19,3 +19,5 @@ Thanks from me to:
 
 The initial development of this extension was sponsored by Julius-Maximilians-Universität Würzburg (https://www.uni-wuerzburg.de).
 Thanks a lot for supporting TYPO3 and open source software! 👍
+
+Thanks to Georg Ringer for https://github.com/georgringer/numbered_pagination which has been integrated into this extension

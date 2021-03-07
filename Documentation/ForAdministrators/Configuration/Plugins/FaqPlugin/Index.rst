@@ -194,6 +194,48 @@ Tab additional
    :Key:
          disableOverrideDemand
 
+Tab pagination
+~~~~~~~~~~~~~~
+
+.. t3-field-list-table::
+ :header-rows: 1
+
+ - :Property:
+         Enable pagination
+
+   :View:
+         List
+
+   :Description:
+         If checked, pagination will be generated and pagination variables will be given to the view.
+
+   :Key:
+         enablePagination
+
+ - :Property:
+         Items per page
+
+   :View:
+         List
+
+   :Description:
+         Items per page for the pagination
+
+   :Key:
+         itemsPerPage
+
+ - :Property:
+         Maximum number of pages
+
+   :View:
+         List
+
+   :Description:
+         Maximum number of pages
+
+   :Key:
+         maxNumPages
+
 Tab template
 ~~~~~~~~~~~~
 

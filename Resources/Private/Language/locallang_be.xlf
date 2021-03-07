@@ -27,6 +27,9 @@
 			<trans-unit id="flexforms.pi1.tab.additional">
 				<source>Additional</source>
 			</trans-unit>
+			<trans-unit id="flexforms.pi1.tab.pagination">
+				<source>Pagination</source>
+			</trans-unit>
 			<trans-unit id="flexforms.pi1.tab.template">
 				<source>Template</source>
 			</trans-unit>
@@ -101,6 +104,15 @@
 			</trans-unit>
 			<trans-unit id="flexforms.pi1.field.templateLayout">
 				<source>Template Layout</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.enablePagination">
+				<source>Enable pagination</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.itemsPerPage">
+				<source>Items per page</source>
+			</trans-unit>
+			<trans-unit id="flexforms.pi1.field.maxNumPages">
+				<source>Maximum number of pages</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -18,6 +18,7 @@ keep things simple and to have a modern and clean code basis.
 * Automatic cache clearing when FAQ has been changed in backend
 * Symfony Console commands to migrate from ext:irfaq
 * Signal slots to extend the extension with own functionality
+* Pagination for list view using the TYPO3 pagination API
 
 **Background**
 

@@ -158,7 +158,7 @@ class FaqDemandTest extends BaseTestCase
      */
     public function queryLimitReturnsDefaultValue()
     {
-        $this->assertSame(0, $this->subject->getQueryLimit());
+        self::assertSame(0, $this->subject->getQueryLimit());
     }
 
     /**
@@ -167,6 +167,6 @@ class FaqDemandTest extends BaseTestCase
     public function queryLimitCanBeSet()
     {
         $this->subject->setQueryLimit(2);
-        $this->assertSame(2, $this->subject->getQueryLimit());
+        self::assertSame(2, $this->subject->getQueryLimit());
     }
 }

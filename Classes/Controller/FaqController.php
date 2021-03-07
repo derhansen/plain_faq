@@ -14,12 +14,15 @@ namespace Derhansen\PlainFaq\Controller;
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Domain\Model\Faq;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
+use Derhansen\PlainFaq\Pagination\NumberedPagination;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 
@@ -121,6 +124,7 @@ class FaqController extends ActionController
             'faqs' => $faqs,
             'faqDemand' => $faqDemand,
             'overwriteDemand' => $overwriteDemand,
+            'pagination' => $this->getPagination($faqs)
         ];
 
         $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
@@ -128,6 +132,28 @@ class FaqController extends ActionController
         $this->view->assignMultiple($values);
 
         $this->faqCacheService->addPageCacheTagsByFaqDemandObject($faqDemand);
+    }
+
+    /**
+     * Returns an array with variables for the pagination
+     *
+     * @param QueryResultInterface $faqs
+     * @return array
+     */
+    protected function getPagination(QueryResultInterface $faqs): array
+    {
+        $pagination = [];
+        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+        if ((bool)$this->settings['enablePagination'] && (int)$this->settings['itemsPerPage'] > 0) {
+            $paginator = new QueryResultPaginator($faqs, $currentPage, (int)$this->settings['itemsPerPage']);
+            $pagination = new NumberedPagination($paginator, (int)$this->settings['maxNumPages']);
+            $pagination = [
+                'paginator' => $paginator,
+                'pagination' => $pagination,
+            ];
+        }
+
+        return $pagination;
     }
 
     /**

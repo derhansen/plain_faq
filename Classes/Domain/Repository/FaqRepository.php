@@ -176,7 +176,7 @@ class FaqRepository extends Repository
      * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query Query
      * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
      */
-    protected function setQueryLimitFromDemand(QueryInterface$query, FaqDemand $faqDemand)
+    protected function setQueryLimitFromDemand(QueryInterface $query, FaqDemand $faqDemand)
     {
         if ($faqDemand->getQueryLimit() !== null &&
             MathUtility::canBeInterpretedAsInteger($faqDemand->getQueryLimit()) &&

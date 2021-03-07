@@ -8,9 +8,19 @@
     <f:translate key="labels.faqList" />
   </h1>
 
-  <f:for each="{faqs}" as="faq">
-    <f:link.action action="detail" arguments="{faq: faq}" pageUid="{settings.detailPid}">{faq.question}</f:link.action><br>
-  </f:for>
+  <f:if condition="{pagination}">
+    <f:then>
+      <f:for each="{pagination.paginator.paginatedItems}" as="faq" iteration="iterator">
+        <f:link.action action="detail" arguments="{faq: faq}" pageUid="{settings.detailPid}">{faq.question}</f:link.action><br>
+      </f:for>
+      <f:render partial="Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+    </f:then>
+    <f:else>
+      <f:for each="{faqs}" as="faq">
+        <f:link.action action="detail" arguments="{faq: faq}" pageUid="{settings.detailPid}">{faq.question}</f:link.action><br>
+      </f:for>
+    </f:else>
+  </f:if>
 
 </f:section>
 

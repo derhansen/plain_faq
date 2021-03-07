@@ -102,7 +102,6 @@
                         </TCEforms>
                     </settings.queryLimit>
 
-
                     <!-- Category conjunction -->
                     <settings.categoryConjunction>
                         <TCEforms>
@@ -303,6 +302,59 @@
                 </el>
             </ROOT>
         </additional>
+
+        <!-- Sheet: Pagination -->
+        <pagination>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.tab.pagination</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+
+                    <!-- Enable pagination -->
+                    <settings.enablePagination>
+                        <TCEforms>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.enablePagination</label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <config>
+                                <type>check</type>
+                                <default>0</default>
+                            </config>
+                        </TCEforms>
+                    </settings.enablePagination>
+
+                    <!-- Items per page -->
+                    <settings.itemsPerPage>
+                        <TCEforms>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.itemsPerPage</label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>num</eval>
+                                <size>5</size>
+                                <default>10</default>
+                            </config>
+                        </TCEforms>
+                    </settings.itemsPerPage>
+
+                    <!-- Maximum number of pages -->
+                    <settings.maxNumPages>
+                        <TCEforms>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.maxNumPages</label>
+                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>num</eval>
+                                <size>5</size>
+                                <default>10</default>
+                            </config>
+                        </TCEforms>
+                    </settings.maxNumPages>
+
+                </el>
+            </ROOT>
+        </pagination>
 
         <!-- Sheet: Template -->
         <template>

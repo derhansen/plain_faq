@@ -32,6 +32,19 @@
 			<trans-unit id="labels.faqList">
 				<source>List</source>
 			</trans-unit>
+
+			<trans-unit id="pagination.first">
+				<source>First page</source>
+			</trans-unit>
+			<trans-unit id="pagination.previous">
+				<source>Previous</source>
+			</trans-unit>
+			<trans-unit id="pagination.next">
+				<source>Next</source>
+			</trans-unit>
+			<trans-unit id="pagination.last">
+				<source>Last page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
