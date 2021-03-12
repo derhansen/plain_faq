@@ -18,15 +18,8 @@ use Derhansen\PlainFaq\Controller\FaqController;
  */
 final class ModifyDetailViewVariablesEvent
 {
-    /**
-     * @var array
-     */
-    private $variables;
-
-    /**
-     * @var FaqController
-     */
-    private $faqController;
+    private array $variables;
+    private FaqController $faqController;
 
     public function __construct(array $variables, FaqController $faqController)
     {
@@ -34,25 +27,16 @@ final class ModifyDetailViewVariablesEvent
         $this->faqController = $faqController;
     }
 
-    /**
-     * @return array
-     */
     public function getVariables(): array
     {
         return $this->variables;
     }
 
-    /**
-     * @param array $variables
-     */
     public function setVariables(array $variables): void
     {
         $this->variables = $variables;
     }
 
-    /**
-     * @return FaqController
-     */
     public function getFaqController(): FaqController
     {
         return $this->faqController;
