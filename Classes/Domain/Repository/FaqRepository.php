@@ -12,7 +12,9 @@ declare(strict_types=1);
 namespace Derhansen\PlainFaq\Domain\Repository;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
+use Derhansen\PlainFaq\Event\ModifyFaqQueryConstraintsEvent;
 use Derhansen\PlainFaq\Utility\CategoryUtility;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -33,6 +35,19 @@ class FaqRepository extends Repository
     protected $defaultOrderings = [
         'question' => QueryInterface::ORDER_ASCENDING,
     ];
+
+    /**
+     * @var EventDispatcherInterface
+     */
+    protected $eventDispatcher;
+
+    /**
+     * @param EventDispatcherInterface $eventDispatcher
+     */
+    public function injectEventDispatcher(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
 
     /**
      * Disable the use of storage records, because the StoragePage can be set
@@ -58,13 +73,14 @@ class FaqRepository extends Repository
         $this->setStoragePageConstraint($query, $faqDemand, $constraints);
         $this->setCategoryConstraint($query, $faqDemand, $constraints);
 
-        /** @var Dispatcher $signalSlotDispatcher */
-        $signalSlotDispatcher = $this->objectManager->get(Dispatcher::class);
-        $signalSlotDispatcher->dispatch(
-            __CLASS__,
-            __FUNCTION__ . 'ModifyQueryConstraints',
-            [&$constraints, $query, $faqDemand, $this]
+        $modifyFaqQueryConstraintsEvent = new ModifyFaqQueryConstraintsEvent(
+            $constraints,
+            $query,
+            $faqDemand,
+            $this
         );
+        $this->eventDispatcher->dispatch($modifyFaqQueryConstraintsEvent);
+        $constraints = $modifyFaqQueryConstraintsEvent->getConstraints();
 
         $this->setOrderingsFromDemand($query, $faqDemand);
 

@@ -28,3 +28,8 @@ Faq Controller
 
 * ModifyListViewVariablesEvent
 * ModifyDetailViewVariablesEvent
+
+Faq Repository
+--------------
+
+* ModifyFaqQueryConstraintsEvent
