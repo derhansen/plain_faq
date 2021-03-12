@@ -19,15 +19,17 @@
         "GPL-2.0-or-later"
     ],
     "require": {
-        "typo3/cms-core": "^10.4",
-        "php": ">=7.2"
+        "typo3/cms-core": "~11.1.0 || dev-master",
+        "php": ">=7.4"
     },
     "require-dev": {
-        "typo3/testing-framework": "^5",
-        "friendsofphp/php-cs-fixer": "^2.16.1",
-        "saschaegerer/phpstan-typo3": "^0.13.1",
-        "phpstan/extension-installer": "^1.1",
-        "jangregor/phpstan-prophecy": "^0.8.1"
+        "typo3/cms-backend": "~11.1.0 || dev-master",
+        "typo3/cms-frontend": "~11.1.0 || dev-master",
+        "typo3/cms-recordlist": "~11.1.0 || dev-master",
+        "typo3/cms-extbase": "~11.1.0 || dev-master",
+        "typo3/cms-fluid": "~11.1.0 || dev-master",
+        "typo3/testing-framework": "^6.6.2",
+        "friendsofphp/php-cs-fixer": "^2.16.1"
     },
     "autoload": {
         "psr-4": {

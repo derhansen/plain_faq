@@ -25,25 +25,23 @@ class FaqControllerTest extends BaseTestCase
     public function createFaqDemandObjectFromSettingsWithEmptySettings()
     {
         /** @var FaqController $mockController */
-        $mockController = $this->getMockBuilder(FaqController::class)
-            ->onlyMethods(['redirect', 'forward', 'addFlashMessage'])
-            ->getMock();
+        $mockController = $this->getAccessibleMock(FaqController::class, ['redirect', 'forward', 'addFlashMessage']);
 
         $settings = [];
 
         $mockDemand = $this->getMockBuilder(FaqDemand::class)->getMock();
-        $mockDemand->expects(self::at(0))->method('setStoragePage')->with('');
-        $mockDemand->expects(self::at(1))->method('setCategoryConjunction')->with('');
-        $mockDemand->expects(self::at(2))->method('setCategories')->with('');
-        $mockDemand->expects(self::at(3))->method('setIncludeSubcategories')->with('');
-        $mockDemand->expects(self::at(4))->method('setOrderField')->with('');
-        $mockDemand->expects(self::at(5))->method('setOrderFieldAllowed')->with('');
-        $mockDemand->expects(self::at(6))->method('setOrderDirection')->with('asc');
-        $mockDemand->expects(self::at(7))->method('setQueryLimit')->with(0);
+        $mockDemand->expects(self::once())->method('setStoragePage')->with('');
+        $mockDemand->expects(self::once())->method('setCategoryConjunction')->with('');
+        $mockDemand->expects(self::once())->method('setCategories')->with('');
+        $mockDemand->expects(self::once())->method('setIncludeSubcategories')->with('');
+        $mockDemand->expects(self::once())->method('setOrderField')->with('');
+        $mockDemand->expects(self::once())->method('setOrderFieldAllowed')->with('');
+        $mockDemand->expects(self::once())->method('setOrderDirection')->with('asc');
+        $mockDemand->expects(self::once())->method('setQueryLimit')->with(0);
 
         $objectManager = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
         $objectManager->expects(self::any())->method('get')->willReturn($mockDemand);
-        $this->inject($mockController, 'objectManager', $objectManager);
+        $mockController->injectObjectManager($objectManager);
 
         $mockController->createFaqDemandObjectFromSettings($settings);
     }

@@ -16,4 +16,4 @@ For Developers
    :titlesonly:
    :glob:
 
-   Signals/Index
+   Events/Index

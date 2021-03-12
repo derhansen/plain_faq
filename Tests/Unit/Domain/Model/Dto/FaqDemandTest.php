@@ -9,6 +9,7 @@ namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
@@ -26,7 +27,7 @@ class FaqDemandTest extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand();
+        $this->subject = new FaqDemand();
     }
 
     protected function tearDown(): void

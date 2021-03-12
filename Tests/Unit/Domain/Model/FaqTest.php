@@ -11,6 +11,8 @@ namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
 
 use Derhansen\PlainFaq\Domain\Model\Faq;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
@@ -28,7 +30,7 @@ class FaqTest extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new \Derhansen\PlainFaq\Domain\Model\Faq();
+        $this->subject = new Faq();
     }
 
     protected function tearDown(): void
@@ -101,7 +103,7 @@ class FaqTest extends BaseTestCase
      */
     public function getImagesReturnsInitialValueForFileReference()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getImages()
@@ -113,8 +115,8 @@ class FaqTest extends BaseTestCase
      */
     public function setImagesForFileReferenceSetsImages()
     {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $objectStorageHoldingExactlyOneImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $image = new FileReference();
+        $objectStorageHoldingExactlyOneImages = new ObjectStorage();
         $objectStorageHoldingExactlyOneImages->attach($image);
         $this->subject->setImages($objectStorageHoldingExactlyOneImages);
         self::assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->getImages());
@@ -125,13 +127,13 @@ class FaqTest extends BaseTestCase
      */
     public function addImageToObjectStorageHoldingImages()
     {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $image = new FileReference();
+        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $imagesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($image));
-        $this->inject($this->subject, 'images', $imagesObjectStorageMock);
+        $this->subject->setImages($imagesObjectStorageMock);
 
         $this->subject->addImage($image);
     }
@@ -141,13 +143,13 @@ class FaqTest extends BaseTestCase
      */
     public function removeImageFromObjectStorageHoldingImages()
     {
-        $image = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $image = new FileReference();
+        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $imagesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($image));
-        $this->inject($this->subject, 'images', $imagesObjectStorageMock);
+        $this->subject->setImages($imagesObjectStorageMock);
 
         $this->subject->removeImage($image);
     }
@@ -157,7 +159,7 @@ class FaqTest extends BaseTestCase
      */
     public function getFilesReturnsInitialValueForFileReference()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getFiles()
@@ -169,8 +171,8 @@ class FaqTest extends BaseTestCase
      */
     public function setFilesForFileReferenceSetsFiles()
     {
-        $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $objectStorageHoldingExactlyOneFiles = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $file = new FileReference();
+        $objectStorageHoldingExactlyOneFiles = new ObjectStorage();
         $objectStorageHoldingExactlyOneFiles->attach($file);
         $this->subject->setFiles($objectStorageHoldingExactlyOneFiles);
         self::assertEquals($objectStorageHoldingExactlyOneFiles, $this->subject->getFiles());
@@ -181,14 +183,14 @@ class FaqTest extends BaseTestCase
      */
     public function addFileToObjectStorageHoldingFiles()
     {
-        $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $filesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $file = new FileReference();
+        $filesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $filesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($file));
-        $this->inject($this->subject, 'files', $filesObjectStorageMock);
+        $this->subject->setFiles($filesObjectStorageMock);
 
         $this->subject->addFile($file);
     }
@@ -198,14 +200,14 @@ class FaqTest extends BaseTestCase
      */
     public function removeFileFromObjectStorageHoldingFiles()
     {
-        $file = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
-        $filesObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $file = new FileReference();
+        $filesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $filesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($file));
-        $this->inject($this->subject, 'files', $filesObjectStorageMock);
+        $this->subject->setFiles($filesObjectStorageMock);
 
         $this->subject->removeFile($file);
     }
@@ -215,7 +217,7 @@ class FaqTest extends BaseTestCase
      */
     public function getRelatedReturnsInitialValueForObjectStorage()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getRelated()
@@ -228,7 +230,7 @@ class FaqTest extends BaseTestCase
     public function setRelatedForFileReferenceSetsRelated()
     {
         $faq = new Faq();
-        $objectStorageHoldingExactlyOneFaq = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneFaq = new ObjectStorage();
         $objectStorageHoldingExactlyOneFaq->attach($faq);
         $this->subject->setRelated($objectStorageHoldingExactlyOneFaq);
         self::assertEquals($objectStorageHoldingExactlyOneFaq, $this->subject->getRelated());
@@ -240,12 +242,12 @@ class FaqTest extends BaseTestCase
     public function addFaqToObjectStorageHoldingFaqs()
     {
         $faq = new Faq();
-        $faqObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $faqObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->disableOriginalConstructor()
             ->getMock();
 
         $faqObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($faq));
-        $this->inject($this->subject, 'related', $faqObjectStorageMock);
+        $this->subject->setRelated($faqObjectStorageMock);
 
         $this->subject->addRelated($faq);
     }
@@ -256,13 +258,13 @@ class FaqTest extends BaseTestCase
     public function removeFaqFromObjectStorageHoldingFaqs()
     {
         $faq = new Faq();
-        $faqObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $faqObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $faqObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($faq));
-        $this->inject($this->subject, 'related', $faqObjectStorageMock);
+        $this->subject->setRelated($faqObjectStorageMock);
 
         $this->subject->removeRelated($faq);
     }
@@ -272,7 +274,7 @@ class FaqTest extends BaseTestCase
      */
     public function getCategoriesReturnsInitialValueForObjectStorage()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getCategories()
@@ -285,7 +287,7 @@ class FaqTest extends BaseTestCase
     public function setCategoriesForCategorySetsCategory()
     {
         $category = new Category();
-        $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneCategory = new ObjectStorage();
         $objectStorageHoldingExactlyOneCategory->attach($category);
         $this->subject->setCategories($objectStorageHoldingExactlyOneCategory);
         self::assertEquals($objectStorageHoldingExactlyOneCategory, $this->subject->getCategories());
@@ -297,13 +299,13 @@ class FaqTest extends BaseTestCase
     public function addCategoryToObjectStorageHoldingCategories()
     {
         $category = new Category();
-        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $categoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
-        $this->inject($this->subject, 'categories', $categoryObjectStorageMock);
+        $this->subject->setCategories($categoryObjectStorageMock);
 
         $this->subject->addCategory($category);
     }
@@ -314,13 +316,13 @@ class FaqTest extends BaseTestCase
     public function removeCategoryFromObjectStorageHoldingFaqs()
     {
         $category = new Category();
-        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $categoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
-        $this->inject($this->subject, 'categories', $categoryObjectStorageMock);
+        $this->subject->setCategories($categoryObjectStorageMock);
 
         $this->subject->removeCategory($category);
     }

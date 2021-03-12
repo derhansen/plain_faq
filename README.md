@@ -17,7 +17,7 @@ keep things simple and to have a modern and clean code basis.
 * Configurable template layouts for the views
 * Automatic cache clearing when FAQ has been changed in backend
 * Symfony Console commands to migrate from ext:irfaq
-* Signal slots to extend the extension with own functionality
+* PSR-14 events to extend the extension with own functionality
 * Pagination for list view using the TYPO3 pagination API
 
 **Background**
@@ -51,6 +51,7 @@ Download and install the extension with the TYPO3 extension manager module.
 
 | Version             | TYPO3      | PHP       | Support/Development                     |
 | ------------------- | ---------- | ----------|---------------------------------------- |
+| 3.x                 | 11.x       | >= 7.4    | Features, Bugfixes, Security Updates    |
 | 2.x                 | 10.x       | >= 7.2    | Features, Bugfixes, Security Updates    |
 | 1.x                 | 8.7 - 9.5  | 7.0 - 7.3 | Bugfixes, Security Updates              |
 

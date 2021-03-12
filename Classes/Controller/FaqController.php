@@ -17,6 +17,8 @@ use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
 use Derhansen\PlainFaq\Pagination\NumberedPagination;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
+use Derhansen\PlainFaq\Event\ModifyDetailViewVariablesEvent;
+use Derhansen\PlainFaq\Event\ModifyListViewVariablesEvent;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -120,16 +122,17 @@ class FaqController extends ActionController
 
         $faqs = $this->faqRepository->findDemanded($faqDemand);
 
-        $values = [
+        $variables = [
             'faqs' => $faqs,
             'faqDemand' => $faqDemand,
             'overwriteDemand' => $overwriteDemand,
             'pagination' => $this->getPagination($faqs)
         ];
 
-        $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
-
-        $this->view->assignMultiple($values);
+        $modifyListViewVariablesEvent = new ModifyListViewVariablesEvent($variables, $this);
+        $this->eventDispatcher->dispatch($modifyListViewVariablesEvent);
+        $variables = $modifyListViewVariablesEvent->getVariables();
+        $this->view->assignMultiple($variables);
 
         $this->faqCacheService->addPageCacheTagsByFaqDemandObject($faqDemand);
     }
@@ -171,14 +174,12 @@ class FaqController extends ActionController
             throw new ImmediateResponseException($response, 1549896549734);
         }
 
-        $values = ['faq' => $faq];
-        $this->signalDispatch(__CLASS__, __FUNCTION__ . 'BeforeRenderView', [&$values, $this]);
+        $modifyDetailViewVariablesEvent = new ModifyDetailViewVariablesEvent(['faq' => $faq], $this);
+        $this->eventDispatcher->dispatch($modifyDetailViewVariablesEvent);
+        $variables = $modifyDetailViewVariablesEvent->getVariables();
 
-        $this->view->assignMultiple($values);
-
-        if ($faq !== null) {
-            $this->faqCacheService->addCacheTagsByFaqRecords([$faq]);
-        }
+        $this->view->assignMultiple($variables);
+        $this->faqCacheService->addCacheTagsByFaqRecords([$faq]);
     }
 
     /**
