@@ -38,17 +38,10 @@ class FaqController extends ActionController
      *
      * @var array
      */
-    protected $ignoredSettingsForOverwriteDemand = ['orderfieldallowed'];
+    protected array $ignoredSettingsForOverwriteDemand = ['orderfieldallowed'];
 
-    /**
-     * @var FaqRepository
-     */
-    protected $faqRepository;
-
-    /**
-     * @var FaqCacheService
-     */
-    protected $faqCacheService;
+    protected FaqRepository $faqRepository;
+    protected FaqCacheService $faqCacheService;
 
     /**
      * @param FaqRepository $faqRepository
