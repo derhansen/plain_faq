@@ -50,16 +50,6 @@ class FaqRepository extends Repository
     }
 
     /**
-     * Disable the use of storage records, because the StoragePage can be set
-     * in the plugin
-     */
-    public function initializeObject()
-    {
-        $this->defaultQuerySettings = $this->objectManager->get(Typo3QuerySettings::class);
-        $this->defaultQuerySettings->setRespectStoragePage(false);
-    }
-
-    /**
      * Returns faq articles matching the demands of the given demand object
      *
      * @param FaqDemand $faqDemand
@@ -69,6 +59,7 @@ class FaqRepository extends Repository
     {
         $constraints = [];
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
 
         $this->setStoragePageConstraint($query, $faqDemand, $constraints);
         $this->setCategoryConstraint($query, $faqDemand, $constraints);
