@@ -3,24 +3,58 @@
 defined('TYPO3_MODE') or die();
 
 /**
+ * Add new select group for list_type
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItemGroup(
+    'tt_content',
+    'list_type',
+    'plainfaq',
+    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:CType.div.plugingroup',
+    'after:default'
+);
+
+/**
  * Plugins
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'PlainFaq',
-    'Pi1',
-    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pi1.title'
+    'Pilistdetail',
+    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pilistdetail.title',
+    null,
+    'plainfaq'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'PlainFaq',
+    'Pilist',
+    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pilist.title',
+    null,
+    'plainfaq'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'PlainFaq',
+    'Pidetail',
+    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pidetail.title',
+    null,
+    'plainfaq'
 );
 
 /**
- * Remove unused fields
+ * Register plugins, flexform and remove unused fields
  */
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['plainfaq_pi1'] = 'layout,select_key,pages,recursive';
+foreach (['pilistdetail', 'pilist', 'pidetail'] as $plugin) {
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+        'PlainFaq',
+        ucfirst($plugin),
+        'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.' . $plugin . '.title',
+        null,
+        'plainfaq'
+    );
 
-/**
- * Add Flexform for FAQ plugin
- */
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['plainfaq_pi1'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    'plainfaq_pi1',
-    'FILE:EXT:plain_faq/Configuration/FlexForms/Pi1.xml'
-);
+    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['plainfaq_' . $plugin] = 'pi_flexform';
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+        'plainfaq_' . $plugin,
+        'FILE:EXT:plain_faq/Configuration/FlexForms/' . ucfirst($plugin) . '.xml'
+    );
+
+    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['plainfaq_' . $plugin] = 'layout,select_key,pages,recursive';
+}

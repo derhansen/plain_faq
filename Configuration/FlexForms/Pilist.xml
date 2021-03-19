@@ -7,41 +7,14 @@
         <sDEF>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.tab.settings</sheetTitle>
+                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.settings</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
-                    <!-- View -->
-                    <switchableControllerActions>
-                        <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.mode</label>
-                            <onChange>reload</onChange>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.mode.listDetail</numIndex>
-                                        <numIndex index="1">Faq->list;Faq->detail</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.mode.list</numIndex>
-                                        <numIndex index="1">Faq->list</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.mode.detail</numIndex>
-                                        <numIndex index="1">Faq->detail</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
-                    </switchableControllerActions>
-
                     <!-- Order field -->
                     <settings.orderField>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.orderField</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
@@ -51,11 +24,11 @@
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.orderField.question</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField.question</numIndex>
                                         <numIndex index="1">question</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.orderField.sorting</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField.sorting</numIndex>
                                         <numIndex index="1">sorting</numIndex>
                                     </numIndex>
                                 </items>
@@ -66,8 +39,7 @@
                     <!-- Order direction -->
                     <settings.orderDirection>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.orderDirection</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
@@ -77,11 +49,11 @@
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.orderDirection.ascending</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection.ascending</numIndex>
                                         <numIndex index="1">asc</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.orderDirection.descending</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection.descending</numIndex>
                                         <numIndex index="1">desc</numIndex>
                                     </numIndex>
                                 </items>
@@ -92,8 +64,7 @@
                     <!-- Query Limit -->
                     <settings.queryLimit>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.queryLimit</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.queryLimit</label>
                             <config>
                                 <type>input</type>
                                 <eval>num</eval>
@@ -105,30 +76,29 @@
                     <!-- Category conjunction -->
                     <settings.categoryConjunction>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryConjunction</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction.ignore</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryConjunction.ignore</numIndex>
                                         <numIndex index="1"></numIndex>
                                     </numIndex>
                                     <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction.or</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryConjunction.or</numIndex>
                                         <numIndex index="1">OR</numIndex>
                                     </numIndex>
                                     <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction.and</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryConjunction.and</numIndex>
                                         <numIndex index="1">AND</numIndex>
                                     </numIndex>
                                     <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction.notor</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryConjunction.notor</numIndex>
                                         <numIndex index="1">NOTOR</numIndex>
                                     </numIndex>
                                     <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categoryConjunction.notand</numIndex>
+                                        <numIndex index="0">LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryConjunction.notand</numIndex>
                                         <numIndex index="1">NOTAND</numIndex>
                                     </numIndex>
                                 </items>
@@ -139,8 +109,7 @@
                     <!-- categories -->
                     <settings.categories>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.categories</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categories</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectTree</renderType>
@@ -153,7 +122,6 @@
                                 </treeConfig>
                                 <foreign_table>sys_category</foreign_table>
                                 <foreign_table_where> AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC</foreign_table_where>
-                                <size>10</size>
                                 <autoSizeMax>10</autoSizeMax>
                                 <minitems>0</minitems>
                                 <maxitems>999</maxitems>
@@ -164,8 +132,7 @@
                     <!-- Include subcategories -->
                     <settings.includeSubcategories>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.includeSubcategories</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.includeSubcategories</label>
                             <config>
                                 <type>check</type>
                             </config>
@@ -175,8 +142,7 @@
                     <!-- Storage page -->
                     <settings.storagePage>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.storagePage</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.storagePage</label>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -198,7 +164,6 @@
                     <settings.recursive>
                         <TCEforms>
                             <label>LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.recursive</label>
-                            <displayCond>FIELD:switchableControllerActions:!=:Faq->detail</displayCond>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
@@ -231,7 +196,6 @@
                             </config>
                         </TCEforms>
                     </settings.recursive>
-
                 </el>
             </ROOT>
         </sDEF>
@@ -240,7 +204,7 @@
         <additional>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.tab.additional</sheetTitle>
+                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.additional</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
@@ -248,7 +212,7 @@
                     <!-- Detail Pid -->
                     <settings.detailPid>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.detailPid</label>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.detailPid</label>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -266,32 +230,10 @@
                         </TCEforms>
                     </settings.detailPid>
 
-                    <!-- List Pid -->
-                    <settings.listPid>
-                        <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.listPid</label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                                <show_thumbs>1</show_thumbs>
-                                <wizards>
-                                    <suggest>
-                                        <type>suggest</type>
-                                    </suggest>
-                                </wizards>
-                            </config>
-                        </TCEforms>
-                    </settings.listPid>
-
                     <!-- disable overwriteDemand -->
                     <settings.disableOverwriteDemand>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.disableOverwriteDemand</label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.disableOverwriteDemand</label>
                             <config>
                                 <type>check</type>
                                 <default>1</default>
@@ -307,7 +249,7 @@
         <pagination>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.tab.pagination</sheetTitle>
+                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.pagination</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
@@ -315,8 +257,7 @@
                     <!-- Enable pagination -->
                     <settings.enablePagination>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.enablePagination</label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.enablePagination</label>
                             <config>
                                 <type>check</type>
                                 <default>0</default>
@@ -327,8 +268,7 @@
                     <!-- Items per page -->
                     <settings.itemsPerPage>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.itemsPerPage</label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.itemsPerPage</label>
                             <config>
                                 <type>input</type>
                                 <eval>num</eval>
@@ -341,8 +281,7 @@
                     <!-- Maximum number of pages -->
                     <settings.maxNumPages>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.maxNumPages</label>
-                            <displayCond>FIELD:sDEF.switchableControllerActions:!=:Faq->detail</displayCond>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.maxNumPages</label>
                             <config>
                                 <type>input</type>
                                 <eval>num</eval>
@@ -360,15 +299,14 @@
         <template>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.tab.template</sheetTitle>
+                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.template</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
-
                     <!-- Template Layout -->
                     <settings.templateLayout>
                         <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.pi1.field.templateLayout</label>
+                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.templateLayout</label>
                             <config>
                                 <type>select</type>
                                 <renderType>selectSingle</renderType>
@@ -382,10 +320,8 @@
                             </config>
                         </TCEforms>
                     </settings.templateLayout>
-
                 </el>
             </ROOT>
         </template>
-
     </sheets>
 </T3DataStructure>

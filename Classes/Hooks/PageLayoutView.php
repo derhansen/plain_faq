@@ -24,112 +24,93 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 class PageLayoutView
 {
-    /**
-     * @var string
-     */
-    const LLPATH = 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:';
+    private const LLPATH = 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:';
+    public array $flexformData = [];
+    public array $data = [];
+    protected IconFactory $iconFactory;
 
-    /**
-     * Data rendered in table of Plugin settings
-     *
-     * @var array
-     */
-    public $data = [];
-
-    /**
-     * Flexform information
-     *
-     * @var array
-     */
-    public $flexformData = [];
-
-    /**
-     * @var IconFactory
-     */
-    protected $iconFactory;
-
-    /**
-     * PageLayoutView constructor
-     */
     public function __construct()
     {
         $this->iconFactory = GeneralUtility::makeInstance(IconFactory::class);
     }
 
     /**
-     * Returns information about this extension's faq plugin
+     * Returns the plugin summary based on the field "list_type"
      *
-     * @param array $params Parameters to the hook
-     * @return string Information about plugin
-     */
-    public function getPi1PluginSummary(array $params)
-    {
-        $header = htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'plugin.title'));
-
-        // Add flexform switchable controller actions
-        $this->flexformData = GeneralUtility::xml2array($params['row']['pi_flexform']);
-
-        // Extend header by flexible controller action
-        $action = htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.mode')) . ': ';
-        $action .= $this->getSwitchableControllerActionTitle();
-
-        $this->getPluginPidConfig('listPid', 'additional');
-        $this->getPluginPidConfig('detailPid', 'additional');
-        $this->getStoragePage('settings.storagePage');
-        $this->getOrderSettings('settings.orderField', 'settings.orderDirection');
-        $this->getOverwriteDemandSettings();
-
-        if ($this->showFieldsForListViewOnly()) {
-            $this->getCategoryConjuction();
-            $this->getCategorySettings();
-        }
-
-        return $this->renderSettingsAsTable($header, $action, $this->data);
-    }
-
-    /**
-     * Returns the current title of the switchableControllerAction
-     *
+     * @param array $params
      * @return string
      */
-    protected function getSwitchableControllerActionTitle(): string
+    public function getPluginSummary(array $params): string
     {
-        $title = '';
-        $actions = $this->getFieldFromFlexform('switchableControllerActions');
-        switch ($actions) {
-            case 'Faq->list;Faq->detail':
-                $title = $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.mode.listDetail');
-                break;
-            case 'Faq->list':
-                $title = $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.mode.list');
-                break;
-            case 'Faq->detail':
-                $title = $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.mode.detail');
-                break;
-            default:
-        }
+        $flexFormData = GeneralUtility::xml2array($params['row']['pi_flexform']);
+        $this->flexformData = is_array($flexFormData) ? $flexFormData : [];
 
-        return $title;
-    }
-
-    /**
-     * Returns, if fields, that are only visible for list view, should be shown
-     *
-     * @return bool
-     */
-    protected function showFieldsForListViewOnly(): bool
-    {
-        $actions = $this->getFieldFromFlexform('switchableControllerActions');
-        switch ($actions) {
-            case 'Faq->list;Faq->detail':
-            case 'Faq->list':
-                $result = true;
+        $result = '';
+        switch ($params['row']['list_type']) {
+            case 'plainfaq_pilistdetail':
+                $result = $this->getPilistdetailPluginSummary();
                 break;
-            default:
-                $result = false;
+            case 'plainfaq_pilist':
+                $result = $this->getPilistPluginSummary();
+                break;
+            case 'plainfaq_pidetail':
+                $result = $this->getPidetailPluginSummary();
+                break;
         }
 
         return $result;
+    }
+
+    /**
+     * Returns plugin summary for "pilistdetail"
+     *
+     * @return string
+     */
+    protected function getPilistdetailPluginSummary(): string
+    {
+        $header = htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'plugin.pilistdetail.title'));
+
+        $this->getStoragePage('settings.storagePage');
+        $this->getOrderSettings('settings.orderField', 'settings.orderDirection');
+        $this->getCategoryConjuction();
+        $this->getCategorySettings();
+        $this->getPaginationSettings();
+        $this->getOverwriteDemandSettings();
+
+        return $this->renderSettingsAsTable($header, $this->data);
+    }
+
+    /**
+     * Returns plugin summary for "pilist"
+     *
+     * @return string
+     */
+    protected function getPilistPluginSummary(): string
+    {
+        $header = htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'plugin.pilist.title'));
+
+        $this->getPluginPidConfig('detailPid', 'additional');
+        $this->getStoragePage('settings.storagePage');
+        $this->getOrderSettings('settings.orderField', 'settings.orderDirection');
+        $this->getCategoryConjuction();
+        $this->getCategorySettings();
+        $this->getPaginationSettings();
+        $this->getOverwriteDemandSettings();
+
+        return $this->renderSettingsAsTable($header, $this->data);
+    }
+
+    /**
+     * Returns plugin summary for "pilistdetail"
+     *
+     * @return string
+     */
+    protected function getPidetailPluginSummary(): string
+    {
+        $header = htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'plugin.pidetail.title'));
+        $this->getPluginPidConfig('listPid', 'additional');
+
+        return $this->renderSettingsAsTable($header, $this->data);
     }
 
     /**
@@ -138,12 +119,12 @@ class PageLayoutView
      * @param string $pidSetting
      * @param string $sheet
      */
-    public function getPluginPidConfig(string $pidSetting, string $sheet = 'sDEF')
+    protected function getPluginPidConfig(string $pidSetting, string $sheet = 'sDEF')
     {
         $pid = (int)$this->getFieldFromFlexform('settings.' . $pidSetting, $sheet);
         if ($pid > 0) {
             $this->data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.' . $pidSetting),
+                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.' . $pidSetting),
                 'value' => $this->getRecordData($pid)
             ];
         }
@@ -154,7 +135,7 @@ class PageLayoutView
      * @param string $table
      * @return string
      */
-    public function getRecordData($id, $table = 'pages'): string
+    protected function getRecordData($id, $table = 'pages'): string
     {
         $content = '';
         $record = BackendUtilityCore::getRecord($table, $id);
@@ -177,7 +158,7 @@ class PageLayoutView
      *
      * @param string $field
      */
-    public function getStoragePage(string $field)
+    protected function getStoragePage(string $field)
     {
         $value = $this->getFieldFromFlexform($field);
 
@@ -218,11 +199,11 @@ class PageLayoutView
      * @param string $orderByField
      * @param string $orderDirectionField
      */
-    public function getOrderSettings(string $orderByField, string $orderDirectionField)
+    protected function getOrderSettings(string $orderByField, string $orderDirectionField)
     {
         $orderField = $this->getFieldFromFlexform($orderByField);
         if (!empty($orderField)) {
-            $text = $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.orderField.' . $orderField);
+            $text = $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.orderField.' . $orderField);
 
             // Order direction (asc, desc)
             $orderDirection = $this->getOrderDirectionSetting($orderDirectionField);
@@ -231,7 +212,7 @@ class PageLayoutView
             }
 
             $this->data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.orderField'),
+                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.orderField'),
                 'value' => $text
             ];
         }
@@ -242,14 +223,14 @@ class PageLayoutView
      * @param string $orderDirectionField
      * @return string
      */
-    public function getOrderDirectionSetting(string $orderDirectionField): string
+    protected function getOrderDirectionSetting(string $orderDirectionField): string
     {
         $text = '';
 
         $orderDirection = $this->getFieldFromFlexform($orderDirectionField);
         if (!empty($orderDirection)) {
             $text = $this->getLanguageService()->sL(
-                self::LLPATH . 'flexforms.pi1.field.orderDirection.' . $orderDirection . 'ending'
+                self::LLPATH . 'flexforms.plugin.field.orderDirection.' . $orderDirection . 'ending'
             );
         }
 
@@ -259,7 +240,7 @@ class PageLayoutView
     /**
      * Get category conjunction if a category is selected
      */
-    public function getCategoryConjuction()
+    protected function getCategoryConjuction()
     {
         // If not category is selected, we do not need to display the category mode
         $categories = $this->getFieldFromFlexform('settings.categories');
@@ -274,17 +255,17 @@ class PageLayoutView
             case 'notor':
             case 'notand':
                 $text = htmlspecialchars($this->getLanguageService()->sL(
-                    self::LLPATH . 'flexforms.pi1.field.categoryConjunction.' . $categoryConjunction
+                    self::LLPATH . 'flexforms.plugin.field.categoryConjunction.' . $categoryConjunction
                 ));
                 break;
             default:
                 $text = htmlspecialchars($this->getLanguageService()->sL(
-                    self::LLPATH . 'flexforms.pi1.field.categoryConjunction.ignore'
+                    self::LLPATH . 'flexforms.plugin.field.categoryConjunction.ignore'
                 ));
         }
 
         $this->data[] = [
-            'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.categoryConjunction'),
+            'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categoryConjunction'),
             'value' => $text
         ];
     }
@@ -292,14 +273,30 @@ class PageLayoutView
     /**
      * Get information if override demand setting is disabled or not
      */
-    public function getOverwriteDemandSettings()
+    protected function getOverwriteDemandSettings()
     {
         $field = $this->getFieldFromFlexform('settings.disableOverwriteDemand', 'additional');
 
         if ($field === '1') {
             $text = '<i class="fa fa-check"></i>';
             $this->data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.disableOverwriteDemand'),
+                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.disableOverwriteDemand'),
+                'value' => $text
+            ];
+        }
+    }
+
+    /**
+     * Get information if pagination is active
+     */
+    protected function getPaginationSettings()
+    {
+        $field = $this->getFieldFromFlexform('settings.enablePagination', 'pagination');
+
+        if ($field === '1') {
+            $text = '<i class="fa fa-check"></i>';
+            $this->data[] = [
+                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.enablePagination'),
                 'value' => $text
             ];
         }
@@ -308,7 +305,7 @@ class PageLayoutView
     /**
      * Get category settings
      */
-    public function getCategorySettings()
+    protected function getCategorySettings()
     {
         $categories = GeneralUtility::intExplode(',', $this->getFieldFromFlexform('settings.categories'), true);
         if (count($categories) > 0) {
@@ -318,7 +315,7 @@ class PageLayoutView
             }
 
             $this->data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.pi1.field.categories'),
+                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categories'),
                 'value' => implode(', ', $categoriesOut)
             ];
 
@@ -326,7 +323,7 @@ class PageLayoutView
             if ((int)$includeSubcategories === 1) {
                 $this->data[] = [
                     'title' => $this->getLanguageService()->sL(
-                        self::LLPATH . 'flexforms.pi1.field.includeSubcategories'
+                        self::LLPATH . 'flexforms.plugin.field.includeSubcategories'
                     ),
                     'value' => '<i class="fa fa-check"></i>'
                 ];
@@ -339,14 +336,12 @@ class PageLayoutView
      * System settings are displayed in mono font
      *
      * @param string $header
-     * @param string $action
      * @param array $data
      * @return string
      */
-    protected function renderSettingsAsTable(string $header, string $action, array $data): string
+    protected function renderSettingsAsTable(string $header, array $data): string
     {
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $pageRenderer->loadRequireJsModule('TYPO3/CMS/News/PageLayout');
         $pageRenderer->addCssFile('EXT:plain_faq/Resources/Public/Css/Backend/PageLayoutView.css');
 
         $view = GeneralUtility::makeInstance(StandaloneView::class);
@@ -354,8 +349,8 @@ class PageLayoutView
             GeneralUtility::getFileAbsFileName('EXT:plain_faq/Resources/Private/Backend/PageLayoutView.html')
         );
         $view->assignMultiple([
+            'extensionTitle' => $this->getLanguageService()->sL(self::LLPATH . 'extension.title'),
             'header' => $header,
-            'action' => $action,
             'data' => $data
         ]);
 

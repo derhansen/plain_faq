@@ -1,0 +1,8 @@
+<f:if condition="{settings.detailPid}">
+  <f:then>
+    <f:link.action action="detail" pluginName="Pidetail" arguments="{faq: faq}" pageUid="{settings.detailPid}">{faq.question}</f:link.action><br>
+  </f:then>
+  <f:else>
+    <f:link.action action="detail" pluginName="Pilistdetail" arguments="{faq: faq}">{faq.question}</f:link.action><br>
+  </f:else>
+</f:if>
