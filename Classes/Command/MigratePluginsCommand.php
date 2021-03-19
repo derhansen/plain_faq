@@ -156,7 +156,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
         $queryBuilder->update('tt_content')
-            ->set('list_type', 'plainfaq_pi1')
+            ->set('list_type', 'plainfaq_pilistdetail')
             ->set('pi_flexform', $flexform)
             ->where(
                 $queryBuilder->expr()->in(
@@ -317,9 +317,6 @@ class MigratePluginsCommand extends AbstractMigrateCommand
             'data' => [
                 'sDEF' => [
                     'lDEF' => [
-                        'switchableControllerActions' => [
-                            'vDEF' => 'Faq->list'
-                        ],
                         'settings.includeSubcategories' => [
                             'vDEF' => '0'
                         ],
