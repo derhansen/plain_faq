@@ -14,31 +14,6 @@ defined('TYPO3') or die();
 );
 
 /**
- * Plugins
- */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'PlainFaq',
-    'Pilistdetail',
-    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pilistdetail.title',
-    null,
-    'plainfaq'
-);
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'PlainFaq',
-    'Pilist',
-    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pilist.title',
-    null,
-    'plainfaq'
-);
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'PlainFaq',
-    'Pidetail',
-    'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.pidetail.title',
-    null,
-    'plainfaq'
-);
-
-/**
  * Register plugins, flexform and remove unused fields
  */
 foreach (['pilistdetail', 'pilist', 'pidetail'] as $plugin) {
