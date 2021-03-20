@@ -82,8 +82,7 @@ class FaqController extends ActionController
      */
     public function createFaqDemandObjectFromSettings(array $settings): FaqDemand
     {
-        /** @var \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $demand */
-        $demand = $this->objectManager->get(FaqDemand::class);
+        $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(PageUtility::extendPidListByChildren(
             $settings['storagePage'] ?? '',
             isset($settings['recursive']) ? (int)$settings['recursive'] : 0

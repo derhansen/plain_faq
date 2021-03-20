@@ -26,23 +26,43 @@ class FaqControllerTest extends BaseTestCase
     {
         /** @var FaqController $mockController */
         $mockController = $this->getAccessibleMock(FaqController::class, ['redirect', 'forward', 'addFlashMessage']);
+        $demand = $mockController->createFaqDemandObjectFromSettings([]);
 
-        $settings = [];
+        $this->assertEmpty($demand->getStoragePage());
+        $this->assertEmpty($demand->getCategoryConjunction());
+        $this->assertEmpty($demand->getCategories());
+        $this->assertEmpty($demand->getIncludeSubcategories());
+        $this->assertEmpty($demand->getOrderField());
+        $this->assertEmpty($demand->getOrderFieldAllowed());
+        $this->assertEquals('asc', $demand->getOrderDirection());
+        $this->assertEquals(0, $demand->getQueryLimit());
+    }
 
-        $mockDemand = $this->getMockBuilder(FaqDemand::class)->getMock();
-        $mockDemand->expects(self::once())->method('setStoragePage')->with('');
-        $mockDemand->expects(self::once())->method('setCategoryConjunction')->with('');
-        $mockDemand->expects(self::once())->method('setCategories')->with('');
-        $mockDemand->expects(self::once())->method('setIncludeSubcategories')->with('');
-        $mockDemand->expects(self::once())->method('setOrderField')->with('');
-        $mockDemand->expects(self::once())->method('setOrderFieldAllowed')->with('');
-        $mockDemand->expects(self::once())->method('setOrderDirection')->with('asc');
-        $mockDemand->expects(self::once())->method('setQueryLimit')->with(0);
+    /**
+     * @test
+     */
+    public function createFaqDemandObjectFromSettingsSetsSettings()
+    {
+        /** @var FaqController $mockController */
+        $mockController = $this->getAccessibleMock(FaqController::class, ['redirect', 'forward', 'addFlashMessage']);
 
-        $objectManager = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
-        $objectManager->expects(self::any())->method('get')->willReturn($mockDemand);
-        $mockController->injectObjectManager($objectManager);
+        $settings = [
+            'categoryConjunction' => 'OR',
+            'categories' => '1,2,3',
+            'includeSubcategories' => true,
+            'orderField' => 'name',
+            'orderFieldAllowed' => 'name',
+            'orderDirection' => 'desc',
+            'queryLimit' => 1,
+        ];
 
-        $mockController->createFaqDemandObjectFromSettings($settings);
+        $demand = $mockController->createFaqDemandObjectFromSettings($settings);
+        $this->assertEquals('OR', $demand->getCategoryConjunction());
+        $this->assertEquals('1,2,3', $demand->getCategories());
+        $this->assertTrue($demand->getIncludeSubcategories());
+        $this->assertEquals('name', $demand->getOrderField());
+        $this->assertEquals('name', $demand->getOrderFieldAllowed());
+        $this->assertEquals('desc', $demand->getOrderDirection());
+        $this->assertEquals(1, $demand->getQueryLimit());
     }
 }
