@@ -112,7 +112,7 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
                     unset($flexFormData['data'][$sheetKey]);
                 }
             }
-            
+
             if (count($flexFormData['data']) > 0) {
                 $newFlexform = $this->array2xml($flexFormData);
             } else {
@@ -175,8 +175,6 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
 
         return $settings;
     }
-
-
 
     /**
      * Updates list_type and pi_flexform of the given content element UID
