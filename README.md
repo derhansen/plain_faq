@@ -34,7 +34,7 @@ The screenshot below shows the backend form of a FAQ record.
 
 ## Documentation
 
-The extension includes a detailed documentation in ReST format. You can view the extension manual on TYPO3 TER https://docs.typo3.org/typo3cms/extensions/plain_faq/ or use
+The extension includes a detailed documentation in ReST format. You can view the extension manual on TYPO3 TER https://docs.typo3.org/p/derhansen/plain-faq/master/en-us/ or use
 ext:sphinx to view the documentation directly in your TYPO3 installation.
 
 ## Installation
