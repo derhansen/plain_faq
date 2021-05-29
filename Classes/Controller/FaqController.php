@@ -19,6 +19,7 @@ use Derhansen\PlainFaq\Event\ModifyListViewVariablesEvent;
 use Derhansen\PlainFaq\Pagination\NumberedPagination;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -104,8 +105,9 @@ class FaqController extends ActionController
      * List action
      *
      * @param array $overwriteDemand
+     * @return ResponseInterface
      */
-    public function listAction(array $overwriteDemand = [])
+    public function listAction(array $overwriteDemand = []): ResponseInterface
     {
         $faqDemand = $this->createFaqDemandObjectFromSettings($this->settings);
         if ($this->isOverwriteDemand($overwriteDemand)) {
@@ -127,6 +129,8 @@ class FaqController extends ActionController
         $this->view->assignMultiple($variables);
 
         $this->faqCacheService->addPageCacheTagsByFaqDemandObject($faqDemand);
+
+        return $this->htmlResponse();
     }
 
     /**
@@ -155,8 +159,9 @@ class FaqController extends ActionController
      * Detail action
      *
      * @param Faq|null $faq
+     * @return ResponseInterface
      */
-    public function detailAction(Faq $faq = null)
+    public function detailAction(Faq $faq = null): ResponseInterface
     {
         if (is_null($faq)) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
@@ -172,6 +177,8 @@ class FaqController extends ActionController
 
         $this->view->assignMultiple($variables);
         $this->faqCacheService->addCacheTagsByFaqRecords([$faq]);
+
+        return $this->htmlResponse();
     }
 
     /**
