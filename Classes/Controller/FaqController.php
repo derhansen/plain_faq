@@ -215,18 +215,4 @@ class FaqController extends ActionController
 
         return $demand;
     }
-
-    /**
-     * Dispatches the signal with the given name
-     *
-     * @param string $signalClassName
-     * @param string $signalName
-     * @param array $arguments
-     *
-     * @return mixed
-     */
-    protected function signalDispatch(string $signalClassName, string $signalName, array $arguments)
-    {
-        return $this->signalSlotDispatcher->dispatch($signalClassName, $signalName, $arguments);
-    }
 }
