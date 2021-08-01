@@ -165,7 +165,7 @@ class FaqController extends ActionController
     {
         if (is_null($faq)) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
-                $GLOBALS['TYPO3_REQUEST'],
+                $this->request,
                 'FAQ not found.'
             );
             throw new ImmediateResponseException($response, 1549896549734);
