@@ -50,15 +50,5 @@ call_user_func(
         // Register switchableControllerActions plugin migrator
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['switchableControllerActionsPluginUpdater']
             = \Derhansen\PlainFaq\Updates\SwitchableControllerActionsPluginUpdater::class;
-
-        // Icon Registry
-        $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-            \TYPO3\CMS\Core\Imaging\IconRegistry::class
-        );
-        $iconRegistry->registerIcon(
-            'plain_faq-plugin-pi1',
-            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            ['source' => 'EXT:plain_faq/ext_icon.svg']
-        );
     }
 );
