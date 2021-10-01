@@ -28,6 +28,7 @@
         "typo3/cms-recordlist": "~11.3.0 || dev-master",
         "typo3/cms-extbase": "~11.3.0 || dev-master",
         "typo3/cms-fluid": "~11.3.0 || dev-master",
+        "typo3/cms-install": "~11.3.0 || dev-master",
         "typo3/testing-framework": "^6.6.2",
         "friendsofphp/php-cs-fixer": "^2.16.1"
     },
