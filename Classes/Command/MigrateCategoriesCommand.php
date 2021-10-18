@@ -112,7 +112,7 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
                 'l10n_parent' => $l10nParent,
                 'title' => $oldCategory['title'],
                 'parent' => $parentCategoryUid,
-                'faq_import_id' => $oldCategory['uid']
+                'faq_import_id' => $oldCategory['uid'],
             ];
             $categoryUid = $this->createSysCategory($data);
             $io->text('Created category "' . $oldCategory['title'] . '"');
@@ -140,7 +140,7 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
                 'tstamp' => time(),
                 'crdate' => time(),
                 'title' => self::ROOT_CATEGORY_TITLE,
-                'faq_import_id' => self::ROOT_CATEGORY_FAQ_IMPORT_ID
+                'faq_import_id' => self::ROOT_CATEGORY_FAQ_IMPORT_ID,
             ];
             $categoryUid = $this->createSysCategory($data);
             $io->text('Created import root category');
@@ -172,7 +172,7 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
                 'crdate' => time(),
                 'title' => $pageRecord['title'],
                 'parent' => $rootCategoryUid,
-                'faq_import_id' => self::MAIN_CATEGORY_PREFIX . (string)$pid
+                'faq_import_id' => self::MAIN_CATEGORY_PREFIX . (string)$pid,
             ];
             $categoryUid = $this->createSysCategory($data);
             $io->text('Created main category "' . $pageRecord['title'] . '"');

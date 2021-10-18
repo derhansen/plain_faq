@@ -125,7 +125,7 @@ class PageLayoutView
         if ($pid > 0) {
             $this->data[] = [
                 'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.' . $pidSetting),
-                'value' => $this->getRecordData($pid)
+                'value' => $this->getRecordData($pid),
             ];
         }
     }
@@ -188,7 +188,7 @@ class PageLayoutView
 
             $this->data[] = [
                 'title' => $this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.startingpoint'),
-                'value' => implode(', ', $pagesOut) . $recursiveLevelText
+                'value' => implode(', ', $pagesOut) . $recursiveLevelText,
             ];
         }
     }
@@ -213,7 +213,7 @@ class PageLayoutView
 
             $this->data[] = [
                 'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.orderField'),
-                'value' => $text
+                'value' => $text,
             ];
         }
     }
@@ -266,7 +266,7 @@ class PageLayoutView
 
         $this->data[] = [
             'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categoryConjunction'),
-            'value' => $text
+            'value' => $text,
         ];
     }
 
@@ -281,7 +281,7 @@ class PageLayoutView
             $text = '<i class="fa fa-check"></i>';
             $this->data[] = [
                 'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.disableOverwriteDemand'),
-                'value' => $text
+                'value' => $text,
             ];
         }
     }
@@ -297,7 +297,7 @@ class PageLayoutView
             $text = '<i class="fa fa-check"></i>';
             $this->data[] = [
                 'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.enablePagination'),
-                'value' => $text
+                'value' => $text,
             ];
         }
     }
@@ -316,7 +316,7 @@ class PageLayoutView
 
             $this->data[] = [
                 'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categories'),
-                'value' => implode(', ', $categoriesOut)
+                'value' => implode(', ', $categoriesOut),
             ];
 
             $includeSubcategories = $this->getFieldFromFlexform('settings.includeSubcategories');
@@ -325,7 +325,7 @@ class PageLayoutView
                     'title' => $this->getLanguageService()->sL(
                         self::LLPATH . 'flexforms.plugin.field.includeSubcategories'
                     ),
-                    'value' => '<i class="fa fa-check"></i>'
+                    'value' => '<i class="fa fa-check"></i>',
                 ];
             }
         }
@@ -351,7 +351,7 @@ class PageLayoutView
         $view->assignMultiple([
             'extensionTitle' => $this->getLanguageService()->sL(self::LLPATH . 'extension.title'),
             'header' => $header,
-            'data' => $data
+            'data' => $data,
         ]);
 
         return $view->render();

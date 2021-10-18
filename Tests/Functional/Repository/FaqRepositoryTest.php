@@ -57,16 +57,16 @@ class FaqTest extends FunctionalTestCase
         return [
             'no storage page' => [
                 '',
-                5
+                5,
             ],
             'storage page 1' => [
                 '1',
-                4
+                4,
             ],
             'storage page 1 and 2' => [
                 '1,2',
-                5
-            ]
+                5,
+            ],
         ];
     }
 
@@ -93,37 +93,37 @@ class FaqTest extends FunctionalTestCase
                 '1',
                 '',
                 false,
-                4
+                4,
             ],
             'category 1 with AND - no subcategories' => [
                 '1',
                 'and',
                 false,
-                3
+                3,
             ],
             'category 1 with OR - with subcategories' => [
                 '1',
                 'or',
                 true,
-                4
+                4,
             ],
             'category 1,4 with OR - no subcategories' => [
                 '1,4',
                 'or',
                 false,
-                4
+                4,
             ],
             'category 1,4 with NOTOR - no subcategories' => [
                 '1,4',
                 'notor',
                 false,
-                0
+                0,
             ],
             'category 1,4 with NOTAND - no subcategories' => [
                 '2,4',
                 'notor',
                 false,
-                2
+                2,
             ],
         ];
     }
@@ -153,18 +153,18 @@ class FaqTest extends FunctionalTestCase
             'noSorting' => [
                 '',
                 '',
-                1
+                1,
             ],
             'question ASC' => [
                 'question',
                 'asc',
-                1
+                1,
             ],
             'question DESC' => [
                 'question',
                 'desc',
-                3
-            ]
+                3,
+            ],
         ];
     }
 

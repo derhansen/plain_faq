@@ -110,7 +110,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
                 'answer' => $oldFaq['a'],
                 'sys_language_uid' => $oldFaq['sys_language_uid'],
                 'l10n_parent' => $l10nParent,
-                'faq_import_id' => $oldFaq['uid']
+                'faq_import_id' => $oldFaq['uid'],
             ];
             $newFaqUid = $this->createFaq($data);
             $created = true;

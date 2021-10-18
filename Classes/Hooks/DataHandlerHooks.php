@@ -69,8 +69,8 @@ class DataHandlerHooks
                     'settings.listPid',
                 ],
                 'template' => [
-                    'settings.templateLayout'
-                ]
+                    'settings.templateLayout',
+                ],
             ];
 
             $flexformData = GeneralUtility::xml2array($fieldArray['pi_flexform']);

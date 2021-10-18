@@ -136,7 +136,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
         // Migrate categories
         if (isset($data['categorySelection']) && $data['categorySelection'] !== '') {
             $newFlexform['data']['sDEF']['lDEF']['settings.categories'] = [
-                'vDEF' => $this->getMigratedCategories($data['categorySelection'])
+                'vDEF' => $this->getMigratedCategories($data['categorySelection']),
             ];
         }
 
@@ -266,7 +266,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
             $queryBuilder->expr()->eq(
                 'list_type',
                 $queryBuilder->createNamedParameter('irfaq_pi1', Connection::PARAM_STR)
-            )
+            ),
         ];
 
         if (!empty($pids)) {
@@ -298,9 +298,9 @@ class MigratePluginsCommand extends AbstractMigrateCommand
                 'field' => 'value',
                 'field:el' => 'el',
                 'el:_IS_NUM' => 'section',
-                'section' => 'itemType'
+                'section' => 'itemType',
             ],
-            'disableTypeAttrib' => 2
+            'disableTypeAttrib' => 2,
         ];
         $spaceInd = 4;
         $output = GeneralUtility::array2xml($input, '', 0, 'T3FlexForms', $spaceInd, $options);
@@ -318,21 +318,21 @@ class MigratePluginsCommand extends AbstractMigrateCommand
                 'sDEF' => [
                     'lDEF' => [
                         'settings.includeSubcategories' => [
-                            'vDEF' => '0'
+                            'vDEF' => '0',
                         ],
                         'settings.recursive' => [
-                            'vDEF' => '0'
+                            'vDEF' => '0',
                         ],
-                    ]
+                    ],
                 ],
                 'additional' => [
                     'lDEF' => [
                         'settings.disableOverwriteDemand' => [
-                            'vDEF' => '1'
-                        ]
-                    ]
-                ]
-            ]
+                            'vDEF' => '1',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }

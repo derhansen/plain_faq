@@ -25,17 +25,17 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
         [
             'sourceListType' => 'plainfaq_pi1',
             'switchableControllerActions' => 'Faq->list;Faq->detail',
-            'targetListType' => 'plainfaq_pilistdetail'
+            'targetListType' => 'plainfaq_pilistdetail',
         ],
         [
             'sourceListType' => 'plainfaq_pi1',
             'switchableControllerActions' => 'Faq->list',
-            'targetListType' => 'plainfaq_pilist'
+            'targetListType' => 'plainfaq_pilist',
         ],
         [
             'sourceListType' => 'plainfaq_pi1',
             'switchableControllerActions' => 'Faq->detail',
-            'targetListType' => 'plainfaq_pidetail'
+            'targetListType' => 'plainfaq_pidetail',
         ],
     ];
 
@@ -67,7 +67,7 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
     public function getPrerequisites(): array
     {
         return [
-            DatabaseUpdatedPrerequisite::class
+            DatabaseUpdatedPrerequisite::class,
         ];
     }
 
@@ -215,9 +215,9 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
                 'field' => 'value',
                 'field:el' => 'el',
                 'el:_IS_NUM' => 'section',
-                'section' => 'itemType'
+                'section' => 'itemType',
             ],
-            'disableTypeAttrib' => 2
+            'disableTypeAttrib' => 2,
         ];
         $spaceInd = 4;
         $output = GeneralUtility::array2xml($input, '', 0, 'T3FlexForms', $spaceInd, $options);

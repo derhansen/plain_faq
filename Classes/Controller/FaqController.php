@@ -120,7 +120,7 @@ class FaqController extends ActionController
             'faqs' => $faqs,
             'faqDemand' => $faqDemand,
             'overwriteDemand' => $overwriteDemand,
-            'pagination' => $this->getPagination($faqs)
+            'pagination' => $this->getPagination($faqs),
         ];
 
         $modifyListViewVariablesEvent = new ModifyListViewVariablesEvent($variables, $this);

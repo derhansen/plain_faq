@@ -8,7 +8,7 @@ call_user_func(
             'PlainFaq',
             'Pilist',
             [
-                \Derhansen\PlainFaq\Controller\FaqController::class => 'list'
+                \Derhansen\PlainFaq\Controller\FaqController::class => 'list',
             ],
             // non-cacheable actions
             []
@@ -18,7 +18,7 @@ call_user_func(
             'PlainFaq',
             'Pidetail',
             [
-                \Derhansen\PlainFaq\Controller\FaqController::class => 'detail'
+                \Derhansen\PlainFaq\Controller\FaqController::class => 'detail',
             ],
             // non-cacheable actions
             []
@@ -28,7 +28,7 @@ call_user_func(
             'PlainFaq',
             'Pilistdetail',
             [
-                \Derhansen\PlainFaq\Controller\FaqController::class => 'list, detail'
+                \Derhansen\PlainFaq\Controller\FaqController::class => 'list, detail',
             ],
             // non-cacheable actions
             []

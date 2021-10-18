@@ -10,8 +10,6 @@ namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
  */
 
 use Derhansen\PlainFaq\Controller\FaqController;
-use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
@@ -28,14 +26,14 @@ class FaqControllerTest extends BaseTestCase
         $mockController = $this->getAccessibleMock(FaqController::class, ['redirect', 'forward', 'addFlashMessage']);
         $demand = $mockController->createFaqDemandObjectFromSettings([]);
 
-        $this->assertEmpty($demand->getStoragePage());
-        $this->assertEmpty($demand->getCategoryConjunction());
-        $this->assertEmpty($demand->getCategories());
-        $this->assertEmpty($demand->getIncludeSubcategories());
-        $this->assertEmpty($demand->getOrderField());
-        $this->assertEmpty($demand->getOrderFieldAllowed());
-        $this->assertEquals('asc', $demand->getOrderDirection());
-        $this->assertEquals(0, $demand->getQueryLimit());
+        self::assertEmpty($demand->getStoragePage());
+        self::assertEmpty($demand->getCategoryConjunction());
+        self::assertEmpty($demand->getCategories());
+        self::assertEmpty($demand->getIncludeSubcategories());
+        self::assertEmpty($demand->getOrderField());
+        self::assertEmpty($demand->getOrderFieldAllowed());
+        self::assertEquals('asc', $demand->getOrderDirection());
+        self::assertEquals(0, $demand->getQueryLimit());
     }
 
     /**
@@ -57,12 +55,12 @@ class FaqControllerTest extends BaseTestCase
         ];
 
         $demand = $mockController->createFaqDemandObjectFromSettings($settings);
-        $this->assertEquals('OR', $demand->getCategoryConjunction());
-        $this->assertEquals('1,2,3', $demand->getCategories());
-        $this->assertTrue($demand->getIncludeSubcategories());
-        $this->assertEquals('name', $demand->getOrderField());
-        $this->assertEquals('name', $demand->getOrderFieldAllowed());
-        $this->assertEquals('desc', $demand->getOrderDirection());
-        $this->assertEquals(1, $demand->getQueryLimit());
+        self::assertEquals('OR', $demand->getCategoryConjunction());
+        self::assertEquals('1,2,3', $demand->getCategories());
+        self::assertTrue($demand->getIncludeSubcategories());
+        self::assertEquals('name', $demand->getOrderField());
+        self::assertEquals('name', $demand->getOrderFieldAllowed());
+        self::assertEquals('desc', $demand->getOrderDirection());
+        self::assertEquals(1, $demand->getQueryLimit());
     }
 }
