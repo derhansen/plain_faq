@@ -165,6 +165,13 @@ return [
                 ],
             ],
         ],
+        'categories' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_db.xlf:tx_plainfaq_domain_model_faq.categories',
+            'config' => [
+                'type' => 'category',
+            ],
+        ],
 
         'question' => [
             'exclude' => true,
