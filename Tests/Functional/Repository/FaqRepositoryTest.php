@@ -12,7 +12,6 @@ namespace Derhansen\PlainFaq\Tests\Functional\Repository;
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -22,9 +21,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class FaqTest extends FunctionalTestCase
 {
-    /** @var ObjectManager */
-    protected $objectManager;
-
     /** @var FaqRepository */
     protected $faqRepository;
 
@@ -35,8 +31,7 @@ class FaqTest extends FunctionalTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->faqRepository = $this->objectManager->get(FaqRepository::class);
+        $this->faqRepository = GeneralUtility::makeInstance(FaqRepository::class);
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_plainfaq_domain_model_faq.xml');
     }
 
