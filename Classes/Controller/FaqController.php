@@ -145,9 +145,9 @@ class FaqController extends ActionController
     {
         $pagination = [];
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
-        if ((bool)$this->settings['enablePagination'] && (int)$this->settings['itemsPerPage'] > 0) {
-            $paginator = new QueryResultPaginator($faqs, $currentPage, (int)$this->settings['itemsPerPage']);
-            $pagination = new NumberedPagination($paginator, (int)$this->settings['maxNumPages']);
+        if ((bool)($this->settings['enablePagination'] ?? false) && (int)($this->settings['itemsPerPage'] ?? 10) > 0) {
+            $paginator = new QueryResultPaginator($faqs, $currentPage, (int)($this->settings['itemsPerPage'] ?? 10));
+            $pagination = new NumberedPagination($paginator, (int)($this->settings['maxNumPages'] ?? 10));
             $pagination = [
                 'paginator' => $paginator,
                 'pagination' => $pagination,
@@ -191,7 +191,7 @@ class FaqController extends ActionController
      */
     protected function isOverwriteDemand(array $overwriteDemand): bool
     {
-        return (int)$this->settings['disableOverwriteDemand'] !== 1 && $overwriteDemand !== [];
+        return (int)($this->settings['disableOverwriteDemand'] ?? 0) !== 1 && $overwriteDemand !== [];
     }
 
     /**
