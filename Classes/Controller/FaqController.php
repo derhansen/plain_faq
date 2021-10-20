@@ -28,6 +28,7 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * FaqController
@@ -61,17 +62,18 @@ class FaqController extends ActionController
     }
 
     /**
-     * Assign contentObjectData and pageData to earch view
+     * Assign contentObjectData and pageData view
+     * @todo: Remove $view parameter for TYPO3 v12 version and use $this->view instead to assign variables.
      *
-     * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view
+     * @param ViewInterface $view @extensionScannerIgnoreLine
      */
     protected function initializeView(ViewInterface $view)
     {
+        // @extensionScannerIgnoreLine
         $view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
-        if (is_object($GLOBALS['TSFE'])) {
-            $view->assign('pageData', $GLOBALS['TSFE']->page);
+        if ($this->getTypoScriptFrontendController()) {
+            $view->assign('pageData', $this->getTypoScriptFrontendController()->page);
         }
-        parent::initializeView($view);
     }
 
     /**
@@ -214,5 +216,10 @@ class FaqController extends ActionController
         }
 
         return $demand;
+    }
+
+    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
+    {
+        return $GLOBALS['TSFE'] ?? null;
     }
 }
