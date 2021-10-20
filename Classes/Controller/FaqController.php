@@ -20,7 +20,7 @@ use Derhansen\PlainFaq\Pagination\NumberedPagination;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
@@ -170,7 +170,7 @@ class FaqController extends ActionController
                 $this->request,
                 'FAQ not found.'
             );
-            throw new ImmediateResponseException($response, 1549896549734);
+            throw new PropagateResponseException($response, 1634749577);
         }
 
         $modifyDetailViewVariablesEvent = new ModifyDetailViewVariablesEvent(['faq' => $faq], $this);
