@@ -2,9 +2,9 @@
     "name": "derhansen/plain-faq",
     "type": "typo3-cms-extension",
     "description": "Plain FAQ extension with list and detail view. Migration commands to migrate data and plugin settings from ext:irfaq",
-    "homepage": "https://github.com/derhansen/fe_change_pwd",
+    "homepage": "https://github.com/derhansen/plain_faq",
     "support": {
-        "issues": "https://github.com/derhansen/fe_change_pwd/issues"
+        "issues": "https://github.com/derhansen/plain_faq/issues"
     },
     "authors": [
         {
