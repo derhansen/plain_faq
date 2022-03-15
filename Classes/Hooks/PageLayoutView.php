@@ -307,7 +307,7 @@ class PageLayoutView
      */
     protected function getCategorySettings()
     {
-        $categories = GeneralUtility::intExplode(',', $this->getFieldFromFlexform('settings.categories'), true);
+        $categories = GeneralUtility::intExplode(',', $this->getFieldFromFlexform('settings.categories') ?? '', true);
         if (count($categories) > 0) {
             $categoriesOut = [];
             foreach ($categories as $id) {
