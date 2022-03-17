@@ -16,7 +16,7 @@ since your changes will get overwritten by extension updates.
 
 Configure your TypoScript setup like shown below (note the **plural** of the path-name)::
 
-  plugin.tx_plainfaq.pi1 {
+  plugin.tx_plainfaq {
     view {
       templateRootPaths {
         0 = {$plugin.tx_plainfaq_pi1.view.templateRootPath}

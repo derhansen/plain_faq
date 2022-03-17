@@ -1,11 +1,11 @@
-plugin.tx_plainfaq_pi1 {
+plugin.tx_plainfaq {
     view {
         templateRootPaths.0 = EXT:plain_faq/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.templateRootPath}
+        templateRootPaths.1 = {$plugin.tx_plainfaq.view.templateRootPath}
         partialRootPaths.0 = EXT:plain_faq/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.partialRootPath}
+        partialRootPaths.1 = {$plugin.tx_plainfaq.view.partialRootPath}
         layoutRootPaths.0 = EXT:plain_faq/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_plainfaq_pi1.view.layoutRootPath}
+        layoutRootPaths.1 = {$plugin.tx_plainfaq.view.layoutRootPath}
     }
     settings {
         orderFieldAllowed = uid,question,sorting

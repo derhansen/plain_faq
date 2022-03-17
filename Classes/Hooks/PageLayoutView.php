@@ -307,7 +307,7 @@ class PageLayoutView
      */
     protected function getCategorySettings()
     {
-        $categories = GeneralUtility::intExplode(',', $this->getFieldFromFlexform('settings.categories'), true);
+        $categories = GeneralUtility::intExplode(',', $this->getFieldFromFlexform('settings.categories') ?? '', true);
         if (count($categories) > 0) {
             $categoriesOut = [];
             foreach ($categories as $id) {
@@ -370,8 +370,10 @@ class PageLayoutView
         $flexform = $this->flexformData;
         if (isset($flexform['data'])) {
             $flexform = $flexform['data'];
-            if (is_array($flexform) && is_array($flexform[$sheet]) && is_array($flexform[$sheet]['lDEF'])
-                && is_array($flexform[$sheet]['lDEF'][$key]) && isset($flexform[$sheet]['lDEF'][$key]['vDEF'])
+            if (is_array($flexform) && is_array($flexform[$sheet] ?? false)
+                && is_array($flexform[$sheet]['lDEF'] ?? false)
+                && is_array($flexform[$sheet]['lDEF'][$key] ?? false) &&
+                isset($flexform[$sheet]['lDEF'][$key]['vDEF'])
             ) {
                 return $flexform[$sheet]['lDEF'][$key]['vDEF'];
             }

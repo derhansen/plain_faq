@@ -14,8 +14,8 @@ TypoScript reference
 More TypoScript settings are available on the :ref:`faqplugin-settings` page. Also make sure to check the included
 ``setup.txt`` file for available/default TypoScript settings.
 
-plugin.tx_plainfaq.pi1
-~~~~~~~~~~~~~~~~~~~~~~
+plugin.tx_plainfaq
+~~~~~~~~~~~~~~~~~~
 
 .. t3-field-list-table::
  :header-rows: 1
