@@ -267,7 +267,7 @@ class PageLayoutView
             return;
         }
 
-        $categoryConjunction = strtolower($this->getFieldFromFlexform('settings.categoryConjunction'));
+        $categoryConjunction = strtolower($this->getFieldFromFlexform('settings.categoryConjunction') ?? '');
         switch ($categoryConjunction) {
             case 'or':
             case 'and':
