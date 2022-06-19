@@ -21,7 +21,7 @@ foreach (['pilistdetail', 'pilist', 'pidetail'] as $plugin) {
         'PlainFaq',
         ucfirst($plugin),
         'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.' . $plugin . '.title',
-        null,
+        'plainfaq-default',
         'plainfaq'
     );
 

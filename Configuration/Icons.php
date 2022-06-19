@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'plain_faq-plugin-pi1' => [
+    'plainfaq-default' => [
         'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        'source' => 'EXT:plain_faq/ext_icon.svg',
+        'source' => 'EXT:plain_faq/Resources/Public/Icons/Extension.svg',
     ],
     'apps-pagetree-folder-contains-faqs' => [
         'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
