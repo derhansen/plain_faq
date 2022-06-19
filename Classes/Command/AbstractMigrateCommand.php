@@ -44,6 +44,6 @@ abstract class AbstractMigrateCommand extends Command
             )
             ->execute();
 
-        return $res->fetch(0);
+        return $res->fetchAssociative();
     }
 }

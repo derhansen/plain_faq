@@ -200,7 +200,7 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
             ->orderBy('pid', 'ASC')
             ->execute();
 
-        return $res->fetchAll();
+        return $res->fetchAllAssociative();
     }
 
     /**

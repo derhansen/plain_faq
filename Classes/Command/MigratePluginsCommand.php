@@ -278,7 +278,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
         $query->where(...$conditions);
 
-        return $query->execute()->fetchAll();
+        return $query->execute()->fetchAllAssociative();
     }
 
     /**

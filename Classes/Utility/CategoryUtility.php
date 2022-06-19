@@ -64,7 +64,7 @@ class CategoryUtility
             )
             ->execute();
 
-        while (($row = $res->fetch())) {
+        while (($row = $res->fetchAssociative())) {
             $counter++;
             if ($counter > 10000) {
                 GeneralUtility::makeInstance(TimeTracker::class)

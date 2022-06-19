@@ -180,7 +180,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
             ->from('tx_irfaq_q')
             ->orderBy('pid', 'ASC');
 
-        return $query->execute()->fetchAll();
+        return $query->execute()->fetchAllAssociative();
     }
 
     /**
@@ -206,7 +206,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
             ->orderBy('uid_foreign', 'ASC')
             ->execute();
 
-        return $res->fetchAll();
+        return $res->fetchAllAssociative();
     }
 
     /**
@@ -264,6 +264,6 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
             )
             ->execute();
 
-        return $res->fetch(0);
+        return $res->fetchAssociative();
     }
 }
