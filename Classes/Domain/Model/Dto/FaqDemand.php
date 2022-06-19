@@ -18,184 +18,91 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class FaqDemand extends AbstractEntity
 {
-    /**
-     * Order field
-     *
-     * @var string
-     */
-    protected $orderField = '';
+    protected string $orderField = '';
+    protected string $orderFieldAllowed = '';
+    protected string $orderDirection = '';
+    protected string $categories = '';
+    protected int $queryLimit = 0;
+    protected bool $includeSubcategories = false;
+    protected string $categoryConjunction = '';
+    protected string $storagePage = '';
 
-    /**
-     * Allowed order fields
-     *
-     * @var string
-     */
-    protected $orderFieldAllowed = '';
-
-    /**
-     * Order direction
-     *
-     * @var string
-     */
-    protected $orderDirection = '';
-
-    /**
-     * Categories separated by comma
-     *
-     * @var string
-     */
-    protected $categories = '';
-
-    /**
-     * @var int
-     */
-    protected $queryLimit = 0;
-
-    /**
-     * Include subcategories
-     *
-     * @var bool
-     */
-    protected $includeSubcategories = false;
-
-    /**
-     * Category Conjunction
-     *
-     * @var string
-     */
-    protected $categoryConjunction = '';
-
-    /**
-     * Storage page
-     *
-     * @var string
-     */
-    protected $storagePage = '';
-
-    /**
-     * @return string
-     */
     public function getOrderField(): string
     {
         return $this->orderField;
     }
 
-    /**
-     * @param string $orderField
-     */
-    public function setOrderField(string $orderField)
+    public function setOrderField(string $orderField): void
     {
         $this->orderField = $orderField;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderFieldAllowed(): string
     {
         return $this->orderFieldAllowed;
     }
 
-    /**
-     * @param string $orderFieldAllowed
-     */
-    public function setOrderFieldAllowed(string $orderFieldAllowed)
+    public function setOrderFieldAllowed(string $orderFieldAllowed): void
     {
         $this->orderFieldAllowed = $orderFieldAllowed;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderDirection(): string
     {
         return $this->orderDirection;
     }
 
-    /**
-     * @param string $orderDirection
-     */
-    public function setOrderDirection(string $orderDirection)
+    public function setOrderDirection(string $orderDirection): void
     {
         $this->orderDirection = $orderDirection;
     }
 
-    /**
-     * @return string
-     */
     public function getCategories(): string
     {
         return $this->categories;
     }
 
-    /**
-     * @param string $categories
-     */
-    public function setCategories(string $categories)
+    public function setCategories(string $categories): void
     {
         $this->categories = $categories;
     }
 
-    /**
-     * @return bool
-     */
     public function getIncludeSubcategories(): bool
     {
         return $this->includeSubcategories;
     }
 
-    /**
-     * @param bool $includeSubcategories
-     */
-    public function setIncludeSubcategories(bool $includeSubcategories)
+    public function setIncludeSubcategories(bool $includeSubcategories): void
     {
         $this->includeSubcategories = $includeSubcategories;
     }
 
-    /**
-     * @return int
-     */
     public function getQueryLimit(): int
     {
         return $this->queryLimit;
     }
 
-    /**
-     * @param int $queryLimit
-     */
     public function setQueryLimit(int $queryLimit): void
     {
         $this->queryLimit = $queryLimit;
     }
 
-    /**
-     * @return string
-     */
     public function getCategoryConjunction(): string
     {
         return $this->categoryConjunction;
     }
 
-    /**
-     * @param string $categoryConjunction
-     */
-    public function setCategoryConjunction(string $categoryConjunction)
+    public function setCategoryConjunction(string $categoryConjunction): void
     {
         $this->categoryConjunction = $categoryConjunction;
     }
 
-    /**
-     * @return string
-     */
     public function getStoragePage(): string
     {
         return $this->storagePage;
     }
 
-    /**
-     * @param string $storagePage
-     */
-    public function setStoragePage(string $storagePage)
+    public function setStoragePage(string $storagePage): void
     {
         $this->storagePage = $storagePage;
     }

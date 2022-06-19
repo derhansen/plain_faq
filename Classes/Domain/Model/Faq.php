@@ -15,61 +15,52 @@ use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /**
  * Faq
  */
 class Faq extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $question = '';
+    protected string $question = '';
+    protected string $answer = '';
+    protected string $keywords = '';
 
     /**
-     * @var string
+     * @var ObjectStorage<Category>
+     * @Extbase\ORM\Lazy
      */
-    protected $answer = '';
+    protected ObjectStorage $categories;
 
     /**
-     * @var string
-     */
-    protected $keywords = '';
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     */
-    protected $categories;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @Extbase\ORM\Lazy
      */
-    protected $images;
+    protected ObjectStorage $images;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
+     * @Extbase\ORM\Lazy
      */
-    protected $files;
+    protected ObjectStorage $files;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq>
+     * @var ObjectStorage<Faq>
+     * @Extbase\ORM\Lazy
      */
-    protected $related;
+    protected ObjectStorage $related;
 
-    /**
-     * __construct
-     */
     public function __construct()
     {
-        $this->initStorageObjects();
+        $this->initializeObject();
     }
 
     /**
-     * Initializes all ObjectStorage properties
+     * Initialize all ObjectStorages as fetching an entity from the DB does not use the constructor
      */
-    protected function initStorageObjects()
+    public function initializeObject(): void
     {
         $this->images = new ObjectStorage();
         $this->files = new ObjectStorage();
@@ -77,178 +68,112 @@ class Faq extends AbstractEntity
         $this->categories = new ObjectStorage();
     }
 
-    /**
-     * @return string $question
-     */
     public function getQuestion(): string
     {
         return $this->question;
     }
 
-    /**
-     * @param string $question
-     */
-    public function setQuestion(string $question)
+    public function setQuestion(string $question): void
     {
         $this->question = $question;
     }
 
-    /**
-     * @return string $answer
-     */
     public function getAnswer(): string
     {
         return $this->answer;
     }
 
-    /**
-     * @param string $answer
-     */
-    public function setAnswer(string $answer)
+    public function setAnswer(string $answer): void
     {
         $this->answer = $answer;
     }
 
-    /**
-     * @return string $keywords
-     */
     public function getKeywords(): string
     {
         return $this->keywords;
     }
 
-    /**
-     * @param string $keywords
-     */
-    public function setKeywords(string $keywords)
+    public function setKeywords(string $keywords): void
     {
         $this->keywords = $keywords;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
-     */
-    public function addImage(FileReference $image)
+    public function addImage(FileReference $image): void
     {
         $this->images->attach($image);
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $imageToRemove The FileReference to be removed
-     */
-    public function removeImage(FileReference $imageToRemove)
+    public function removeImage(FileReference $imageToRemove): void
     {
         $this->images->detach($imageToRemove);
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
-     */
-    public function getImages(): ObjectStorage
+    public function getImages(): ?ObjectStorage
     {
         return $this->images;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
-     */
-    public function setImages(ObjectStorage $images)
+    public function setImages(ObjectStorage $images): void
     {
         $this->images = $images;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
-     */
-    public function addFile(FileReference $file)
+    public function addFile(FileReference $file): void
     {
         $this->files->attach($file);
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileToRemove The FileReference to be removed
-     */
-    public function removeFile(FileReference $fileToRemove)
+    public function removeFile(FileReference $fileToRemove): void
     {
         $this->files->detach($fileToRemove);
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
-     */
-    public function getFiles(): ObjectStorage
+    public function getFiles(): ?ObjectStorage
     {
         return $this->files;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
-     */
-    public function setFiles(ObjectStorage $files)
+    public function setFiles(ObjectStorage $files): void
     {
         $this->files = $files;
     }
 
-    /**
-     * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
-     */
-    public function addRelated(Faq $faq)
+    public function addRelated(Faq $faq): void
     {
         $this->related->attach($faq);
     }
 
-    /**
-     * @param \Derhansen\PlainFaq\Domain\Model\Faq $faq
-     */
-    public function removeRelated(Faq $faq)
+    public function removeRelated(Faq $faq): void
     {
         $this->related->detach($faq);
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
-     */
-    public function getRelated(): ObjectStorage
+    public function getRelated(): ?ObjectStorage
     {
         return $this->related;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Derhansen\PlainFaq\Domain\Model\Faq> $related
-     */
-    public function setRelated(ObjectStorage $related)
+    public function setRelated(ObjectStorage $related): void
     {
         $this->related = $related;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     */
-    public function getCategories()
+    public function getCategories(): ?ObjectStorage
     {
         return $this->categories;
     }
 
-    /**
-     * @param ObjectStorage $categories
-     */
-    public function setCategories(ObjectStorage $categories)
+    public function setCategories(ObjectStorage $categories): void
     {
         $this->categories = $categories;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     */
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     */
-    public function removeCategory(Category $category)
+    public function removeCategory(Category $category): void
     {
         $this->categories->detach($category);
     }
