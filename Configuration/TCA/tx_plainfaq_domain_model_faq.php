@@ -1,5 +1,7 @@
 <?php
 
+$rteImageSoftref = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('rte_ckeditor_image') ? ',rtehtmlarea_images' : '';
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_db.xlf:tx_plainfaq_domain_model_faq',
@@ -198,7 +200,7 @@ return [
                 'cols' => 40,
                 'rows' => 15,
                 'eval' => 'trim',
-                'softref' => 'rtehtmlarea_images,typolink_tag,images,email[subst],url',
+                'softref' => 'typolink_tag,images,email[subst],url' . $rteImageSoftref,
             ],
         ],
         'keywords' => [
