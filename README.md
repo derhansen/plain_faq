@@ -49,11 +49,12 @@ Download and install the extension with the TYPO3 extension manager module.
 
 ## Versions
 
-| Version             | TYPO3      | PHP       | Support/Development                     |
-| ------------------- | ---------- | ----------|---------------------------------------- |
-| 3.x                 | 11.x       | 7.4 - 8.0 | Features, Bugfixes, Security Updates    |
-| 2.x                 | 10.x       | 7.2 - 7.4 | Features, Bugfixes, Security Updates    |
-| 1.x                 | 8.7 - 9.5  | 7.0 - 7.3 | Support dropped                         |
+| Version | TYPO3     | PHP       | Support/Development                  |
+|---------|-----------|-----------|--------------------------------------|
+| 4.x     | 12.4      | 8.0 - 8.2 | Features, Bugfixes, Security Updates |
+| 3.x     | 11.5      | 7.4 - 8.1 | Features, Bugfixes, Security Updates |
+| 2.x     | 10.4      | 7.2 - 7.4 | Security Updates                     |
+| 1.x     | 8.7 - 9.5 | 7.0 - 7.3 | Support dropped                      |
 
 ## Thanks for sponsoring
 
