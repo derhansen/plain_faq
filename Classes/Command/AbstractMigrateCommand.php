@@ -12,21 +12,14 @@ declare(strict_types=1);
 namespace Derhansen\PlainFaq\Command;
 
 use Symfony\Component\Console\Command\Command;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * @author Torben Hansen <derhansen@gmail.com>
- */
 abstract class AbstractMigrateCommand extends Command
 {
     /**
      * Returns the sys_category record for the given id-string in the field "faq_import_id"
-     *
-     * @param string $id
-     * @return mixed
      */
     protected function getCategoryByFaqImportId(string $id)
     {
@@ -39,10 +32,10 @@ abstract class AbstractMigrateCommand extends Command
             ->where(
                 $queryBuilder->expr()->eq(
                     'faq_import_id',
-                    $queryBuilder->createNamedParameter($id, Connection::PARAM_STR)
+                    $queryBuilder->createNamedParameter($id)
                 )
             )
-            ->execute();
+            ->executeQuery();
 
         return $res->fetchAssociative();
     }

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Derhansen\PlainFaq\Command;
 
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -19,34 +20,19 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * Class MigrateCategories
- *
- * @author Torben Hansen <derhansen@gmail.com>
- */
 class MigrateCategoriesCommand extends AbstractMigrateCommand
 {
-    const ROOT_CATEGORY_FAQ_IMPORT_ID = 'ROOT';
-    const ROOT_CATEGORY_PID = 0;
-    const ROOT_CATEGORY_TITLE = 'FAQ';
-    const MAIN_CATEGORY_PREFIX = 'PAGE';
+    protected const ROOT_CATEGORY_FAQ_IMPORT_ID = 'ROOT';
+    protected const ROOT_CATEGORY_PID = 0;
+    protected const ROOT_CATEGORY_TITLE = 'FAQ';
+    protected const MAIN_CATEGORY_PREFIX = 'PAGE';
 
-    /**
-     * Configuring the command options
-     */
-    public function configure()
+    public function configure(): void
     {
         $this->setDescription('Migrates categories from ext:irfaq to sys_categories for usage in ext:plain_faq');
     }
 
-    /**
-     * Execute the command
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return int|void|null
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -80,25 +66,20 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
         }
 
         $io->success('All done!');
-        return 1;
+
+        return Command::SUCCESS;
     }
 
     /**
      * Returns the UID of the migrated sys_category for the given old category record. If no sys_category record
      * exists, one is created
-     *
-     * @param array $oldCategory
-     * @param int $parentCategoryUid
-     * @param SymfonyStyle $io
-     * @param int $l10nParent
-     * @return int
      */
     protected function getCreateCategory(
         array $oldCategory,
         int $parentCategoryUid,
         SymfonyStyle $io,
         int $l10nParent = 0
-    ) {
+    ): int {
         $category = $this->getCategoryByFaqImportId((string)$oldCategory['uid']);
         if (!$category) {
             $data = [
@@ -127,11 +108,8 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
     /**
      * Returns the UID of the root sys_category for the migration. If no sys_category record
      * exists, one is created
-     *
-     * @param SymfonyStyle $io
-     * @return int
      */
-    protected function getCreateRootCategory(SymfonyStyle $io)
+    protected function getCreateRootCategory(SymfonyStyle $io): int
     {
         $rootCategory = $this->getCategoryByFaqImportId(self::ROOT_CATEGORY_FAQ_IMPORT_ID);
         if (!$rootCategory) {
@@ -155,13 +133,8 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
     /**
      * Returns the UID of the migrated main sys_category for the given page ID. If no sys_category record
      * exists, one is created
-     *
-     * @param int $pid
-     * @param int $rootCategoryUid
-     * @param SymfonyStyle $io
-     * @return int
      */
-    protected function getCreateMainCategory(int $pid, int $rootCategoryUid, SymfonyStyle $io)
+    protected function getCreateMainCategory(int $pid, int $rootCategoryUid, SymfonyStyle $io): int
     {
         $mainCategory = $this->getCategoryByFaqImportId(self::MAIN_CATEGORY_PREFIX . (string)$pid);
         if (!$mainCategory) {
@@ -186,10 +159,8 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
 
     /**
      * Returns all categories from the table "tx_irfaq_cat" for the import
-     *
-     * @return array
      */
-    protected function getImportData()
+    protected function getImportData(): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_irfaq_cat');
         $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
@@ -198,16 +169,13 @@ class MigrateCategoriesCommand extends AbstractMigrateCommand
             ->select('*')
             ->from('tx_irfaq_cat')
             ->orderBy('pid', 'ASC')
-            ->execute();
+            ->executeQuery();
 
         return $res->fetchAllAssociative();
     }
 
     /**
      * Creates a sys_category record for the given data and returns the UID of the created sys_category
-     *
-     * @param array $data
-     * @return int
      */
     protected function createSysCategory(array $data): int
     {

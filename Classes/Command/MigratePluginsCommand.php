@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Derhansen\PlainFaq\Command;
 
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,17 +21,9 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * Class MigratePluginsCommand
- *
- * @author Torben Hansen <derhansen@gmail.com>
- */
 class MigratePluginsCommand extends AbstractMigrateCommand
 {
-    /**
-     * Configuring the command options
-     */
-    public function configure()
+    public function configure(): void
     {
         $this
             ->setDescription('Migrates plugin settings from ext:irfaq to ext:plain_faq')
@@ -48,14 +41,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
             );
     }
 
-    /**
-     * Execute the command
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return int|void|null
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -79,18 +65,14 @@ class MigratePluginsCommand extends AbstractMigrateCommand
         }
 
         $io->success('All done!');
-        return 1;
+
+        return Command::SUCCESS;
     }
 
     /**
      * Migrates the content element from ext:irfaq to ext:plain_faq
-     *
-     * @param array $contentElement
-     * @param string $defaultOrderField
-     * @param SymfonyStyle $io
-     * @throws \Exception
      */
-    protected function migratePlugin(array $contentElement, string $defaultOrderField, SymfonyStyle $io)
+    protected function migratePlugin(array $contentElement, string $defaultOrderField, SymfonyStyle $io): void
     {
         if ($contentElement['pi_flexform'] === '') {
             $io->text('Skipping content element uid "' . $contentElement['uid'] . '". Empty FlexForm.');
@@ -148,11 +130,8 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
     /**
      * Updates a tt_content element
-     *
-     * @param int $uid
-     * @param string $flexform
      */
-    protected function updateContentElement(int $uid, string $flexform)
+    protected function updateContentElement(int $uid, string $flexform): void
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
         $queryBuilder->update('tt_content')
@@ -164,16 +143,13 @@ class MigratePluginsCommand extends AbstractMigrateCommand
                     $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)
                 )
             )
-            ->execute();
+            ->executeQuery();
     }
 
     /**
      * Returns all migrated categories
-     *
-     * @param string $categories
-     * @return string
      */
-    protected function getMigratedCategories(string $categories)
+    protected function getMigratedCategories(string $categories): string
     {
         $newCategoryUids = [];
         $oldCategoryUids = GeneralUtility::intExplode(',', $categories, true);
@@ -189,11 +165,8 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
     /**
      * Returns migrated category conjunctions
-     *
-     * @param string $sorting
-     * @return string
      */
-    protected function getMigratedCategoryConjunction(string $sorting)
+    protected function getMigratedCategoryConjunction(string $sorting): string
     {
         switch ($sorting) {
             case '1':
@@ -211,11 +184,8 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
     /**
      * Returns migrated sorting
-     *
-     * @param string $sorting
-     * @return string
      */
-    protected function getMigratedSorting(string $sorting)
+    protected function getMigratedSorting(string $sorting): string
     {
         switch ($sorting) {
             case 'sorting':
@@ -232,12 +202,8 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
     /**
      * Returns the given flexform as array respecting the current TYPO3 version
-     *
-     * @param string $flexform
-     * @return array
-     * @throws \Exception
      */
-    protected function getFlexFormAsArray(string $flexform)
+    protected function getFlexFormAsArray(string $flexform): array
     {
         $flexformService = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
         return $flexformService->convertFlexFormContentToArray($flexform);
@@ -245,11 +211,8 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
     /**
      * Returns all content elements with the ext:irfaq plugin limited the the given array of PIDs (if not empty)
-     *
-     * @param array $pids
-     * @return array
      */
-    protected function getContentElementsWithPlugin(array $pids)
+    protected function getContentElementsWithPlugin(array $pids): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
         $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
@@ -278,14 +241,11 @@ class MigratePluginsCommand extends AbstractMigrateCommand
 
         $query->where(...$conditions);
 
-        return $query->execute()->fetchAllAssociative();
+        return $query->executeQuery()->fetchAllAssociative();
     }
 
     /**
      * Transforms the given array to FlexForm XML
-     *
-     * @param array $input
-     * @return string
      */
     protected function array2xml(array $input = []): string
     {
@@ -308,10 +268,7 @@ class MigratePluginsCommand extends AbstractMigrateCommand
         return $output;
     }
 
-    /**
-     * @return array
-     */
-    protected function getDefaultFlexFormArray()
+    protected function getDefaultFlexFormArray(): array
     {
         return [
             'data' => [

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Derhansen\PlainFaq\Command;
 
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,17 +21,9 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\HiddenRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * Class MigrateFaqsCommand
- *
- * @author Torben Hansen <derhansen@gmail.com>
- */
 class MigrateFaqsCommand extends AbstractMigrateCommand
 {
-    /**
-     * Configuring the command options
-     */
-    public function configure()
+    public function configure(): void
     {
         $this
             ->setDescription('Migrates FAQs from ext:irfaq to ext:plain_faq')
@@ -42,14 +35,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
             );
     }
 
-    /**
-     * Execute the command
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return int|void|null
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -82,16 +68,12 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
         }
 
         $io->success('All done!');
-        return 1;
+
+        return Command::SUCCESS;
     }
 
     /**
      * Migrates the given ext:irfaq category record to ext:plain_faq
-     *
-     * @param array $oldFaq
-     * @param SymfonyStyle $io
-     * @param int $l10nParent
-     * @return bool
      */
     protected function migrateFaq(array $oldFaq, SymfonyStyle $io, int $l10nParent = 0): bool
     {
@@ -131,13 +113,8 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
 
     /**
      * Migrates ext:irfaq category relations for the given FAQ record
-     *
-     * @param int $oldFaqUid
-     * @param int $newFaqUid
-     * @param SymfonyStyle $io
-     * @return int
      */
-    protected function migrateCategoryRelations(int $oldFaqUid, int $newFaqUid, SymfonyStyle $io)
+    protected function migrateCategoryRelations(int $oldFaqUid, int $newFaqUid, SymfonyStyle $io): int
     {
         $amountMigrated = 0;
         $faqRelations = $this->getFaqCategoryRelations($oldFaqUid);
@@ -167,10 +144,8 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
 
     /**
      * Returns all FAQs from the table "tx_irfaq_q" for the migration
-     *
-     * @return array
      */
-    protected function getImportData()
+    protected function getImportData(): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_irfaq_q');
         $queryBuilder->getRestrictions()->removeByType(HiddenRestriction::class);
@@ -180,16 +155,13 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
             ->from('tx_irfaq_q')
             ->orderBy('pid', 'ASC');
 
-        return $query->execute()->fetchAllAssociative();
+        return $query->executeQuery()->fetchAllAssociative();
     }
 
     /**
      * Returns all mm-records from the table "tx_irfaq_q_cat_mm" for the given categoryUid
-     *
-     * @param int $categoryUid
-     * @return array
      */
-    protected function getFaqCategoryRelations(int $categoryUid)
+    protected function getFaqCategoryRelations(int $categoryUid): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_irfaq_q_cat_mm');
@@ -204,16 +176,13 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
                 )
             )
             ->orderBy('uid_foreign', 'ASC')
-            ->execute();
+            ->executeQuery();
 
         return $res->fetchAllAssociative();
     }
 
     /**
      * Creates a FAQ record for the given data and returns the UID of the created FAQ
-     *
-     * @param array $data
-     * @return int
      */
     protected function createFaq(array $data): int
     {
@@ -229,8 +198,6 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
 
     /**
      * Creates a record in the table "tx_plainfaq_domain_model_faq_related_mm" with the given data
-     *
-     * @param array $data
      */
     protected function createFaqCategoryRelation(array $data): void
     {
@@ -244,11 +211,8 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
 
     /**
      * Returns the faq record for the given id-string in the field "faq_import_id"
-     *
-     * @param string $id
-     * @return mixed
      */
-    protected function getFaqByFaqImportId(string $id)
+    protected function getFaqByFaqImportId(string $id): array
     {
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $queryBuilder = $connectionPool->getQueryBuilderForTable('tx_plainfaq_domain_model_faq');
@@ -262,7 +226,7 @@ class MigrateFaqsCommand extends AbstractMigrateCommand
                     $queryBuilder->createNamedParameter($id, Connection::PARAM_STR)
                 )
             )
-            ->execute();
+            ->executeQuery();
 
         return $res->fetchAssociative();
     }
