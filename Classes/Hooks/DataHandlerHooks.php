@@ -50,11 +50,23 @@ class DataHandlerHooks
      * @param string $table
      * @param string $id
      * @param array $fieldArray
-     * @param \TYPO3\CMS\Core\DataHandling\DataHandler $reference
+     * @param \TYPO3\CMS\Core\DataHandling\DataHandler $dataHandler
      */
-    public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$reference)
+    public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$dataHandler)
     {
-        if ($table === 'tt_content' && $status == 'update' && isset($fieldArray['pi_flexform'])) {
+        if ($table === 'tt_content' &&
+            $status === 'update' &&
+            isset($fieldArray['pi_flexform']) &&
+            $dataHandler->checkValue_currentRecord['CType'] === 'list' &&
+            in_array(
+                $dataHandler->checkValue_currentRecord['list_type'],
+                [
+                    'plainfaq_pilist',
+                    'plainfaq_pilist',
+                    'plainfaq_pilist',
+                ]
+            )
+        ) {
             $checkFields = [
                 'sDEF' => [
                     'settings.orderField',
