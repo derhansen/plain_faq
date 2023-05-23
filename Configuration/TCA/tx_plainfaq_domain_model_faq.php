@@ -26,6 +26,9 @@ return [
         'typeicon_classes' => [
             'default' => 'ext-plainfaq-faq',
         ],
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => ['showitem' => '
