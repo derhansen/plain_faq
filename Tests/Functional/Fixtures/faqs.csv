@@ -1,0 +1,26 @@
+"pages"
+,"uid","pid"
+,1,0
+,2,1
+,3,2
+"sys_category"
+,"uid","pid","title","parent"
+,1,1,"Category 1",0
+,2,1,"Category 2",0
+,3,1,"Category 3",0
+,4,1,"Category 1.1",1
+"tx_plainfaq_domain_model_faq"
+,"uid","pid","question"
+,1,1,"First question on Page UID 1"
+,2,1,"Second question on Page UID 1"
+,3,1,"Third question on Page UID 1"
+,4,1,"Fourth question on Page UID 1 (has subcategory)"
+,5,2,"First question on Page UID 2"
+"sys_category_record_mm"
+,"uid_local","uid_foreign","tablenames","fieldname"
+,1,1,"tx_plainfaq_domain_model_faq","categories"
+,1,2,"tx_plainfaq_domain_model_faq","categories"
+,1,3,"tx_plainfaq_domain_model_faq","categories"
+,2,1,"tx_plainfaq_domain_model_faq","categories"
+,3,1,"tx_plainfaq_domain_model_faq","categories"
+,4,4,"tx_plainfaq_domain_model_faq","categories"

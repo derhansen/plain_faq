@@ -20,10 +20,10 @@ class FaqControllerTest extends BaseTestCase
     /**
      * @test
      */
-    public function createFaqDemandObjectFromSettingsWithEmptySettings()
+    public function createFaqDemandObjectFromSettingsWithEmptySettings(): void
     {
         /** @var FaqController $mockController */
-        $mockController = $this->getAccessibleMock(FaqController::class, ['redirect', 'forward', 'addFlashMessage']);
+        $mockController = $this->getAccessibleMock(FaqController::class, ['redirect']);
         $demand = $mockController->createFaqDemandObjectFromSettings([]);
 
         self::assertEmpty($demand->getStoragePage());
@@ -39,10 +39,10 @@ class FaqControllerTest extends BaseTestCase
     /**
      * @test
      */
-    public function createFaqDemandObjectFromSettingsSetsSettings()
+    public function createFaqDemandObjectFromSettingsSetsSettings(): void
     {
         /** @var FaqController $mockController */
-        $mockController = $this->getAccessibleMock(FaqController::class, ['redirect', 'forward', 'addFlashMessage']);
+        $mockController = $this->getAccessibleMock(FaqController::class, ['redirect']);
 
         $settings = [
             'categoryConjunction' => 'OR',

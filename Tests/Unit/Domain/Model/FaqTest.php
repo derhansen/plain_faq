@@ -22,10 +22,7 @@ use TYPO3\TestingFramework\Core\BaseTestCase;
  */
 class FaqTest extends BaseTestCase
 {
-    /**
-     * @var \Derhansen\PlainFaq\Domain\Model\Faq
-     */
-    protected $subject;
+    protected Faq $subject;
 
     protected function setUp(): void
     {
@@ -52,7 +49,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setQuestionForStringSetsQuestion()
+    public function setQuestionForStringSetsQuestion(): void
     {
         $this->subject->setQuestion('Conceived at T3CON10');
         self::assertEquals('Conceived at T3CON10', $this->subject->getQuestion());
@@ -61,7 +58,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function getAnswerReturnsInitialValueForString()
+    public function getAnswerReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -72,7 +69,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setAnswerForStringSetsAnswer()
+    public function setAnswerForStringSetsAnswer(): void
     {
         $this->subject->setAnswer('Conceived at T3CON10');
         self::assertEquals('Conceived at T3CON10', $this->subject->getAnswer());
@@ -81,7 +78,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function getKeywordsReturnsInitialValueForString()
+    public function getKeywordsReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -92,7 +89,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setKeywordsForStringSetsKeywords()
+    public function setKeywordsForStringSetsKeywords(): void
     {
         $this->subject->setKeywords('Conceived at T3CON10');
         self::assertEquals('Conceived at T3CON10', $this->subject->getKeywords());
@@ -101,7 +98,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function getImagesReturnsInitialValueForFileReference()
+    public function getImagesReturnsInitialValueForFileReference(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -113,7 +110,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setImagesForFileReferenceSetsImages()
+    public function setImagesForFileReferenceSetsImages(): void
     {
         $image = new FileReference();
         $objectStorageHoldingExactlyOneImages = new ObjectStorage();
@@ -125,13 +122,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function addImageToObjectStorageHoldingImages()
+    public function addImageToObjectStorageHoldingImages(): void
     {
         $image = new FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $imagesObjectStorageMock = $this->createMock(ObjectStorage::class);
         $imagesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($image));
         $this->subject->setImages($imagesObjectStorageMock);
 
@@ -141,13 +135,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function removeImageFromObjectStorageHoldingImages()
+    public function removeImageFromObjectStorageHoldingImages(): void
     {
         $image = new FileReference();
-        $imagesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $imagesObjectStorageMock = $this->createMock(ObjectStorage::class);
         $imagesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($image));
         $this->subject->setImages($imagesObjectStorageMock);
 
@@ -157,7 +148,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function getFilesReturnsInitialValueForFileReference()
+    public function getFilesReturnsInitialValueForFileReference(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -169,7 +160,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setFilesForFileReferenceSetsFiles()
+    public function setFilesForFileReferenceSetsFiles(): void
     {
         $file = new FileReference();
         $objectStorageHoldingExactlyOneFiles = new ObjectStorage();
@@ -181,14 +172,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function addFileToObjectStorageHoldingFiles()
+    public function addFileToObjectStorageHoldingFiles(): void
     {
         $file = new FileReference();
-        $filesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $filesObjectStorageMock = $this->createMock(ObjectStorage::class);
         $filesObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($file));
         $this->subject->setFiles($filesObjectStorageMock);
 
@@ -198,14 +185,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function removeFileFromObjectStorageHoldingFiles()
+    public function removeFileFromObjectStorageHoldingFiles(): void
     {
         $file = new FileReference();
-        $filesObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $filesObjectStorageMock = $this->createMock(ObjectStorage::class);
         $filesObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($file));
         $this->subject->setFiles($filesObjectStorageMock);
 
@@ -215,7 +198,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function getRelatedReturnsInitialValueForObjectStorage()
+    public function getRelatedReturnsInitialValueForObjectStorage(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -227,7 +210,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setRelatedForFileReferenceSetsRelated()
+    public function setRelatedForFileReferenceSetsRelated(): void
     {
         $faq = new Faq();
         $objectStorageHoldingExactlyOneFaq = new ObjectStorage();
@@ -239,13 +222,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function addFaqToObjectStorageHoldingFaqs()
+    public function addFaqToObjectStorageHoldingFaqs(): void
     {
         $faq = new Faq();
-        $faqObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $faqObjectStorageMock = $this->createMock(ObjectStorage::class);
         $faqObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($faq));
         $this->subject->setRelated($faqObjectStorageMock);
 
@@ -258,11 +238,7 @@ class FaqTest extends BaseTestCase
     public function removeFaqFromObjectStorageHoldingFaqs()
     {
         $faq = new Faq();
-        $faqObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $faqObjectStorageMock = $this->createMock(ObjectStorage::class);
         $faqObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($faq));
         $this->subject->setRelated($faqObjectStorageMock);
 
@@ -272,7 +248,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function getCategoriesReturnsInitialValueForObjectStorage()
+    public function getCategoriesReturnsInitialValueForObjectStorage(): void
     {
         $newObjectStorage = new ObjectStorage();
         self::assertEquals(
@@ -284,7 +260,7 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function setCategoriesForCategorySetsCategory()
+    public function setCategoriesForCategorySetsCategory(): void
     {
         $category = new Category();
         $objectStorageHoldingExactlyOneCategory = new ObjectStorage();
@@ -296,14 +272,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function addCategoryToObjectStorageHoldingCategories()
+    public function addCategoryToObjectStorageHoldingCategories(): void
     {
         $category = new Category();
-        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $categoryObjectStorageMock = $this->createMock(ObjectStorage::class);
         $categoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
         $this->subject->setCategories($categoryObjectStorageMock);
 
@@ -313,14 +285,10 @@ class FaqTest extends BaseTestCase
     /**
      * @test
      */
-    public function removeCategoryFromObjectStorageHoldingFaqs()
+    public function removeCategoryFromObjectStorageHoldingFaqs(): void
     {
         $category = new Category();
-        $categoryObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
+        $categoryObjectStorageMock = $this->createMock(ObjectStorage::class);
         $categoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
         $this->subject->setCategories($categoryObjectStorageMock);
 

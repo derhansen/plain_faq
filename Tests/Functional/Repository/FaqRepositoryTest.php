@@ -19,35 +19,31 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  *
  * @author Torben Hansen <derhansen@gmail.com>
  */
-class FaqTest extends FunctionalTestCase
+class FaqRepositoryTest extends FunctionalTestCase
 {
-    /** @var FaqRepository */
-    protected $faqRepository;
+    protected FaqRepository $faqRepository;
 
-    protected $testExtensionsToLoad = ['typo3conf/ext/plain_faq'];
+    protected array $testExtensionsToLoad = ['typo3conf/ext/plain_faq'];
 
-    protected $coreExtensionsToLoad = ['fluid', 'extensionmanager'];
+    protected array $coreExtensionsToLoad = ['fluid', 'extensionmanager'];
 
     public function setUp(): void
     {
         parent::setUp();
         $this->faqRepository = GeneralUtility::makeInstance(FaqRepository::class);
-        $this->importDataSet(__DIR__ . '/../Fixtures/tx_plainfaq_domain_model_faq.xml');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/faqs.csv');
     }
 
     /**
      * @test
      */
-    public function findRecordsByUid()
+    public function findRecordsByUid(): void
     {
         $faq = $this->faqRepository->findByUid(1);
         self::assertEquals($faq->getQuestion(), 'First question on Page UID 1');
     }
 
-    /**
-     * @return array
-     */
-    public function findDemandedRespectsStoragePageDataProvider()
+    public static function findDemandedRespectsStoragePageDataProvider(): array
     {
         return [
             'no storage page' => [
@@ -69,7 +65,7 @@ class FaqTest extends FunctionalTestCase
      * @dataProvider findDemandedRespectsStoragePageDataProvider
      * @test
      */
-    public function findDemandedRespectsStoragePage($storagePage, $expected)
+    public function findDemandedRespectsStoragePage(string $storagePage, int $expected): void
     {
         $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage($storagePage);
@@ -78,10 +74,7 @@ class FaqTest extends FunctionalTestCase
         self::assertEquals($expected, $result->count());
     }
 
-    /**
-     * @return array
-     */
-    public function findDemandedRespectsCategoryDataProvider()
+    public static function findDemandedRespectsCategoryDataProvider(): array
     {
         return [
             'no conjuction' => [
@@ -127,8 +120,12 @@ class FaqTest extends FunctionalTestCase
      * @dataProvider findDemandedRespectsCategoryDataProvider
      * @test
      */
-    public function findDemandedRespectsCategory($categories, $conjunction, $includeSub, $expected)
-    {
+    public function findDemandedRespectsCategory(
+        string $categories,
+        string $conjunction,
+        bool $includeSub,
+        int $expected
+    ): void {
         $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(1);
         $demand->setCategoryConjunction($conjunction);
@@ -139,10 +136,7 @@ class FaqTest extends FunctionalTestCase
         self::assertEquals($expected, $result->count());
     }
 
-    /**
-     * @return array
-     */
-    public function findDemandedRespectsOrderingDataProvider()
+    public static function findDemandedRespectsOrderingDataProvider(): array
     {
         return [
             'noSorting' => [
@@ -167,7 +161,7 @@ class FaqTest extends FunctionalTestCase
      * @dataProvider findDemandedRespectsOrderingDataProvider
      * @test
      */
-    public function findDemandedRespectsOrdering($orderField, $orderDirection, $expected)
+    public function findDemandedRespectsOrdering(string $orderField, string $orderDirection, int $expected): void
     {
         $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(1);
@@ -182,7 +176,7 @@ class FaqTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findDemandedRespectsQueryLimit()
+    public function findDemandedRespectsQueryLimit(): void
     {
         $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(1);
