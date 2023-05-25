@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Derhansen\PlainFaq\Utility;
 
-use TYPO3\CMS\Core\Database\Connection;
+use Doctrine\DBAL\ArrayParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -34,10 +34,6 @@ class CategoryUtility
 
     /**
      * Get child categories
-     *
-     * @param string $idList list of category ids to start
-     * @param int $counter
-     * @return string comma separated list of category ids
      */
     private static function getChildrenCategoriesRecursive(string $idList, int $counter = 0): string
     {
@@ -58,11 +54,11 @@ class CategoryUtility
                     'parent',
                     $queryBuilder->createNamedParameter(
                         array_map('intval', explode(',', $idList)),
-                        Connection::PARAM_INT_ARRAY
+                        ArrayParameterType::INTEGER
                     )
                 )
             )
-            ->execute();
+            ->executeQuery();
 
         while (($row = $res->fetchAssociative())) {
             $counter++;
@@ -76,16 +72,11 @@ class CategoryUtility
             $result[] = $row['uid'] . ($subcategories ? ',' . $subcategories : '');
         }
 
-        $result = implode(',', $result);
-
-        return $result;
+        return implode(',', $result);
     }
 
     /**
      * Clean list of integers
-     *
-     * @param string $list
-     * @return string
      */
     private static function cleanIntList(string $list): string
     {

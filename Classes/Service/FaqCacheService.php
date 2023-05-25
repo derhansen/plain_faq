@@ -14,6 +14,7 @@ namespace Derhansen\PlainFaq\Service;
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class FaqCacheService
@@ -25,10 +26,8 @@ class FaqCacheService
      *
      * Following cache tags will be added to tsfe:
      * "tx_plainfaq_uid_[faq:uid]"
-     *
-     * @param array $faqRecords array with faq records
      */
-    public function addCacheTagsByFaqRecords(array $faqRecords)
+    public function addCacheTagsByFaqRecords(array $faqRecords): void
     {
         $cacheTags = [];
         foreach ($faqRecords as $faq) {
@@ -36,15 +35,13 @@ class FaqCacheService
             $cacheTags[] = 'tx_plainfaq_uid_' . $faq->getUid();
         }
         if (count($cacheTags) > 0) {
-            self::getTypoScriptFrontendController()->addCacheTags($cacheTags);
+            $this->getTypoScriptFrontendController()->addCacheTags($cacheTags);
         }
     }
 
     /**
      * Adds page cache tags by used storagePages.
      * This adds tags with the scheme tx_plainfaq_pid_[faq:pid]
-     *
-     * @param FaqDemand $demand
      */
     public function addPageCacheTagsByFaqDemandObject(FaqDemand $demand)
     {
@@ -56,17 +53,14 @@ class FaqCacheService
             }
         }
         if (count($cacheTags) > 0) {
-            self::getTypoScriptFrontendController()->addCacheTags($cacheTags);
+            $this->getTypoScriptFrontendController()->addCacheTags($cacheTags);
         }
     }
 
     /**
      * Flushes the page cache by faq tags for the given faq uid and pid
-     *
-     * @param int $faqUid
-     * @param int $faqPid
      */
-    public function flushFaqCache(int $faqUid = 0, int $faqPid = 0)
+    public function flushFaqCache(int $faqUid = 0, int $faqPid = 0): void
     {
         $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
         $cacheTagsToFlush = [];
@@ -83,10 +77,7 @@ class FaqCacheService
         }
     }
 
-    /**
-     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
-     */
-    protected function getTypoScriptFrontendController()
+    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
     {
         return $GLOBALS['TSFE'] ?: null;
     }

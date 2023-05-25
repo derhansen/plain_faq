@@ -23,39 +23,27 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
-/**
- * FaqController
- */
 class FaqController extends ActionController
 {
     /**
      * Properties in this array will be ignored by overwriteDemandObject()
-     *
-     * @var array
      */
     protected array $ignoredSettingsForOverwriteDemand = ['orderfieldallowed'];
 
     protected FaqRepository $faqRepository;
     protected FaqCacheService $faqCacheService;
 
-    /**
-     * @param FaqRepository $faqRepository
-     */
     public function injectFaqRepository(FaqRepository $faqRepository)
     {
         $this->faqRepository = $faqRepository;
     }
 
-    /**
-     * @param FaqCacheService $cacheService
-     */
     public function injectFaqCacheService(FaqCacheService $cacheService)
     {
         $this->faqCacheService = $cacheService;
@@ -63,25 +51,17 @@ class FaqController extends ActionController
 
     /**
      * Assign contentObjectData and pageData view
-     * @todo: Remove $view parameter for TYPO3 v12 version and use $this->view instead to assign variables.
-     *
-     * @param ViewInterface $view @extensionScannerIgnoreLine
      */
-    protected function initializeView(ViewInterface $view)
+    protected function initializeView(): void
     {
-        // @extensionScannerIgnoreLine
-        $view->assign('contentObjectData', $this->configurationManager->getContentObject()->data);
+        $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
         if ($this->getTypoScriptFrontendController()) {
-            $view->assign('pageData', $this->getTypoScriptFrontendController()->page);
+            $this->view->assign('pageData', $this->getTypoScriptFrontendController()->page);
         }
     }
 
     /**
      * Creates an faq demand object with the given settings
-     *
-     * @param array $settings The settings
-     *
-     * @return FaqDemand
      */
     public function createFaqDemandObjectFromSettings(array $settings): FaqDemand
     {
@@ -105,9 +85,6 @@ class FaqController extends ActionController
 
     /**
      * List action
-     *
-     * @param array $overwriteDemand
-     * @return ResponseInterface
      */
     public function listAction(array $overwriteDemand = []): ResponseInterface
     {
@@ -137,9 +114,6 @@ class FaqController extends ActionController
 
     /**
      * Returns an array with variables for the pagination
-     *
-     * @param QueryResultInterface $faqs
-     * @return array
      */
     protected function getPagination(QueryResultInterface $faqs): array
     {
@@ -159,11 +133,8 @@ class FaqController extends ActionController
 
     /**
      * Detail action
-     *
-     * @param Faq|null $faq
-     * @return ResponseInterface
      */
-    public function detailAction(Faq $faq = null): ResponseInterface
+    public function detailAction(?Faq $faq = null): ResponseInterface
     {
         if (is_null($faq)) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
@@ -185,9 +156,6 @@ class FaqController extends ActionController
 
     /**
      * Returns if a demand object can be overwritten with the given overwriteDemand array
-     *
-     * @param array $overwriteDemand
-     * @return bool
      */
     protected function isOverwriteDemand(array $overwriteDemand): bool
     {
@@ -196,11 +164,6 @@ class FaqController extends ActionController
 
     /**
      * Overwrites a given demand object by an propertyName =>  $propertyValue array
-     *
-     * @param FaqDemand $demand Demand
-     * @param array $overwriteDemand OwerwriteDemand
-     *
-     * @return FaqDemand
      */
     protected function overwriteFaqDemandObject(FaqDemand $demand, array $overwriteDemand): FaqDemand
     {

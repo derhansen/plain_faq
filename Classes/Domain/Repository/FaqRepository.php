@@ -17,6 +17,9 @@ use Derhansen\PlainFaq\Utility\CategoryUtility;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Qom\AndInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\Qom\NotInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\Qom\OrInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -27,21 +30,13 @@ class FaqRepository extends Repository
 {
     /**
      * Set default sorting
-     *
-     * @var array
      */
     protected $defaultOrderings = [
         'question' => QueryInterface::ORDER_ASCENDING,
     ];
 
-    /**
-     * @var EventDispatcherInterface
-     */
-    protected $eventDispatcher;
+    protected EventDispatcherInterface $eventDispatcher;
 
-    /**
-     * @param EventDispatcherInterface $eventDispatcher
-     */
     public function injectEventDispatcher(EventDispatcherInterface $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
@@ -50,7 +45,6 @@ class FaqRepository extends Repository
     /**
      * Returns faq articles matching the demands of the given demand object
      *
-     * @param FaqDemand $faqDemand
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function findDemanded(FaqDemand $faqDemand)
@@ -74,7 +68,7 @@ class FaqRepository extends Repository
         $this->setOrderingsFromDemand($query, $faqDemand);
 
         if (count($constraints) > 0) {
-            $query->matching($query->logicalAnd($constraints));
+            $query->matching($query->logicalAnd(...$constraints));
         }
 
         $this->setQueryLimitFromDemand($query, $faqDemand);
@@ -84,12 +78,8 @@ class FaqRepository extends Repository
 
     /**
      * Sets the storagePage constraint to the given constraints array
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
-     * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
-     * @param array $constraints Constraints
      */
-    protected function setStoragePageConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints)
+    protected function setStoragePageConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints): void
     {
         if ($faqDemand->getStoragePage() && $faqDemand->getStoragePage() !== '') {
             $pidList = GeneralUtility::intExplode(',', $faqDemand->getStoragePage(), true);
@@ -99,12 +89,8 @@ class FaqRepository extends Repository
 
     /**
      * Sets the category constraint to the given constraints array
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
-     * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
-     * @param array $constraints Constraints
      */
-    protected function setCategoryConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints)
+    protected function setCategoryConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints): void
     {
         // If no category constraint is set, categories should not be respected in the query
         if ($faqDemand->getCategoryConjunction() === '') {
@@ -131,26 +117,23 @@ class FaqRepository extends Repository
     /**
      * Returns the category constraint depending on the category conjunction configured in faqDemand
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
-     * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
-     * @param array $categoryConstraints
-     * @return mixed
+     * @return AndInterface|NotInterface|OrInterface
      */
     public function getCategoryConstraint(QueryInterface $query, FaqDemand $faqDemand, array $categoryConstraints)
     {
         switch (strtolower($faqDemand->getCategoryConjunction())) {
             case 'and':
-                $constraint = $query->logicalAnd($categoryConstraints);
+                $constraint = $query->logicalAnd(...$categoryConstraints);
                 break;
             case 'notor':
-                $constraint = $query->logicalNot($query->logicalOr($categoryConstraints));
+                $constraint = $query->logicalNot($query->logicalOr(...$categoryConstraints));
                 break;
             case 'notand':
-                $constraint = $query->logicalNot($query->logicalAnd($categoryConstraints));
+                $constraint = $query->logicalNot($query->logicalAnd(...$categoryConstraints));
                 break;
             case 'or':
             default:
-                $constraint = $query->logicalOr($categoryConstraints);
+                $constraint = $query->logicalOr(...$categoryConstraints);
         }
 
         return $constraint;
@@ -158,17 +141,14 @@ class FaqRepository extends Repository
 
     /**
      * Sets the ordering to the given query for the given demand
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
-     * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
      */
-    protected function setOrderingsFromDemand(QueryInterface $query, FaqDemand $faqDemand)
+    protected function setOrderingsFromDemand(QueryInterface $query, FaqDemand $faqDemand): void
     {
         $orderings = [];
         $orderFieldAllowed = GeneralUtility::trimExplode(',', $faqDemand->getOrderFieldAllowed(), true);
         if ($faqDemand->getOrderField() !== '' && $faqDemand->getOrderDirection() !== '' &&
             !empty($orderFieldAllowed) && in_array($faqDemand->getOrderField(), $orderFieldAllowed, true)) {
-            $orderings[$faqDemand->getOrderField()] = ((strtolower($faqDemand->getOrderDirection()) == 'desc') ?
+            $orderings[$faqDemand->getOrderField()] = ((strtolower($faqDemand->getOrderDirection()) === 'desc') ?
                 QueryInterface::ORDER_DESCENDING :
                 QueryInterface::ORDER_ASCENDING);
             $query->setOrderings($orderings);
@@ -177,17 +157,14 @@ class FaqRepository extends Repository
 
     /**
      * Sets a query limit to the given query for the given demand
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query Query
-     * @param \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand $faqDemand
      */
-    protected function setQueryLimitFromDemand(QueryInterface $query, FaqDemand $faqDemand)
+    protected function setQueryLimitFromDemand(QueryInterface $query, FaqDemand $faqDemand): void
     {
         if ($faqDemand->getQueryLimit() !== null &&
             MathUtility::canBeInterpretedAsInteger($faqDemand->getQueryLimit()) &&
-            (int)$faqDemand->getQueryLimit() > 0
+            $faqDemand->getQueryLimit() > 0
         ) {
-            $query->setLimit((int)$faqDemand->getQueryLimit());
+            $query->setLimit($faqDemand->getQueryLimit());
         }
     }
 }
