@@ -5,3 +5,4 @@ composer.lock
 .php-cs-fixer.cache
 /var/
 /Tests/Build/.phpunit.result.cache
+/Tests/Build/.phpunit.cache
