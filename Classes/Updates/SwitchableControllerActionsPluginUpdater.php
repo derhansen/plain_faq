@@ -144,7 +144,7 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
                     $queryBuilder->createNamedParameter($checkListTypes, Connection::PARAM_STR_ARRAY)
                 )
             )
-            ->execute()
+            ->executeQuery()
             ->fetchAllAssociative();
     }
 
@@ -197,7 +197,7 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
                     $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT)
                 )
             )
-            ->execute();
+            ->executeStatement();
     }
 
     /**
