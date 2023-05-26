@@ -1,15 +1,41 @@
-<table class="table table-condensed table-hover plainfaq-table">
-    <thead>
-    <tr>
-        <th colspan="2">{extensionTitle}: {header}</th>
-    </tr>
-    </thead>
-    <tbody>
-        <f:for each="{data}" as="item">
-            <tr>
-                <th>{item.title}</th>
-                <td>{item.value -> f:format.raw()}</td>
-            </tr>
-        </f:for>
-    </tbody>
-</table>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{data} || {pluginName}">
+    <f:then>
+        <table class="table table-condensed table-hover plainfaq-table">
+            <f:if condition="{pluginName}">
+                <thead>
+                <tr>
+                    <th colspan="2">
+                        <strong>
+                            <f:translate key="LLL:EXT:sf_event_mgt/Resources/Private/Language/locallang_be.xlf:extension.title" /><br/>
+                            {pluginName}
+                        </strong>
+                    </th>
+                </tr>
+                </thead>
+            </f:if>
+            <tbody>
+            <f:for each="{data}" as="item">
+                <tr>
+                    <th>{item.title}</th>
+                    <td>
+                        <f:if condition="{item.value} == 'icon'">
+                            <f:then>
+                                <core:icon identifier="{item.icon}" size="small" />
+                            </f:then>
+                            <f:else>
+                                {item.value -> f:format.raw()}
+                            </f:else>
+                        </f:if>
+                    </td>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </f:then>
+</f:if>
+
+</html>

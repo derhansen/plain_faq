@@ -93,8 +93,8 @@
 			<trans-unit id="flexforms.plugin.field.includeSubcategories">
 				<source>Include Subcategories</source>
 			</trans-unit>
-			<trans-unit id="flexforms.plugin.field.storagePage">
-				<source>Record Storage Page</source>
+			<trans-unit id="flexforms.plugin.field.categories.possibleMisconfiguration">
+				<source>Possible misconfiguration!</source>
 			</trans-unit>
 			<trans-unit id="flexforms.plugin.field.detailPid">
 				<source>Detail Page</source>

@@ -2,6 +2,10 @@
 
 defined('TYPO3') or die();
 
+use Derhansen\PlainFaq\Preview\PidetailPreviewRenderer;
+use Derhansen\PlainFaq\Preview\PilistdetailPreviewRenderer;
+use Derhansen\PlainFaq\Preview\PilistPreviewRenderer;
+
 /**
  * Add new select group for list_type
  */
@@ -33,3 +37,10 @@ foreach (['pilistdetail', 'pilist', 'pidetail'] as $plugin) {
 
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['plainfaq_' . $plugin] = 'layout,select_key,pages,recursive';
 }
+
+/**
+ * Register plugin preview renderer
+ */
+$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['plainfaq_pilist'] = PilistPreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['plainfaq_pidetail'] = PidetailPreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['plainfaq_pilistdetail'] = PilistdetailPreviewRenderer::class;
