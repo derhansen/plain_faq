@@ -16,11 +16,11 @@ use Derhansen\PlainFaq\Domain\Model\Faq;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
 use Derhansen\PlainFaq\Event\ModifyDetailViewVariablesEvent;
 use Derhansen\PlainFaq\Event\ModifyListViewVariablesEvent;
-use Derhansen\PlainFaq\Pagination\NumberedPagination;
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use Derhansen\PlainFaq\Utility\PageUtility;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
+use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
@@ -121,7 +121,7 @@ class FaqController extends ActionController
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
         if ((bool)($this->settings['enablePagination'] ?? false) && (int)($this->settings['itemsPerPage'] ?? 10) > 0) {
             $paginator = new QueryResultPaginator($faqs, $currentPage, (int)($this->settings['itemsPerPage'] ?? 10));
-            $pagination = new NumberedPagination($paginator, (int)($this->settings['maxNumPages'] ?? 10));
+            $pagination = new SlidingWindowPagination($paginator, (int)($this->settings['maxNumPages'] ?? 10));
             $pagination = [
                 'paginator' => $paginator,
                 'pagination' => $pagination,
