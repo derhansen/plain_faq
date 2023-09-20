@@ -99,6 +99,10 @@ class SwitchableControllerActionsPluginUpdater implements UpgradeWizardInterface
             }
 
             $flexForm = $this->flexFormService->convertFlexFormContentToArray($record['pi_flexform']);
+            if (empty($flexForm)) {
+                continue;
+            }
+
             $targetListType = $this->getTargetListType(
                 $record['list_type'],
                 $flexForm['switchableControllerActions']
