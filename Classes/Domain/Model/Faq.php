@@ -25,6 +25,7 @@ class Faq extends AbstractEntity
     protected string $question = '';
     protected string $answer = '';
     protected string $keywords = '';
+    protected string $slug = '';
 
     /**
      * @var ObjectStorage<Category>
@@ -96,6 +97,16 @@ class Faq extends AbstractEntity
     public function setKeywords(string $keywords): void
     {
         $this->keywords = $keywords;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
     }
 
     public function addImage(FileReference $image): void
