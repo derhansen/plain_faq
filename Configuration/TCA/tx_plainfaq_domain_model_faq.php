@@ -167,6 +167,7 @@ return [
 
         'question' => [
             'exclude' => true,
+            'l10n_mode' => 'prefixLangTitle',
             'label' => 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_db.xlf:tx_plainfaq_domain_model_faq.question',
             'config' => [
                 'type' => 'input',
@@ -194,6 +195,7 @@ return [
         ],
         'answer' => [
             'exclude' => true,
+            'l10n_mode' => 'prefixLangTitle',
             'label' => 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_db.xlf:tx_plainfaq_domain_model_faq.answer',
             'config' => [
                 'type' => 'text',
