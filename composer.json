@@ -21,22 +21,6 @@
     "require": {
         "typo3/cms-core": "^12.4"
     },
-    "require-dev": {
-        "typo3/cms-backend": "^12.4",
-        "typo3/cms-frontend": "^12.4",
-        "typo3/cms-recordlist": "^12.4",
-        "typo3/cms-extbase": "^12.4",
-        "typo3/cms-felogin": "^12.4",
-        "typo3/cms-fluid-styled-content": "^12.4",
-        "typo3/cms-fluid": "^12.4",
-        "typo3/cms-tstemplate": "^12.4",
-        "typo3/cms-install": "^12.4",
-        "typo3/cms-extensionmanager": "^12.4",
-        "typo3/testing-framework": "^8.0",
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "saschaegerer/phpstan-typo3": "^1.1.2",
-        "phpstan/extension-installer": "^1.1"
-    },
     "autoload": {
         "psr-4": {
             "Derhansen\\PlainFaq\\": "Classes"
@@ -47,19 +31,12 @@
             "Derhansen\\PlainFaq\\Tests\\": "Tests"
         }
     },
-    "replace": {
-        "typo3-ter/plain-faq": "self.version"
-    },
     "extra": {
         "typo3/cms": {
-            "extension-key": "plain_faq",
-            "app-dir": ".Build",
-            "web-dir": ".Build/Public"
+            "extension-key": "plain_faq"
         }
     },
     "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin",
         "allow-plugins": {
             "typo3/class-alias-loader": true,
             "typo3/cms-composer-installers": true,
