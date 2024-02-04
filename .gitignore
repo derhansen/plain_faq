@@ -1,8 +1,8 @@
-.idea/
-.DS_Store
-.Build/
+# PHP Storm, other java IDE's
+.idea
+.Build/public
+.Build/vendor
+.Build/var/
 composer.lock
 .php-cs-fixer.cache
-/var/
-/Tests/Build/.phpunit.result.cache
-/Tests/Build/.phpunit.cache
+.phpunit.cache
