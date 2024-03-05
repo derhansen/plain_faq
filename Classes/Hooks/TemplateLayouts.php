@@ -25,7 +25,11 @@ class TemplateLayouts
      */
     public function userTemplateLayout(array &$config)
     {
-        $templateLayouts = $this->getTemplateLayoutsFromTsConfig($config['flexParentDatabaseRow']['pid']);
+        $pid = $config['flexParentDatabaseRow']['pid'] ?? 0;
+        if ($pid === 0) {
+            return;
+        }
+        $templateLayouts = $this->getTemplateLayoutsFromTsConfig($pid);
         foreach ($templateLayouts as $index => $layout) {
             $additionalLayout = [
                 $GLOBALS['LANG']->sL($layout),
