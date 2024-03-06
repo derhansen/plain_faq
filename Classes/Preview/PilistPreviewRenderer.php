@@ -24,6 +24,9 @@ class PilistPreviewRenderer extends AbstractPluginPreviewRenderer
         $data = [];
         $record = $item->getRecord();
         $flexFormData = GeneralUtility::xml2array($record['pi_flexform']);
+        if (!is_array($flexFormData)) {
+            $flexFormData = [];
+        }
 
         $pluginName = $this->getPluginName($record);
 
