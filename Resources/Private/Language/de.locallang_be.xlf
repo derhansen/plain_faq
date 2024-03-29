@@ -3,44 +3,158 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="de">
     <header/>
     <body>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		</body>
+      <trans-unit id="extension.title" approved="yes">
+        <source>FAQ</source>
+        <target state="final">FAQ</target>
+      </trans-unit>
+      <trans-unit id="CType.div.plugingroup" approved="yes">
+        <source>FAQ</source>
+        <target state="final">FAQ</target>
+      </trans-unit>
+      <trans-unit id="plugin.pilist.title" approved="yes">
+        <source>List view</source>
+        <target state="final">Listenansicht</target>
+      </trans-unit>
+      <trans-unit id="plugin.pidetail.title" approved="yes">
+        <source>Detail view</source>
+        <target state="final">Detailansicht</target>
+      </trans-unit>
+      <trans-unit id="plugin.pilistdetail.title" approved="yes">
+        <source>List view (without overloading detail view)</source>
+        <target state="final">Listenansicht (ohne die Detailansicht zu überschreiben)</target>
+      </trans-unit>
+      <trans-unit id="faq-folder" approved="yes">
+        <source>FAQs</source>
+        <target state="final">Häufig gestellte Fragen</target>
+      </trans-unit>
+      <trans-unit id="tabs.language" approved="yes">
+        <source>Language</source>
+        <target state="final">Sprache</target>
+      </trans-unit>
+      <trans-unit id="tabs.categories" approved="yes">
+        <source>Categories</source>
+        <target state="final">Kategorien</target>
+      </trans-unit>
+      <trans-unit id="tabs.media" approved="yes">
+        <source>Media</source>
+        <target state="final">Medien</target>
+      </trans-unit>
+      <trans-unit id="tabs.relations" approved="yes">
+        <source>Relations</source>
+        <target state="final">Verknüpfungen</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.settings" approved="yes">
+        <source>Settings</source>
+        <target state="final">Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.additional" approved="yes">
+        <source>Additional</source>
+        <target state="final">Weitere Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.pagination" approved="yes">
+        <source>Pagination</source>
+        <target state="final">Paginierung</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.template" approved="yes">
+        <source>Template</source>
+        <target state="final">Template</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.mode" approved="yes">
+        <source>What to display</source>
+        <target state="final">Was soll angezeigt werden</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField" approved="yes">
+        <source>Sort by</source>
+        <target state="final">Sortieren nach</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField.question" approved="yes">
+        <source>Question</source>
+        <target state="final">Frage</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField.sorting" approved="yes">
+        <source>Order in TYPO3 backend</source>
+        <target state="final">Sortierreihenfolge im TYPO3 Backend</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection" approved="yes">
+        <source>Sort direction</source>
+        <target state="final">Sortierrichtung</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection.ascending" approved="yes">
+        <source>Ascending</source>
+        <target state="final">Aufsteigend</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection.descending" approved="yes">
+        <source>Descending</source>
+        <target state="final">Absteigend</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.queryLimit" approved="yes">
+        <source>Max records displayed</source>
+        <target state="final">Maximale Anzahl anzuzeigender Datensätze</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction" approved="yes">
+        <source>Category Conjunction</source>
+        <target state="final">Kategorie-Verbindung</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.ignore" approved="yes">
+        <source>Ignore category selection</source>
+        <target state="final">Kategorieauswahl ignorieren</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.or" approved="yes">
+        <source>Show FAQs with selected categories (OR)</source>
+        <target state="final">Zeige häufig gestellte Fragen mit den ausgewählten Kategorien (ODER)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.and" approved="yes">
+        <source>Show FAQs with selected categories (AND)</source>
+        <target state="final">Zeige häufig gestellte Fragen mit den ausgewählten Kategorien (UND)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.notor" approved="yes">
+        <source>Do NOT show FAQs with selected categories (NOTOR)</source>
+        <target state="final">Zeige KEINE häufig gestellte Fragen aus den ausgewählten Kategorien (ODER)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.notand" approved="yes">
+        <source>Do NOT show FAQs with selected categories (NOTAND)</source>
+        <target state="final">Zeige KEINE häufig gestellte Fragen aus den ausgewählten Kategorien (UND)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categories" approved="yes">
+        <source>Categories</source>
+        <target state="final">Kategorien</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.includeSubcategories" approved="yes">
+        <source>Include Subcategories</source>
+        <target state="final">Unterkategorien einbeziehen</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categories.possibleMisconfiguration" approved="yes">
+        <source>Possible misconfiguration!</source>
+        <target state="final">Mögliche Fehlkonfiguration!</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.detailPid" approved="yes">
+        <source>Detail Page</source>
+        <target state="final">Detailseite</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.listPid" approved="yes">
+        <source>List Page</source>
+        <target state="final">Listen Seite</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.disableOverwriteDemand" approved="yes">
+        <source>Disable overwrite demand</source>
+        <target state="final">Überschreiben von Plugin-Einstellungen deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.templateLayout" approved="yes">
+        <source>Template Layout</source>
+        <target state="final">Template-Layout</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.enablePagination" approved="yes">
+        <source>Enable pagination</source>
+        <target state="final">Paginierung aktivieren</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.itemsPerPage" approved="yes">
+        <source>Items per page</source>
+        <target state="final">Datensätze pro Seite</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.maxNumPages" approved="yes">
+        <source>Maximum number of pages</source>
+        <target state="final">Maximale Anzahl von Seiten</target>
+      </trans-unit>
+    </body>
   </file>
 </xliff>
