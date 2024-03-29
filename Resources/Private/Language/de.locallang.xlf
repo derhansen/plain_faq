@@ -3,22 +3,58 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="de">
     <header/>
     <body>
-			
-			
-			
-			
-			
-			
-
-			
-			
-
-			
-
-			
-			
-			
-			
-		</body>
+      <trans-unit id="tx_plainfaq_domain_model_faq" approved="yes">
+        <source>Faq</source>
+        <target state="final">Häufig gestellte Frage</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.question" approved="yes">
+        <source>Question</source>
+        <target state="final">Frage</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.answer" approved="yes">
+        <source>Answer</source>
+        <target state="final">Antwort</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.keywords" approved="yes">
+        <source>Keywords</source>
+        <target state="final">Schlagworte</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.images" approved="yes">
+        <source>Images</source>
+        <target state="final">Bilder</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.files" approved="yes">
+        <source>Files</source>
+        <target state="final">Dateien</target>
+      </trans-unit>
+      <trans-unit id="labels.backToList" approved="yes">
+        <source>Back to list view</source>
+        <target state="final">Zurück zur Listenansicht</target>
+      </trans-unit>
+      <trans-unit id="labels.download" approved="yes">
+        <source>Download</source>
+        <target state="final">Download</target>
+      </trans-unit>
+      <trans-unit id="labels.faqList" approved="yes">
+        <source>List</source>
+        <target state="final">Liste</target>
+      </trans-unit>
+      <trans-unit id="pagination.first" approved="yes">
+        <source>First page</source>
+        <target state="final">Erste Seite</target>
+      </trans-unit>
+      <trans-unit id="pagination.previous" approved="yes">
+        <source>Previous</source>
+        <target state="final">Vorherige</target>
+      </trans-unit>
+      <trans-unit id="pagination.next" approved="yes">
+        <source>Next</source>
+        <target state="final">Nächste</target>
+      </trans-unit>
+      <trans-unit id="pagination.last" approved="yes">
+        <source>Last page</source>
+        <target state="final">Letzte Seite</target>
+      </trans-unit>
+    </body>
   </file>
 </xliff>
