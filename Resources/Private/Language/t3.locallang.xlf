@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_plainfaq_domain_model_faq">
+        <source>Faq</source>
+        <target>crwdns332674:0crwdne332674:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.question">
+        <source>Question</source>
+        <target>crwdns332676:0crwdne332676:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.answer">
+        <source>Answer</source>
+        <target>crwdns332678:0crwdne332678:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.keywords">
+        <source>Keywords</source>
+        <target>crwdns332680:0crwdne332680:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.images">
+        <source>Images</source>
+        <target>crwdns332682:0crwdne332682:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.files">
+        <source>Files</source>
+        <target>crwdns332684:0crwdne332684:0</target>
+      </trans-unit>
+      <trans-unit id="labels.backToList">
+        <source>Back to list view</source>
+        <target>crwdns332686:0crwdne332686:0</target>
+      </trans-unit>
+      <trans-unit id="labels.download">
+        <source>Download</source>
+        <target>crwdns332688:0crwdne332688:0</target>
+      </trans-unit>
+      <trans-unit id="labels.faqList">
+        <source>List</source>
+        <target>crwdns332690:0crwdne332690:0</target>
+      </trans-unit>
+      <trans-unit id="pagination.first">
+        <source>First page</source>
+        <target>crwdns332692:0crwdne332692:0</target>
+      </trans-unit>
+      <trans-unit id="pagination.previous">
+        <source>Previous</source>
+        <target>crwdns332694:0crwdne332694:0</target>
+      </trans-unit>
+      <trans-unit id="pagination.next">
+        <source>Next</source>
+        <target>crwdns332696:0crwdne332696:0</target>
+      </trans-unit>
+      <trans-unit id="pagination.last">
+        <source>Last page</source>
+        <target>crwdns332698:0crwdne332698:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
