@@ -14,7 +14,6 @@ namespace Derhansen\PlainFaq\Domain\Repository;
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Event\ModifyFaqQueryConstraintsEvent;
 use Derhansen\PlainFaq\Utility\CategoryUtility;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\AndInterface;
@@ -34,13 +33,6 @@ class FaqRepository extends Repository
     protected $defaultOrderings = [
         'question' => QueryInterface::ORDER_ASCENDING,
     ];
-
-    protected EventDispatcherInterface $eventDispatcher;
-
-    public function injectEventDispatcher(EventDispatcherInterface $eventDispatcher)
-    {
-        $this->eventDispatcher = $eventDispatcher;
-    }
 
     /**
      * Returns faq articles matching the demands of the given demand object
