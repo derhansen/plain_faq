@@ -35,14 +35,12 @@ class Faq extends AbstractEntity
 
     /**
      * @var ObjectStorage<FileReference>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      * @Extbase\ORM\Lazy
      */
     protected ObjectStorage $images;
 
     /**
      * @var ObjectStorage<FileReference>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      * @Extbase\ORM\Lazy
      */
     protected ObjectStorage $files;
