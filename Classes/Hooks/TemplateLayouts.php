@@ -13,9 +13,6 @@ namespace Derhansen\PlainFaq\Hooks;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
-/**
- * Hook for Template Layouts
- */
 class TemplateLayouts
 {
     /**

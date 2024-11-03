@@ -15,9 +15,6 @@ use Derhansen\PlainFaq\Service\FaqCacheService;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * Hooks for DataHandler
- */
 class DataHandlerHooks
 {
     /**

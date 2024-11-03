@@ -16,9 +16,6 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * CategoryUtility
- */
 class CategoryUtility
 {
     /**

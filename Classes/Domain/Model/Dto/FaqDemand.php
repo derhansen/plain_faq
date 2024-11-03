@@ -13,9 +13,6 @@ namespace Derhansen\PlainFaq\Domain\Model\Dto;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-/**
- * FaqDemand
- */
 class FaqDemand extends AbstractEntity
 {
     protected string $orderField = '';
