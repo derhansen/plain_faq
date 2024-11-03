@@ -27,7 +27,6 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class FaqController extends ActionController
 {
@@ -55,9 +54,7 @@ class FaqController extends ActionController
     protected function initializeView(): void
     {
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
-        if ($this->getTypoScriptFrontendController()) {
-            $this->view->assign('pageData', $this->getTypoScriptFrontendController()->page);
-        }
+        $this->view->assign('pageData', $this->getFrontendPageInformation()->getPageRecord());
     }
 
     /**
@@ -181,8 +178,8 @@ class FaqController extends ActionController
         return $demand;
     }
 
-    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
+    protected function getFrontendPageInformation(): PageInformation
     {
-        return $GLOBALS['TSFE'] ?? null;
+        return $this->request->getAttribute('frontend.page.information');
     }
 }
