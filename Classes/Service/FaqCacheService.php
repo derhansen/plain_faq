@@ -12,9 +12,10 @@ declare(strict_types=1);
 namespace Derhansen\PlainFaq\Service;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
+use TYPO3\CMS\Core\Cache\CacheDataCollectorInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Cache\CacheTag;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class FaqCacheService
 {
@@ -24,15 +25,17 @@ class FaqCacheService
      * Following cache tags will be added to tsfe:
      * "tx_plainfaq_uid_[faq:uid]"
      */
-    public function addCacheTagsByFaqRecords(array $faqRecords): void
-    {
+    public function addCacheTagsByFaqRecords(
+        CacheDataCollectorInterface $cacheDataCollector,
+        array $faqRecords
+    ): void {
         $cacheTags = [];
         foreach ($faqRecords as $faq) {
             // cache tag for each faq record
-            $cacheTags[] = 'tx_plainfaq_uid_' . $faq->getUid();
+            $cacheTags[] = new CacheTag('tx_plainfaq_uid_' . $faq->getUid(), 86400);
         }
         if (count($cacheTags) > 0) {
-            $this->getTypoScriptFrontendController()->addCacheTags($cacheTags);
+            $cacheDataCollector->addCacheTags(...$cacheTags);
         }
     }
 
@@ -40,17 +43,19 @@ class FaqCacheService
      * Adds page cache tags by used storagePages.
      * This adds tags with the scheme tx_plainfaq_pid_[faq:pid]
      */
-    public function addPageCacheTagsByFaqDemandObject(FaqDemand $demand)
-    {
+    public function addPageCacheTagsByFaqDemandObject(
+        CacheDataCollectorInterface $cacheDataCollector,
+        FaqDemand $demand
+    ): void {
         $cacheTags = [];
         if ($demand->getStoragePage()) {
             // Add cache tags for each storage page
-            foreach (GeneralUtility::trimExplode(',', $demand->getStoragePage()) as $pageId) {
-                $cacheTags[] = 'tx_plainfaq_pid_' . $pageId;
+            foreach (GeneralUtility::trimExplode(',', $demand->getStoragePage()) as $pageUid) {
+                $cacheTags[] = new CacheTag('tx_plainfaq_pid_' . $pageUid, 86400);
             }
         }
         if (count($cacheTags) > 0) {
-            $this->getTypoScriptFrontendController()->addCacheTags($cacheTags);
+            $cacheDataCollector->addCacheTags(...$cacheTags);
         }
     }
 
@@ -72,10 +77,5 @@ class FaqCacheService
         foreach ($cacheTagsToFlush as $cacheTagToFlush) {
             $cacheManager->flushCachesInGroupByTag('pages', $cacheTagToFlush);
         }
-    }
-
-    protected function getTypoScriptFrontendController(): ?TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'] ?: null;
     }
 }

@@ -105,7 +105,8 @@ class FaqController extends ActionController
         $variables = $modifyListViewVariablesEvent->getVariables();
         $this->view->assignMultiple($variables);
 
-        $this->faqCacheService->addPageCacheTagsByFaqDemandObject($faqDemand);
+        $cacheDataCollector = $this->request->getAttribute('frontend.cache.collector');
+        $this->faqCacheService->addPageCacheTagsByFaqDemandObject($cacheDataCollector, $faqDemand);
 
         return $this->htmlResponse();
     }
@@ -147,7 +148,9 @@ class FaqController extends ActionController
         $variables = $modifyDetailViewVariablesEvent->getVariables();
 
         $this->view->assignMultiple($variables);
-        $this->faqCacheService->addCacheTagsByFaqRecords([$faq]);
+
+        $cacheDataCollector = $this->request->getAttribute('frontend.cache.collector');
+        $this->faqCacheService->addCacheTagsByFaqRecords($cacheDataCollector, [$faq]);
 
         return $this->htmlResponse();
     }
