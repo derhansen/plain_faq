@@ -2,7 +2,7 @@
 
 defined('TYPO3') or die();
 
-// Override events icon
+// Override FAQ icon
 $GLOBALS['TCA']['pages']['columns']['module']['config']['items'][] = [
     'label' =>  'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:faq-folder',
     'value' => 'faqs',
