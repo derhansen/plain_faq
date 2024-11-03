@@ -1,36 +1,27 @@
-
 <T3DataStructure>
-    <meta type="array">
-        <langDisable>1</langDisable>
-    </meta>
     <sheets>
         <!-- Sheet: Settings -->
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.additional</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.additional</sheetTitle>
                 <type>array</type>
                 <el>
                     <!-- List Pid -->
                     <settings.listPid>
-                        <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.listPid</label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                                <show_thumbs>1</show_thumbs>
-                                <wizards>
-                                    <suggest>
-                                        <type>suggest</type>
-                                    </suggest>
-                                </wizards>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.listPid</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                            <show_thumbs>1</show_thumbs>
+                            <wizards>
+                                <suggest>
+                                    <type>suggest</type>
+                                </suggest>
+                            </wizards>
+                        </config>
                     </settings.listPid>
                 </el>
             </ROOT>
@@ -39,28 +30,24 @@
         <!-- Sheet: Template -->
         <template>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.template</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.template</sheetTitle>
                 <type>array</type>
                 <el>
 
                     <!-- Template Layout -->
                     <settings.templateLayout>
-                        <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.templateLayout</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <itemsProcFunc>Derhansen\PlainFaq\Hooks\TemplateLayouts->userTemplateLayout</itemsProcFunc>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.templateLayout</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <itemsProcFunc>Derhansen\PlainFaq\Hooks\TemplateLayouts->userTemplateLayout</itemsProcFunc>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <label />
+                                    <value />
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.templateLayout>
                 </el>
             </ROOT>
