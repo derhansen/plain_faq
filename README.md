@@ -34,8 +34,8 @@ The screenshot below shows the backend form of a FAQ record.
 
 ## Documentation
 
-The extension includes a detailed documentation in ReST format. You can view the extension manual on TYPO3 TER https://docs.typo3.org/p/derhansen/plain-faq/master/en-us/ or use
-ext:sphinx to view the documentation directly in your TYPO3 installation.
+The extension includes a detailed documentation in ReST format. You can view the extension manual on TYPO3 
+TER https://docs.typo3.org/p/derhansen/plain-faq/master/en-us/
 
 ## Installation
 
@@ -51,8 +51,9 @@ Download and install the extension with the TYPO3 extension manager module.
 
 | Version | TYPO3     | PHP       | Support/Development                  |
 |---------|-----------|-----------|--------------------------------------|
-| 4.x     | 12.4      | 8.0 - 8.3 | Features, Bugfixes, Security Updates |
-| 3.x     | 11.5      | 7.4 - 8.3 | Features, Bugfixes, Security Updates |
+| 5.x     | 13.4      | 8.2 - 8.4 | Features, Bugfixes, Security Updates |
+| 4.x     | 12.4      | 8.0 - 8.4 | Features, Bugfixes, Security Updates |
+| 3.x     | 11.5      | 7.4 - 8.4 | Bugfixes, Security Updates           |
 | 2.x     | 10.4      | 7.2 - 7.4 | Security Updates                     |
 | 1.x     | 8.7 - 9.5 | 7.0 - 7.3 | Support dropped                      |
 
