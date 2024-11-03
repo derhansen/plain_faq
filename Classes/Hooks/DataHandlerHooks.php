@@ -13,6 +13,7 @@ namespace Derhansen\PlainFaq\Hooks;
 
 use Derhansen\PlainFaq\Service\FaqCacheService;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
+use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class DataHandlerHooks
@@ -20,10 +21,8 @@ class DataHandlerHooks
     /**
      * Flushes the cache if a faq record was edited.
      * This happens on two levels: by UID and by PID.
-     *
-     * @param array $params
      */
-    public function clearCachePostProc(array $params)
+    public function clearCachePostProc(array $params): void
     {
         if (isset($params['table']) && $params['table'] === 'tx_plainfaq_domain_model_faq') {
             $faqUid = $params['uid'] ?? 0;
@@ -42,15 +41,14 @@ class DataHandlerHooks
      * Structure of the checkFields array:
      *
      * array('sheet' => array('field1', 'field2'));
-     *
-     * @param string $status
-     * @param string $table
-     * @param string $id
-     * @param array $fieldArray
-     * @param \TYPO3\CMS\Core\DataHandling\DataHandler $dataHandler
      */
-    public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$dataHandler)
-    {
+    public function processDatamap_postProcessFieldArray(
+        string $status,
+        string $table,
+        string|int $id,
+        array &$fieldArray,
+        DataHandler $dataHandler
+    ): void {
         if ($table === 'tt_content' &&
             $status === 'update' &&
             isset($fieldArray['pi_flexform']) &&
@@ -104,7 +102,7 @@ class DataHandlerHooks
 
             /** @var \TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools $flexFormTools */
             $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
-            $fieldArray['pi_flexform'] = $flexFormTools->flexArray2Xml($flexformData, true);
+            $fieldArray['pi_flexform'] = $flexFormTools->flexArray2Xml($flexformData);
         }
     }
 }

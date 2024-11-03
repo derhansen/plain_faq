@@ -12,15 +12,14 @@ declare(strict_types=1);
 namespace Derhansen\PlainFaq\Hooks;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Localization\LanguageService;
 
 class TemplateLayouts
 {
     /**
      * Itemsproc function to extend the selection of templateLayouts in the plugin
-     *
-     * @param array $config Configuration array
      */
-    public function userTemplateLayout(array &$config)
+    public function userTemplateLayout(array &$config): void
     {
         $pid = $config['flexParentDatabaseRow']['pid'] ?? 0;
         if ($pid === 0) {
@@ -29,19 +28,15 @@ class TemplateLayouts
         $templateLayouts = $this->getTemplateLayoutsFromTsConfig($pid);
         foreach ($templateLayouts as $index => $layout) {
             $additionalLayout = [
-                $GLOBALS['LANG']->sL($layout),
+                $this->getLanguageService()->sL($layout),
                 $index,
             ];
-            array_push($config['items'], $additionalLayout);
+            $config['items'][] = $additionalLayout;
         }
     }
 
     /**
      * Get template layouts defined in TsConfig
-     *
-     * @param int $pageUid PageUID
-     *
-     * @return array
      */
     protected function getTemplateLayoutsFromTsConfig(int $pageUid): array
     {
@@ -54,5 +49,10 @@ class TemplateLayouts
         }
 
         return $templateLayouts;
+    }
+
+    protected function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 }
