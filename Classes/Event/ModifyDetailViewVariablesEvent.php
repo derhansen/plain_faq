@@ -12,19 +12,22 @@ declare(strict_types=1);
 namespace Derhansen\PlainFaq\Event;
 
 use Derhansen\PlainFaq\Controller\FaqController;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * This event is triggered before the detail view is rendered
  */
 final class ModifyDetailViewVariablesEvent
 {
-    private array $variables;
-    private FaqController $faqController;
+    public function __construct(
+        private readonly ServerRequestInterface $request,
+        private array $variables,
+        private readonly FaqController $faqController
+    ) {}
 
-    public function __construct(array $variables, FaqController $faqController)
+    public function getRequest(): ServerRequestInterface
     {
-        $this->variables = $variables;
-        $this->faqController = $faqController;
+        return $this->request;
     }
 
     public function getVariables(): array

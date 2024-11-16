@@ -100,7 +100,7 @@ class FaqController extends ActionController
             'pagination' => $this->getPagination($faqs),
         ];
 
-        $modifyListViewVariablesEvent = new ModifyListViewVariablesEvent($variables, $this);
+        $modifyListViewVariablesEvent = new ModifyListViewVariablesEvent($this->request, $variables, $this);
         $this->eventDispatcher->dispatch($modifyListViewVariablesEvent);
         $variables = $modifyListViewVariablesEvent->getVariables();
         $this->view->assignMultiple($variables);
@@ -143,7 +143,7 @@ class FaqController extends ActionController
             throw new PropagateResponseException($response, 1634749577);
         }
 
-        $modifyDetailViewVariablesEvent = new ModifyDetailViewVariablesEvent(['faq' => $faq], $this);
+        $modifyDetailViewVariablesEvent = new ModifyDetailViewVariablesEvent($this->request, ['faq' => $faq], $this);
         $this->eventDispatcher->dispatch($modifyDetailViewVariablesEvent);
         $variables = $modifyDetailViewVariablesEvent->getVariables();
 
