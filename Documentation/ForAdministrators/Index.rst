@@ -19,4 +19,3 @@ For Administrators
    Installation/Index
    Configuration/Index
    Templates/Index
-   Migration/Index
