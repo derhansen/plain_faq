@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="da">
+    <header/>
+    <body>
+      <trans-unit id="extension.title" approved="yes">
+        <source>FAQ</source>
+        <target state="final">FAQ</target>
+      </trans-unit>
+      <trans-unit id="CType.div.plugingroup" approved="yes">
+        <source>FAQ</source>
+        <target state="final">FAQ</target>
+      </trans-unit>
+      <trans-unit id="plugin.pilist.title" approved="yes">
+        <source>List view</source>
+        <target state="final">Listevisning</target>
+      </trans-unit>
+      <trans-unit id="plugin.pidetail.title" approved="yes">
+        <source>Detail view</source>
+        <target state="final">Detaljevisning</target>
+      </trans-unit>
+      <trans-unit id="plugin.pilistdetail.title" approved="yes">
+        <source>List view (without overloading detail view)</source>
+        <target state="final">Listevisning (uden overbelastning detaljevisning)</target>
+      </trans-unit>
+      <trans-unit id="faq-folder" approved="yes">
+        <source>FAQs</source>
+        <target state="final">FAQer</target>
+      </trans-unit>
+      <trans-unit id="tabs.language" approved="yes">
+        <source>Language</source>
+        <target state="final">Sprog</target>
+      </trans-unit>
+      <trans-unit id="tabs.categories" approved="yes">
+        <source>Categories</source>
+        <target state="final">Kategorier</target>
+      </trans-unit>
+      <trans-unit id="tabs.media" approved="yes">
+        <source>Media</source>
+        <target state="final">Medie</target>
+      </trans-unit>
+      <trans-unit id="tabs.relations" approved="yes">
+        <source>Relations</source>
+        <target state="final">Relationer</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.settings" approved="yes">
+        <source>Settings</source>
+        <target state="final">Indstillinger</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.additional" approved="yes">
+        <source>Additional</source>
+        <target state="final">Yderligere</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.pagination" approved="yes">
+        <source>Pagination</source>
+        <target state="final">Sideinddeling</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.template" approved="yes">
+        <source>Template</source>
+        <target state="final">Skabelon</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.mode" approved="yes">
+        <source>What to display</source>
+        <target state="final">Hvad skal vises</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField" approved="yes">
+        <source>Sort by</source>
+        <target state="final">Sortér efter</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField.question" approved="yes">
+        <source>Question</source>
+        <target state="final">Spørgsmål</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField.sorting" approved="yes">
+        <source>Order in TYPO3 backend</source>
+        <target state="final">Rækkefølge i TYPO3 backend</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection" approved="yes">
+        <source>Sort direction</source>
+        <target state="final">Sorteringsrækkefølge</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection.ascending" approved="yes">
+        <source>Ascending</source>
+        <target state="final">Stigende</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection.descending" approved="yes">
+        <source>Descending</source>
+        <target state="final">Faldende</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.queryLimit" approved="yes">
+        <source>Max records displayed</source>
+        <target state="final">Maksimalt antal elementer der vises</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction" approved="yes">
+        <source>Category Conjunction</source>
+        <target state="final">Kategori sammenlægning</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.ignore" approved="yes">
+        <source>Ignore category selection</source>
+        <target state="final">Ignorér kategorivalg</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.or" approved="yes">
+        <source>Show FAQs with selected categories (OR)</source>
+        <target state="final">Vis FAQer med de valgte kategorier (ELLER)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.and" approved="yes">
+        <source>Show FAQs with selected categories (AND)</source>
+        <target state="final">Vis FAQer med de valgte kategorier (OG)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.notor" approved="yes">
+        <source>Do NOT show FAQs with selected categories (NOTOR)</source>
+        <target state="final">Vis IKKE FAQer med de valgte kategorier (IKKEELLER)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.notand" approved="yes">
+        <source>Do NOT show FAQs with selected categories (NOTAND)</source>
+        <target state="final">Vis IKKE FAQer med de valgte kategorier (IKKEOG)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categories" approved="yes">
+        <source>Categories</source>
+        <target state="final">Kategorier</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.includeSubcategories" approved="yes">
+        <source>Include Subcategories</source>
+        <target state="final">Inkludér underkategorier</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.storagePage" approved="yes">
+        <source>Record Storage Page</source>
+        <target state="final">Opbevaringsside for elementer</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categories.possibleMisconfiguration" approved="yes">
+        <source>Possible misconfiguration!</source>
+        <target state="final">Mulig fejlkonfiguration!</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.detailPid" approved="yes">
+        <source>Detail Page</source>
+        <target state="final">Detaljeside</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.listPid" approved="yes">
+        <source>List Page</source>
+        <target state="final">Listeside</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.disableOverwriteDemand" approved="yes">
+        <source>Disable overwrite demand</source>
+        <target state="final">Deaktivér overskriv-krav</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.templateLayout" approved="yes">
+        <source>Template Layout</source>
+        <target state="final">Skabelon-layout</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.enablePagination" approved="yes">
+        <source>Enable pagination</source>
+        <target state="final">Aktivér sideinddeling</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.itemsPerPage" approved="yes">
+        <source>Items per page</source>
+        <target state="final">Antal pr. side</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.maxNumPages" approved="yes">
+        <source>Maximum number of pages</source>
+        <target state="final">Maksimum antal sider</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

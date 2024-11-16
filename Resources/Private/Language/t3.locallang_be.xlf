@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="extension.title">
+        <source>FAQ</source>
+        <target>crwdns332700:0crwdne332700:0</target>
+      </trans-unit>
+      <trans-unit id="CType.div.plugingroup">
+        <source>FAQ</source>
+        <target>crwdns332702:0crwdne332702:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.pilist.title">
+        <source>List view</source>
+        <target>crwdns332704:0crwdne332704:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.pidetail.title">
+        <source>Detail view</source>
+        <target>crwdns332706:0crwdne332706:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.pilistdetail.title">
+        <source>List view (without overloading detail view)</source>
+        <target>crwdns332708:0crwdne332708:0</target>
+      </trans-unit>
+      <trans-unit id="faq-folder">
+        <source>FAQs</source>
+        <target>crwdns332710:0crwdne332710:0</target>
+      </trans-unit>
+      <trans-unit id="tabs.language">
+        <source>Language</source>
+        <target>crwdns332712:0crwdne332712:0</target>
+      </trans-unit>
+      <trans-unit id="tabs.categories">
+        <source>Categories</source>
+        <target>crwdns332714:0crwdne332714:0</target>
+      </trans-unit>
+      <trans-unit id="tabs.media">
+        <source>Media</source>
+        <target>crwdns332716:0crwdne332716:0</target>
+      </trans-unit>
+      <trans-unit id="tabs.relations">
+        <source>Relations</source>
+        <target>crwdns332718:0crwdne332718:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.settings">
+        <source>Settings</source>
+        <target>crwdns332720:0crwdne332720:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.additional">
+        <source>Additional</source>
+        <target>crwdns332722:0crwdne332722:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.pagination">
+        <source>Pagination</source>
+        <target>crwdns332724:0crwdne332724:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.tab.template">
+        <source>Template</source>
+        <target>crwdns332726:0crwdne332726:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.mode">
+        <source>What to display</source>
+        <target>crwdns332728:0crwdne332728:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField">
+        <source>Sort by</source>
+        <target>crwdns332730:0crwdne332730:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField.question">
+        <source>Question</source>
+        <target>crwdns332732:0crwdne332732:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderField.sorting">
+        <source>Order in TYPO3 backend</source>
+        <target>crwdns332734:0crwdne332734:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection">
+        <source>Sort direction</source>
+        <target>crwdns332736:0crwdne332736:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection.ascending">
+        <source>Ascending</source>
+        <target>crwdns332738:0crwdne332738:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.orderDirection.descending">
+        <source>Descending</source>
+        <target>crwdns332740:0crwdne332740:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.queryLimit">
+        <source>Max records displayed</source>
+        <target>crwdns332742:0crwdne332742:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction">
+        <source>Category Conjunction</source>
+        <target>crwdns332744:0crwdne332744:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.ignore">
+        <source>Ignore category selection</source>
+        <target>crwdns332746:0crwdne332746:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.or">
+        <source>Show FAQs with selected categories (OR)</source>
+        <target>crwdns332748:0crwdne332748:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.and">
+        <source>Show FAQs with selected categories (AND)</source>
+        <target>crwdns332750:0crwdne332750:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.notor">
+        <source>Do NOT show FAQs with selected categories (NOTOR)</source>
+        <target>crwdns332752:0crwdne332752:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categoryConjunction.notand">
+        <source>Do NOT show FAQs with selected categories (NOTAND)</source>
+        <target>crwdns332754:0crwdne332754:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categories">
+        <source>Categories</source>
+        <target>crwdns332756:0crwdne332756:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.includeSubcategories">
+        <source>Include Subcategories</source>
+        <target>crwdns332758:0crwdne332758:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.storagePage">
+        <source>Record Storage Page</source>
+        <target>crwdns355530:0crwdne355530:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.categories.possibleMisconfiguration">
+        <source>Possible misconfiguration!</source>
+        <target>crwdns332760:0crwdne332760:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.detailPid">
+        <source>Detail Page</source>
+        <target>crwdns332762:0crwdne332762:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.listPid">
+        <source>List Page</source>
+        <target>crwdns332764:0crwdne332764:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.disableOverwriteDemand">
+        <source>Disable overwrite demand</source>
+        <target>crwdns332766:0crwdne332766:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.templateLayout">
+        <source>Template Layout</source>
+        <target>crwdns332768:0crwdne332768:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.enablePagination">
+        <source>Enable pagination</source>
+        <target>crwdns332770:0crwdne332770:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.itemsPerPage">
+        <source>Items per page</source>
+        <target>crwdns332772:0crwdne332772:0</target>
+      </trans-unit>
+      <trans-unit id="flexforms.plugin.field.maxNumPages">
+        <source>Maximum number of pages</source>
+        <target>crwdns332774:0crwdne332774:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
