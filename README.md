@@ -1,4 +1,6 @@
-![CI](https://github.com/derhansen/plain_faq/workflows/CI/badge.svg)
+[![Code Quality Checks](https://github.com/derhansen/plain_faq/actions/workflows/CodeQuality.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/CodeQuality.yml)
+[![Unit tests](https://github.com/derhansen/plain_faq/actions/workflows/UnitTests.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/UnitTests.yml)
+[![Functional tests](https://github.com/derhansen/plain_faq/actions/workflows/FunctionalTests.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/FunctionalTests.yml)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 # Plain FAQ 
