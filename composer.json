@@ -1,7 +1,7 @@
 {
     "name": "derhansen/plain-faq",
     "type": "typo3-cms-extension",
-    "description": "Plain FAQ extension with list and detail view. Migration commands to migrate data and plugin settings from ext:irfaq",
+    "description": "Plain FAQ extension with list and detail view.",
     "homepage": "https://github.com/derhansen/plain_faq",
     "support": {
         "issues": "https://github.com/derhansen/plain_faq/issues"
