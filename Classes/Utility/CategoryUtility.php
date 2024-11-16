@@ -20,9 +20,6 @@ class CategoryUtility
 {
     /**
      * Returns the given categories including their subcategories
-     *
-     * @param string $categories
-     * @return string
      */
     public static function getCategoryListWithChilds(string $categories): string
     {

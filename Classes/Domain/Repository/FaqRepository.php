@@ -20,6 +20,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Qom\AndInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\NotInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\OrInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class FaqRepository extends Repository
@@ -33,10 +34,8 @@ class FaqRepository extends Repository
 
     /**
      * Returns faq articles matching the demands of the given demand object
-     *
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findDemanded(FaqDemand $faqDemand)
+    public function findDemanded(FaqDemand $faqDemand): QueryResultInterface
     {
         $constraints = [];
         $query = $this->createQuery();

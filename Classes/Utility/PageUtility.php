@@ -32,7 +32,7 @@ class PageUtility
         $storagePids = GeneralUtility::intExplode(',', $pidList);
         foreach ($storagePids as $startPid) {
             $pids = self::getTreeList($startPid, $recursive);
-            if (strlen($pids) > 0) {
+            if ($pids !== '') {
                 $recursiveStoragePids .= ',' . $pids;
             }
         }

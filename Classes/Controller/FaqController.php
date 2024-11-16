@@ -39,12 +39,12 @@ class FaqController extends ActionController
     protected FaqRepository $faqRepository;
     protected FaqCacheService $faqCacheService;
 
-    public function injectFaqRepository(FaqRepository $faqRepository)
+    public function injectFaqRepository(FaqRepository $faqRepository): void
     {
         $this->faqRepository = $faqRepository;
     }
 
-    public function injectFaqCacheService(FaqCacheService $cacheService)
+    public function injectFaqCacheService(FaqCacheService $cacheService): void
     {
         $this->faqCacheService = $cacheService;
     }
