@@ -23,7 +23,8 @@ final class ModifyListViewVariablesEvent
         private readonly ServerRequestInterface $request,
         private array $variables,
         private readonly FaqController $faqController
-    ) {}
+    ) {
+    }
 
     public function getRequest(): ServerRequestInterface
     {
