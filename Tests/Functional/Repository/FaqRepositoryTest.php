@@ -11,13 +11,13 @@ namespace Derhansen\PlainFaq\Tests\Functional\Repository;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use PHPUnit\Framework\Attributes\Test;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * Test case for FaqRepository
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class FaqRepositoryTest extends FunctionalTestCase
 {
@@ -30,13 +30,14 @@ class FaqRepositoryTest extends FunctionalTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->faqRepository = GeneralUtility::makeInstance(FaqRepository::class);
+        $this->faqRepository = $this->getContainer()->get(FaqRepository::class);
         $this->importCSVDataSet(__DIR__ . '/../Fixtures/faqs.csv');
+
+        $request = (new ServerRequest())->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_BE);
+        $GLOBALS['TYPO3_REQUEST'] = $request;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findRecordsByUid(): void
     {
         $faq = $this->faqRepository->findByUid(1);
@@ -67,7 +68,7 @@ class FaqRepositoryTest extends FunctionalTestCase
      */
     public function findDemandedRespectsStoragePage(string $storagePage, int $expected): void
     {
-        $demand = GeneralUtility::makeInstance(FaqDemand::class);
+        $demand = new FaqDemand();
         $demand->setStoragePage($storagePage);
 
         $result = $this->faqRepository->findDemanded($demand);
@@ -126,7 +127,7 @@ class FaqRepositoryTest extends FunctionalTestCase
         bool $includeSub,
         int $expected
     ): void {
-        $demand = GeneralUtility::makeInstance(FaqDemand::class);
+        $demand = new FaqDemand();
         $demand->setStoragePage(1);
         $demand->setCategoryConjunction($conjunction);
         $demand->setCategories($categories);
@@ -163,7 +164,7 @@ class FaqRepositoryTest extends FunctionalTestCase
      */
     public function findDemandedRespectsOrdering(string $orderField, string $orderDirection, int $expected): void
     {
-        $demand = GeneralUtility::makeInstance(FaqDemand::class);
+        $demand = new FaqDemand();
         $demand->setStoragePage(1);
         $demand->setOrderField($orderField);
         $demand->setOrderFieldAllowed($orderField);
@@ -173,12 +174,10 @@ class FaqRepositoryTest extends FunctionalTestCase
         self::assertEquals($expected, $result->getFirst()->getUid());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function findDemandedRespectsQueryLimit(): void
     {
-        $demand = GeneralUtility::makeInstance(FaqDemand::class);
+        $demand = new FaqDemand();
         $demand->setStoragePage(1);
         $demand->setQueryLimit(2);
 

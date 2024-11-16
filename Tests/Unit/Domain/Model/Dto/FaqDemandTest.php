@@ -10,19 +10,15 @@ namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
  */
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
  * Test case for FaqDemand
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class FaqDemandTest extends BaseTestCase
 {
-    /**
-     * @var \Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand
-     */
-    protected $subject;
+    protected FaqDemand $subject;
 
     protected function setUp(): void
     {
@@ -30,142 +26,105 @@ class FaqDemandTest extends BaseTestCase
         $this->subject = new FaqDemand();
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-    }
-
-    /**
-     * @test
-     */
-    public function orderFieldReturnsInitialValue()
+    #[Test]
+    public function orderFieldReturnsInitialValue(): void
     {
         self::assertEquals('', $this->subject->getOrderField());
     }
 
-    /**
-     * @test
-     */
-    public function orderFieldCanBeSet()
+    #[Test]
+    public function orderFieldCanBeSet(): void
     {
         $this->subject->setOrderField('order');
         self::assertEquals('order', $this->subject->getOrderField());
     }
 
-    /**
-     * @test
-     */
-    public function orderFieldAllowedReturnsInitialValue()
+    #[Test]
+    public function orderFieldAllowedReturnsInitialValue(): void
     {
         self::assertEquals('', $this->subject->getOrderFieldAllowed());
     }
 
-    /**
-     * @test
-     */
-    public function orderFieldAllowedCanBeSet()
+    #[Test]
+    public function orderFieldAllowedCanBeSet(): void
     {
         $this->subject->setOrderFieldAllowed('title');
         self::assertEquals('title', $this->subject->getOrderFieldAllowed());
     }
 
-    /**
-     * @test
-     */
-    public function orderDirectionReturnsInitalValue()
+    #[Test]
+    public function orderDirectionReturnsInitalValue(): void
     {
         self::assertEquals('', $this->subject->getOrderDirection());
     }
 
-    /**
-     * @test
-     */
-    public function orderDirectionCanBeSet()
+    #[Test]
+    public function orderDirectionCanBeSet(): void
     {
         $this->subject->setOrderDirection('asc');
         self::assertEquals('asc', $this->subject->getOrderDirection());
     }
 
-    /**
-     * @test
-     */
-    public function categoriesReturnsInitialValue()
+    #[Test]
+    public function categoriesReturnsInitialValue(): void
     {
         self::assertEquals('', $this->subject->getCategories());
     }
 
-    /**
-     * @test
-     */
-    public function categoriesCanBeSet()
+    #[Test]
+    public function categoriesCanBeSet(): void
     {
         $this->subject->setCategories('1,2,3');
         self::assertEquals('1,2,3', $this->subject->getCategories());
     }
 
-    /**
-     * @test
-     */
-    public function includeSubcategoriesReturnsInitialValue()
+    #[Test]
+    public function includeSubcategoriesReturnsInitialValue(): void
     {
         self::assertFalse($this->subject->getIncludeSubcategories());
     }
 
-    /**
-     * @test
-     */
-    public function includeSubcategoriesCanBeSet()
+    #[Test]
+    public function includeSubcategoriesCanBeSet(): void
     {
         $this->subject->setIncludeSubcategories(true);
         self::assertTrue($this->subject->getIncludeSubcategories());
     }
 
-    /**
-     * @test
-     */
-    public function categoryConjunctionReturnsInitialValue()
+    #[Test]
+    public function categoryConjunctionReturnsInitialValue(): void
     {
         self::assertEquals('', $this->subject->getCategoryConjunction());
     }
 
-    /**
-     * @test
-     */
-    public function categoryConjunctionCanBeSet()
+    #[Test]
+    public function categoryConjunctionCanBeSet(): void
     {
         $this->subject->setCategoryConjunction('and');
         self::assertEquals('and', $this->subject->getCategoryConjunction());
     }
 
-    /**
-     * @test
-     */
-    public function storagePageReturnsInitialValue()
+    #[Test]
+    public function storagePageReturnsInitialValue(): void
     {
         self::assertEquals('', $this->subject->getStoragePage());
     }
 
-    /**
-     * @test
-     */
-    public function storagePageCanBeSet()
+    #[Test]
+    public function storagePageCanBeSet(): void
     {
         $this->subject->setStoragePage('1,2,3');
         self::assertEquals('1,2,3', $this->subject->getStoragePage());
     }
 
-    /**
-     * @test
-     */
-    public function queryLimitReturnsDefaultValue()
+    #[Test]
+    public function queryLimitReturnsDefaultValue(): void
     {
         self::assertSame(0, $this->subject->getQueryLimit());
     }
 
-    /**
-     * @test
-     */
-    public function queryLimitCanBeSet()
+    #[Test]
+    public function queryLimitCanBeSet(): void
     {
         $this->subject->setQueryLimit(2);
         self::assertSame(2, $this->subject->getQueryLimit());

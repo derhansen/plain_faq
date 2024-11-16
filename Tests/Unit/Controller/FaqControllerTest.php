@@ -10,6 +10,7 @@ namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
  */
 
 use Derhansen\PlainFaq\Controller\FaqController;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
@@ -17,9 +18,7 @@ use TYPO3\TestingFramework\Core\BaseTestCase;
  */
 class FaqControllerTest extends BaseTestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function createFaqDemandObjectFromSettingsWithEmptySettings(): void
     {
         /** @var FaqController $mockController */
@@ -36,9 +35,7 @@ class FaqControllerTest extends BaseTestCase
         self::assertEquals(0, $demand->getQueryLimit());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createFaqDemandObjectFromSettingsSetsSettings(): void
     {
         /** @var FaqController $mockController */

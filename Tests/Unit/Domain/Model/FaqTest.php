@@ -10,6 +10,7 @@ namespace Derhansen\PlainFaq\Tests\Unit\Domain\Model;
  */
 
 use Derhansen\PlainFaq\Domain\Model\Faq;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -17,8 +18,6 @@ use TYPO3\TestingFramework\Core\BaseTestCase;
 
 /**
  * Test case for FAQ
- *
- * @author Torben Hansen <derhansen@gmail.com>
  */
 class FaqTest extends BaseTestCase
 {
@@ -30,15 +29,8 @@ class FaqTest extends BaseTestCase
         $this->subject = new Faq();
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-    }
-
-    /**
-     * @test
-     */
-    public function getQuestionReturnsInitialValueForString()
+    #[Test]
+    public function getQuestionReturnsInitialValueForString(): void
     {
         self::assertSame(
             '',
@@ -46,18 +38,14 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setQuestionForStringSetsQuestion(): void
     {
         $this->subject->setQuestion('Conceived at T3CON10');
         self::assertEquals('Conceived at T3CON10', $this->subject->getQuestion());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getAnswerReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -66,18 +54,14 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setAnswerForStringSetsAnswer(): void
     {
         $this->subject->setAnswer('Conceived at T3CON10');
         self::assertEquals('Conceived at T3CON10', $this->subject->getAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getKeywordsReturnsInitialValueForString(): void
     {
         self::assertSame(
@@ -86,18 +70,14 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setKeywordsForStringSetsKeywords(): void
     {
         $this->subject->setKeywords('Conceived at T3CON10');
         self::assertEquals('Conceived at T3CON10', $this->subject->getKeywords());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getImagesReturnsInitialValueForFileReference(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -107,9 +87,7 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setImagesForFileReferenceSetsImages(): void
     {
         $image = new FileReference();
@@ -119,9 +97,7 @@ class FaqTest extends BaseTestCase
         self::assertEquals($objectStorageHoldingExactlyOneImages, $this->subject->getImages());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addImageToObjectStorageHoldingImages(): void
     {
         $image = new FileReference();
@@ -132,9 +108,7 @@ class FaqTest extends BaseTestCase
         $this->subject->addImage($image);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeImageFromObjectStorageHoldingImages(): void
     {
         $image = new FileReference();
@@ -145,9 +119,7 @@ class FaqTest extends BaseTestCase
         $this->subject->removeImage($image);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFilesReturnsInitialValueForFileReference(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -157,9 +129,7 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setFilesForFileReferenceSetsFiles(): void
     {
         $file = new FileReference();
@@ -169,9 +139,7 @@ class FaqTest extends BaseTestCase
         self::assertEquals($objectStorageHoldingExactlyOneFiles, $this->subject->getFiles());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addFileToObjectStorageHoldingFiles(): void
     {
         $file = new FileReference();
@@ -182,9 +150,7 @@ class FaqTest extends BaseTestCase
         $this->subject->addFile($file);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeFileFromObjectStorageHoldingFiles(): void
     {
         $file = new FileReference();
@@ -195,9 +161,7 @@ class FaqTest extends BaseTestCase
         $this->subject->removeFile($file);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getRelatedReturnsInitialValueForObjectStorage(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -207,9 +171,7 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setRelatedForFileReferenceSetsRelated(): void
     {
         $faq = new Faq();
@@ -219,9 +181,7 @@ class FaqTest extends BaseTestCase
         self::assertEquals($objectStorageHoldingExactlyOneFaq, $this->subject->getRelated());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addFaqToObjectStorageHoldingFaqs(): void
     {
         $faq = new Faq();
@@ -232,10 +192,8 @@ class FaqTest extends BaseTestCase
         $this->subject->addRelated($faq);
     }
 
-    /**
-     * @test
-     */
-    public function removeFaqFromObjectStorageHoldingFaqs()
+    #[Test]
+    public function removeFaqFromObjectStorageHoldingFaqs(): void
     {
         $faq = new Faq();
         $faqObjectStorageMock = $this->createMock(ObjectStorage::class);
@@ -245,9 +203,7 @@ class FaqTest extends BaseTestCase
         $this->subject->removeRelated($faq);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCategoriesReturnsInitialValueForObjectStorage(): void
     {
         $newObjectStorage = new ObjectStorage();
@@ -257,9 +213,7 @@ class FaqTest extends BaseTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setCategoriesForCategorySetsCategory(): void
     {
         $category = new Category();
@@ -269,9 +223,7 @@ class FaqTest extends BaseTestCase
         self::assertEquals($objectStorageHoldingExactlyOneCategory, $this->subject->getCategories());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addCategoryToObjectStorageHoldingCategories(): void
     {
         $category = new Category();
@@ -282,9 +234,7 @@ class FaqTest extends BaseTestCase
         $this->subject->addCategory($category);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeCategoryFromObjectStorageHoldingFaqs(): void
     {
         $category = new Category();
