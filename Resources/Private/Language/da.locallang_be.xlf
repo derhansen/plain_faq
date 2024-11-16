@@ -123,6 +123,10 @@
         <source>Include Subcategories</source>
         <target state="final">Inkludér underkategorier</target>
       </trans-unit>
+      <trans-unit id="flexforms.plugin.field.storagePage" approved="yes">
+        <source>Record Storage Page</source>
+        <target state="final">Opbevaringsside for elementer</target>
+      </trans-unit>
       <trans-unit id="flexforms.plugin.field.categories.possibleMisconfiguration" approved="yes">
         <source>Possible misconfiguration!</source>
         <target state="final">Mulig fejlkonfiguration!</target>
