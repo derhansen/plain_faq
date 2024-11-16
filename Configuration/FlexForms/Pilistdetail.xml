@@ -237,27 +237,23 @@
         <!-- Sheet: Template -->
         <template>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.template</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.tab.template</sheetTitle>
                 <type>array</type>
                 <el>
                     <!-- Template Layout -->
                     <settings.templateLayout>
-                        <TCEforms>
-                            <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.templateLayout</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <itemsProcFunc>Derhansen\PlainFaq\Hooks\TemplateLayouts->userTemplateLayout</itemsProcFunc>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <label />
-                                        <value />
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.templateLayout</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <itemsProcFunc>Derhansen\PlainFaq\Hooks\TemplateLayouts->userTemplateLayout</itemsProcFunc>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <label />
+                                    <value />
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.templateLayout>
                 </el>
             </ROOT>

@@ -2,9 +2,6 @@
 
 defined('TYPO3') or die();
 
-use Derhansen\PlainFaq\Preview\PidetailPreviewRenderer;
-use Derhansen\PlainFaq\Preview\PilistdetailPreviewRenderer;
-use Derhansen\PlainFaq\Preview\PilistPreviewRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -59,10 +56,3 @@ foreach (['pilistdetail', 'pilist', 'pidetail'] as $plugin) {
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
     ';
 }
-
-/**
- * Register plugin preview renderer
- */
-$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['plainfaq_pilist'] = PilistPreviewRenderer::class;
-$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['plainfaq_pidetail'] = PidetailPreviewRenderer::class;
-$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['plainfaq_pilistdetail'] = PilistdetailPreviewRenderer::class;
