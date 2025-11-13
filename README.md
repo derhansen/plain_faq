@@ -59,6 +59,10 @@ Download and install the extension with the TYPO3 extension manager module.
 | 2.x     | 10.4      | 7.2 - 7.4 | Security Updates                     |
 | 1.x     | 8.7 - 9.5 | 7.0 - 7.3 | Support dropped                      |
 
+## Reporting a Vulnerability
+
+Please report vulnerabilities to [security@typo3.org](mailto:security@typo3.org).
+
 ## Thanks for sponsoring
 
 The initial development of this extension is sponsored by [Julius-Maximilians-Universität Würzburg](https://www.uni-wuerzburg.de).
