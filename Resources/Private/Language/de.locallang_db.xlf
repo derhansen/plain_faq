@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="tx_plainfaq_domain_model_faq" approved="yes">
+        <source>Faq</source>
+        <target state="final">Häufig gestellte Frage</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.question" approved="yes">
+        <source>Question</source>
+        <target state="final">Frage</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.answer" approved="yes">
+        <source>Answer</source>
+        <target state="final">Antwort</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.keywords" approved="yes">
+        <source>Keywords</source>
+        <target state="final">Schlagworte</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.images" approved="yes">
+        <source>Images</source>
+        <target state="final">Bilder</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.files" approved="yes">
+        <source>Files</source>
+        <target state="final">Dateien</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.related" approved="yes">
+        <source>Related FAQs</source>
+        <target state="final">Zugehörige FAQs</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.categories" approved="yes">
+        <source>Categories</source>
+        <target state="final">Kategorien</target>
+      </trans-unit>
+      <trans-unit id="tx_plain_faq_pi1.name" approved="yes">
+        <source>FAQs</source>
+        <target state="final">FAQs</target>
+      </trans-unit>
+      <trans-unit id="tx_plain_faq_pi1.description">
+        <source/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
