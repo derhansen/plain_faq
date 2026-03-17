@@ -75,7 +75,7 @@ plugin.tx_plainfaq
          String
 
    :Description:
-         Comma separated list of fields that are allowed to be set as order fielfs
+         Comma separated list of fields that are allowed to be set as order fields
 
    :Default:
          uid,question,sorting
