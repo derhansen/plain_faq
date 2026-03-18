@@ -10,7 +10,7 @@ ExtensionUtility::configurePlugin(
     'PlainFaq',
     'Pilist',
     [
-        FaqController::class => 'list',
+        FaqController::class => ['list'],
     ],
     // non-cacheable actions
     [],
@@ -21,7 +21,7 @@ ExtensionUtility::configurePlugin(
     'PlainFaq',
     'Pidetail',
     [
-        FaqController::class => 'detail',
+        FaqController::class => ['detail'],
     ],
     // non-cacheable actions
     [],
@@ -32,7 +32,7 @@ ExtensionUtility::configurePlugin(
     'PlainFaq',
     'Pilistdetail',
     [
-        FaqController::class => 'list, detail',
+        FaqController::class => ['list', 'detail'],
     ],
     // non-cacheable actions
     [],
