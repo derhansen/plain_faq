@@ -6,7 +6,7 @@
                project-home="https://github.com/derhansen/plain_faq" project-contact="mailto:torben@derhansen.com"
                project-repository="https://github.com/derhansen/plain_faq"
                project-issues="https://github.com/derhansen/plain_faq/issues"
-               edit-on-github-branch="master"
+               edit-on-github-branch="main"
                edit-on-github="derhansen/plain_faq"
                typo3-core-preferred="stable"
                interlink-shortcode="derhansen/plain_faq"

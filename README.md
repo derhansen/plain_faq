@@ -1,4 +1,6 @@
-![CI](https://github.com/derhansen/plain_faq/workflows/CI/badge.svg)
+[![Code Quality Checks](https://github.com/derhansen/plain_faq/actions/workflows/CodeQuality.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/CodeQuality.yml)
+[![Unit tests](https://github.com/derhansen/plain_faq/actions/workflows/UnitTests.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/UnitTests.yml)
+[![Functional tests](https://github.com/derhansen/plain_faq/actions/workflows/FunctionalTests.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/FunctionalTests.yml)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 # Plain FAQ 
@@ -56,6 +58,10 @@ Download and install the extension with the TYPO3 extension manager module.
 | 3.x     | 11.5      | 7.4 - 8.4 | Bugfixes, Security Updates           |
 | 2.x     | 10.4      | 7.2 - 7.4 | Security Updates                     |
 | 1.x     | 8.7 - 9.5 | 7.0 - 7.3 | Support dropped                      |
+
+## Reporting a Vulnerability
+
+Please report vulnerabilities to [security@typo3.org](mailto:security@typo3.org).
 
 ## Thanks for sponsoring
 
