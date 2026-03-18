@@ -2,7 +2,7 @@
 
 $header = <<<'EOF'
 
-This file is part of the TYPO3 extension sf_event_mgt.
+This file is part of the TYPO3 extension plain_faq.
 
 (c) Torben Hansen <derhansen@gmail.com>
 
@@ -14,7 +14,7 @@ return (new \PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@DoctrineAnnotation' => true,
-        '@PER' => true,
+        '@PER-CS:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
         'cast_spaces' => ['space' => 'none'],
         'concat_space' => ['spacing' => 'one'],
@@ -61,7 +61,7 @@ return (new \PhpCsFixer\Config())
         'single_line_empty_body' => false,
         'whitespace_after_comma_in_array' => ['ensure_single_space' => true],
         'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
-   ])
+    ])
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->in(dirname(__DIR__ . '/../../../'))
