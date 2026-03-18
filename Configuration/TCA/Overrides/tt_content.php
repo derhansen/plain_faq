@@ -10,7 +10,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
  */
 ExtensionManagementUtility::addTcaSelectItemGroup(
     'tt_content',
-    'list_type',
+    'CType',
     'plainfaq',
     'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:CType.div.plugingroup',
     'after:default'
