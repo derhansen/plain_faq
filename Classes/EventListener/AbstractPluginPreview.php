@@ -23,8 +23,6 @@ use TYPO3\CMS\Core\View\ViewFactoryInterface;
 
 abstract class AbstractPluginPreview
 {
-    protected const LLPATH = 'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:';
-
     public function __construct(
         protected readonly IconFactory $iconFactory,
         protected readonly PageRenderer $pageRenderer,
@@ -39,7 +37,7 @@ abstract class AbstractPluginPreview
     protected function getPluginName(array $record): string
     {
         $pluginId = str_replace('plainfaq_', '', $record['CType']);
-        return htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'plugin.' . $pluginId . '.title'));
+        return htmlspecialchars($this->getLanguageService()->translate('plugin.' . $pluginId . '.title', 'plain_faq.be') ?? '');
     }
 
     /**
@@ -85,7 +83,7 @@ abstract class AbstractPluginPreview
         $pid = (int)$this->getFlexFormFieldValue($flexFormData, 'settings.' . $pidSetting, $sheet);
         if ($pid > 0) {
             $data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.' . $pidSetting),
+                'title' => $this->getLanguageService()->translate('flexforms.plugin.field.' . $pidSetting, 'plain_faq.be'),
                 'value' => $this->getRecordData($pid),
             ];
         }
@@ -108,19 +106,21 @@ abstract class AbstractPluginPreview
             case 'and':
             case 'notor':
             case 'notand':
-                $text = htmlspecialchars($this->getLanguageService()->sL(
-                    self::LLPATH . 'flexforms.plugin.field.categoryConjunction.' . $categoryConjunction
+                $text = htmlspecialchars((string)$this->getLanguageService()->translate(
+                    'flexforms.plugin.field.categoryConjunction.' . $categoryConjunction,
+                    'plain_faq.be'
                 ));
                 break;
             default:
-                $text = htmlspecialchars($this->getLanguageService()->sL(
-                    self::LLPATH . 'flexforms.plugin.field.categoryConjunction.ignore'
+                $text = htmlspecialchars((string)$this->getLanguageService()->translate(
+                    'flexforms.plugin.field.categoryConjunction.ignore',
+                    'plain_faq.be'
                 ));
-                $text .= ' <span class="badge badge-warning">' . htmlspecialchars($this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categories.possibleMisconfiguration')) . '</span>';
+                $text .= ' <span class="badge badge-warning">' . htmlspecialchars((string)$this->getLanguageService()->translate('flexforms.plugin.field.categories.possibleMisconfiguration', 'plain_faq.be')) . '</span>';
         }
 
         $data[] = [
-            'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categoryConjunction'),
+            'title' => $this->getLanguageService()->translate('flexforms.plugin.field.categoryConjunction', 'plain_faq.be'),
             'value' => $text,
         ];
     }
@@ -138,14 +138,14 @@ abstract class AbstractPluginPreview
             }
 
             $data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.categories'),
+                'title' => $this->getLanguageService()->translate('flexforms.plugin.field.categories', 'plain_faq.be'),
                 'value' => implode(', ', $categoriesOut),
             ];
 
             $includeSubcategories = $this->getFlexFormFieldValue($flexFormData, 'settings.includeSubcategories');
             if ((int)$includeSubcategories === 1) {
                 $data[] = [
-                    'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.includeSubcategories'),
+                    'title' => $this->getLanguageService()->translate('flexforms.plugin.field.includeSubcategories', 'plain_faq.be'),
                     'value' => 'icon',
                     'icon' => 'actions-check-square',
                 ];
@@ -169,21 +169,21 @@ abstract class AbstractPluginPreview
             }
 
             $recursiveLevel = (int)$this->getFlexFormFieldValue($flexFormData, 'settings.recursive');
-            $recursiveLevelText = '';
+            $recursiveLevelText = null;
             if ($recursiveLevel === 250) {
-                $recursiveLevelText = $this->getLanguageService()->sL('LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.5');
+                $recursiveLevelText = $this->getLanguageService()->translate('recursive.I.5', 'frontend.ttc');
             } elseif ($recursiveLevel > 0) {
-                $recursiveLevelText = $this->getLanguageService()->sL('LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:recursive.I.' . $recursiveLevel);
+                $recursiveLevelText = $this->getLanguageService()->translate('recursive.I.' . $recursiveLevel, 'frontend.ttc');
             }
 
-            if (!empty($recursiveLevelText)) {
-                $recursiveLevelText = '<br />' .
-                    htmlspecialchars($this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.recursive')) . ' ' .
-                    $recursiveLevelText;
+            if ($recursiveLevelText) {
+                $recursiveLevelText = ' <em>(' .
+                    htmlspecialchars((string)$this->getLanguageService()->translate('LGL.recursive', 'core.general')) . ' ' .
+                    $recursiveLevelText . ')</em>';
             }
 
             $data[] = [
-                'title' => $this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.startingpoint'),
+                'title' => $this->getLanguageService()->translate('LGL.startingpoint', 'core.general'),
                 'value' => implode(', ', $pagesOut) . $recursiveLevelText,
             ];
         }
@@ -198,8 +198,8 @@ abstract class AbstractPluginPreview
 
         if ($field === 1) {
             $data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.disableOverwriteDemand'),
-                'value' => 'icon',
+                'title' => $this->getLanguageService()->translate('flexforms.plugin.field.disableOverwriteDemand', 'plain_faq.be'),
+                'value' => '',
                 'icon' => 'actions-check-square',
             ];
         }
@@ -215,7 +215,7 @@ abstract class AbstractPluginPreview
     ): void {
         $orderField = $this->getFlexFormFieldValue($flexFormData, $orderByField);
         if (!empty($orderField)) {
-            $text = $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.orderField.' . $orderField);
+            $text = $this->getLanguageService()->translate('flexforms.plugin.field.orderField.' . $orderField, 'plain_faq.be');
 
             // Order direction (asc, desc)
             $orderDirection = $this->getOrderDirectionSetting($flexFormData, $orderDirectionField);
@@ -224,7 +224,7 @@ abstract class AbstractPluginPreview
             }
 
             $data[] = [
-                'title' => $this->getLanguageService()->sL(self::LLPATH . 'flexforms.plugin.field.orderField'),
+                'title' => $this->getLanguageService()->translate('flexforms.plugin.field.orderField', 'plain_faq.be'),
                 'value' => $text,
             ];
         }
@@ -268,8 +268,9 @@ abstract class AbstractPluginPreview
 
         $orderDirection = $this->getFlexFormFieldValue($flexFormData, $orderDirectionField);
         if (!empty($orderDirection)) {
-            $text = $this->getLanguageService()->sL(
-                self::LLPATH . 'flexforms.plugin.field.orderDirection.' . $orderDirection . 'ending'
+            $text = $this->getLanguageService()->translate(
+                'flexforms.plugin.field.orderDirection.' . $orderDirection . 'ending',
+                'plain_faq.be'
             );
         }
 

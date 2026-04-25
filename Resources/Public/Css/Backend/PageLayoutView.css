@@ -14,3 +14,11 @@
 .plainfaq-table > tfoot > tr > th {
     vertical-align: top;
 }
+
+.plainfaq-table > :not(caption) > * > * {
+    background-color: transparent;
+}
+
+.plainfaq-table td .btn {
+    padding-right: 4px;
+}
