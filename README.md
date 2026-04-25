@@ -3,7 +3,7 @@
 [![Functional tests](https://github.com/derhansen/plain_faq/actions/workflows/FunctionalTests.yml/badge.svg)](https://github.com/derhansen/plain_faq/actions/workflows/FunctionalTests.yml)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-# Plain FAQ 
+# Plain FAQ
 
 ## What does it do?
 
@@ -36,14 +36,14 @@ The screenshot below shows the backend form of a FAQ record.
 
 ## Documentation
 
-The extension includes a detailed documentation in ReST format. You can view the extension manual on TYPO3 
+The extension includes a detailed documentation in ReST format. You can view the extension manual on TYPO3
 TER https://docs.typo3.org/p/derhansen/plain-faq/master/en-us/
 
 ## Installation
 
 ### Installation using Composer
 
-The recommended way to install the extension is by using [Composer](https://getcomposer.org/). In your Composer based TYPO3 project root, just do `composer require derhansen/plain-faq`. 
+The recommended way to install the extension is by using [Composer](https://getcomposer.org/). In your Composer based TYPO3 project root, just do `composer require derhansen/plain-faq`.
 
 ### Installation as extension from TYPO3 Extension Repository (TER)
 
@@ -53,10 +53,11 @@ Download and install the extension with the TYPO3 extension manager module.
 
 | Version | TYPO3     | PHP       | Support/Development                  |
 |---------|-----------|-----------|--------------------------------------|
-| 5.x     | 13.4      | 8.2 - 8.4 | Features, Bugfixes, Security Updates |
+| 6.x     | 14.3      | 8.2 - 8.5 | Features, Bugfixes, Security Updates |
+| 5.x     | 13.4      | 8.2 - 8.5 | Features, Bugfixes, Security Updates |
 | 4.x     | 12.4      | 8.0 - 8.4 | Features, Bugfixes, Security Updates |
 | 3.x     | 11.5      | 7.4 - 8.4 | Bugfixes, Security Updates           |
-| 2.x     | 10.4      | 7.2 - 7.4 | Security Updates                     |
+| 2.x     | 10.4      | 7.2 - 7.4 | Support dropped                      |
 | 1.x     | 8.7 - 9.5 | 7.0 - 7.3 | Support dropped                      |
 
 ## Reporting a Vulnerability

@@ -1,46 +1,54 @@
 {
-    "name": "derhansen/plain-faq",
-    "type": "typo3-cms-extension",
-    "description": "Plain FAQ extension with list and detail view.",
-    "homepage": "https://github.com/derhansen/plain_faq",
-    "support": {
-        "issues": "https://github.com/derhansen/plain_faq/issues"
-    },
-    "authors": [
-        {
-            "name": "Torben Hansen",
-            "email": "derhansen@gmail.com",
-            "homepage": "https://www.derhansen.com",
-            "role": "Developer"
-        }
-    ],
-    "keywords": ["TYPO3 CMS", "FAQ", "fluid", "extbase"],
-    "license": [
-        "GPL-2.0-or-later"
-    ],
-    "require": {
-        "typo3/cms-core": "^13.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "Derhansen\\PlainFaq\\": "Classes"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Derhansen\\PlainFaq\\Tests\\": "Tests"
-        }
-    },
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "plain_faq"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "typo3/class-alias-loader": true,
-            "typo3/cms-composer-installers": true,
-            "phpstan/extension-installer": true
-        }
-    }
+	"name": "derhansen/plain-faq",
+	"type": "typo3-cms-extension",
+	"description": "Plain FAQ - FAQ extension with list and detail view.",
+	"homepage": "https://github.com/derhansen/plain_faq",
+	"support": {
+		"issues": "https://github.com/derhansen/plain_faq/issues"
+	},
+	"authors": [
+		{
+			"name": "Torben Hansen",
+			"email": "derhansen@gmail.com",
+			"homepage": "https://www.derhansen.com",
+			"role": "Developer"
+		}
+	],
+	"keywords": [
+		"TYPO3 CMS",
+		"FAQ",
+		"fluid",
+		"extbase"
+	],
+	"license": [
+		"GPL-2.0-or-later"
+	],
+	"require": {
+		"typo3/cms-core": "^14.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"Derhansen\\PlainFaq\\": "Classes"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Derhansen\\PlainFaq\\Tests\\": "Tests"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "plain_faq",
+			"Package": {
+				"providesPackages": []
+			}
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true,
+			"phpstan/extension-installer": true
+		}
+	}
 }

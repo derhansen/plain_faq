@@ -69,7 +69,7 @@ class FaqRepository extends Repository
      */
     protected function setStoragePageConstraint(QueryInterface $query, FaqDemand $faqDemand, array &$constraints): void
     {
-        if ($faqDemand->getStoragePage() && $faqDemand->getStoragePage() !== '') {
+        if ($faqDemand->getStoragePage() !== '') {
             $pidList = GeneralUtility::intExplode(',', $faqDemand->getStoragePage(), true);
             $constraints[] = $query->in('pid', $pidList);
         }
@@ -148,10 +148,7 @@ class FaqRepository extends Repository
      */
     protected function setQueryLimitFromDemand(QueryInterface $query, FaqDemand $faqDemand): void
     {
-        if ($faqDemand->getQueryLimit() !== null &&
-            MathUtility::canBeInterpretedAsInteger($faqDemand->getQueryLimit()) &&
-            $faqDemand->getQueryLimit() > 0
-        ) {
+        if ($faqDemand->getQueryLimit() > 0) {
             $query->setLimit($faqDemand->getQueryLimit());
         }
     }

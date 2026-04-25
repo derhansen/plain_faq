@@ -27,7 +27,7 @@ final class PidetailContentPreview extends AbstractPluginPreview
         }
 
         $previewContent = $this->renderPreviewContent(
-            $event->getRecord(),
+            $event->getRecord()->toArray(),
             $event->getPageLayoutContext()->getCurrentRequest()
         );
         $event->setPreviewContent($previewContent);
