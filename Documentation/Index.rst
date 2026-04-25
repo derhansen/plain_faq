@@ -29,7 +29,7 @@ Plain FAQ
 		faq, frequently asked questions
 
 	:Copyright:
-		2019
+		2026
 
 	:Author:
 		Torben Hansen

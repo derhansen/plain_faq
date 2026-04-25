@@ -12,7 +12,7 @@
                interlink-shortcode="derhansen/plain_faq"
     />
     <project title="Plain FAQ"
-             release="5.0.0"
-             version="5.0"
-             copyright="2019 - 2024 by Torben Hansen"/>
+             release="6.0.0"
+             version="6.0"
+             copyright="2019 - 2026 by Torben Hansen"/>
 </guides>
