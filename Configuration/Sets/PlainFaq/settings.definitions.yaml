@@ -1,0 +1,18 @@
+categories:
+  plain_faq: ~
+  plain_faq.templates:
+    parent: plain_faq
+
+settings:
+  plain_faq.view.templateRootPath:
+    category: plain_faq.templates
+    type: string
+    default: 'EXT:plain_faq/Resources/Private/Templates/'
+  plain_faq.view.partialRootPath:
+    category: plain_faq.templates
+    type: string
+    default: 'EXT:plain_faq/Resources/Private/Partials/'
+  plain_faq.view.layoutRootPath:
+    category: plain_faq.templates
+    type: string
+    default: 'EXT:plain_faq/Resources/Private/Layouts/'

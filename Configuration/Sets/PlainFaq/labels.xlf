@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:fe_change_pwd/Configuration/Sets/PlainFaq/labels.xlf" date="2026-04-25T17:33:00Z" product-name="plain_faq">
+		<header/>
+		<body>
+			<trans-unit id="label" resname="label">
+				<source>Plain FAQ</source>
+			</trans-unit>
+			<trans-unit id="categories.plain_faq">
+				<source>Plain FAQ</source>
+			</trans-unit>
+			<trans-unit id="categories.plain_faq.templates">
+				<source>Templates</source>
+			</trans-unit>
+			<trans-unit id="settings.plain_faq.view.templateRootPath">
+				<source>Path to template root</source>
+			</trans-unit>
+			<trans-unit id="settings.plain_faq.view.partialRootPath">
+				<source>Path to partial root</source>
+			</trans-unit>
+			<trans-unit id="settings.plain_faq.view.layoutRootPath">
+				<source>Path to layout root</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
