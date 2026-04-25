@@ -39,6 +39,7 @@
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "plain_faq",
+			"version": "6.0.0",
 			"Package": {
 				"providesPackages": []
 			}

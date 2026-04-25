@@ -12,11 +12,20 @@
 			<trans-unit id="plugin.pilist.title">
 				<source>List view</source>
 			</trans-unit>
+			<trans-unit id="plugin.pilist.description">
+				<source>Display of FAQs chosen by various optional properties like storage page, categories,...</source>
+			</trans-unit>
 			<trans-unit id="plugin.pidetail.title">
 				<source>Detail view</source>
 			</trans-unit>
+			<trans-unit id="plugin.pidetail.description">
+				<source>Display the detail page for FAQs.</source>
+			</trans-unit>
 			<trans-unit id="plugin.pilistdetail.title">
 				<source>List view (without overloading detail view)</source>
+			</trans-unit>
+			<trans-unit id="plugin.pilistdetail.description">
+				<source>Show the list view (without overloading detail view)</source>
 			</trans-unit>
 			<trans-unit id="faq-folder">
 				<source>FAQs</source>

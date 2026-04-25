@@ -22,7 +22,6 @@ return [
             'endtime' => 'endtime',
             'fe_group' => 'fe_group',
         ],
-        'searchFields' => 'question,answer,keywords,images,files',
         'typeicon_classes' => [
             'default' => 'ext-plainfaq-faq',
         ],

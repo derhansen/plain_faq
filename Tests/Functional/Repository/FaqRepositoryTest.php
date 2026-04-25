@@ -11,6 +11,7 @@ namespace Derhansen\PlainFaq\Tests\Functional\Repository;
 
 use Derhansen\PlainFaq\Domain\Model\Dto\FaqDemand;
 use Derhansen\PlainFaq\Domain\Repository\FaqRepository;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
 use TYPO3\CMS\Core\Http\ServerRequest;
@@ -62,10 +63,8 @@ class FaqRepositoryTest extends FunctionalTestCase
         ];
     }
 
-    /**
-     * @dataProvider findDemandedRespectsStoragePageDataProvider
-     * @test
-     */
+    #[DataProvider('findDemandedRespectsStoragePageDataProvider')]
+    #[Test]
     public function findDemandedRespectsStoragePage(string $storagePage, int $expected): void
     {
         $demand = new FaqDemand();
@@ -117,10 +116,8 @@ class FaqRepositoryTest extends FunctionalTestCase
         ];
     }
 
-    /**
-     * @dataProvider findDemandedRespectsCategoryDataProvider
-     * @test
-     */
+    #[DataProvider('findDemandedRespectsCategoryDataProvider')]
+    #[Test]
     public function findDemandedRespectsCategory(
         string $categories,
         string $conjunction,
@@ -158,10 +155,8 @@ class FaqRepositoryTest extends FunctionalTestCase
         ];
     }
 
-    /**
-     * @dataProvider findDemandedRespectsOrderingDataProvider
-     * @test
-     */
+    #[DataProvider('findDemandedRespectsOrderingDataProvider')]
+    #[Test]
     public function findDemandedRespectsOrdering(string $orderField, string $orderDirection, int $expected): void
     {
         $demand = new FaqDemand();

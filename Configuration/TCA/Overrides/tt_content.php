@@ -26,33 +26,8 @@ foreach (['pilistdetail', 'pilist', 'pidetail'] as $plugin) {
         ucfirst($plugin),
         'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.' . $plugin . '.title',
         'plainfaq-default',
-        'plainfaq'
-    );
-
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
+        'plainfaq',
+        'LLL:EXT:plain_faq/Resources/Private/Language/locallang_be.xlf:plugin.' . $plugin . '.description',
         'FILE:EXT:plain_faq/Configuration/FlexForms/' . ucfirst($plugin) . '.xml',
-        $contentTypeName
     );
-
-    $GLOBALS['TCA']['tt_content']['types'][$contentTypeName]['showitem'] = '
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-            --palette--;;general,
-            --palette--;;headers,
-        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin,
-            pi_flexform,
-        --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-            --palette--;;frames,
-            --palette--;;appearanceLinks,
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
-            --palette--;;language,
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-            --palette--;;hidden,
-            --palette--;;access,
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
-            categories,
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
-            rowDescription,
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
-    ';
 }
