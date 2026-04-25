@@ -66,13 +66,11 @@ class FaqController extends ActionController
         $demand = GeneralUtility::makeInstance(FaqDemand::class);
         $demand->setStoragePage(PageUtility::extendPidListByChildren(
             $settings['storagePage'] ?? '',
-            isset($settings['recursive']) ? (int)$settings['recursive'] : 0
+            (int)($settings['recursive'] ?? 0)
         ));
         $demand->setCategoryConjunction($settings['categoryConjunction'] ?? '');
         $demand->setCategories($settings['categories'] ?? '');
-        $demand->setIncludeSubcategories(
-            isset($settings['includeSubcategories']) ? (bool)$settings['includeSubcategories'] : false
-        );
+        $demand->setIncludeSubcategories((bool)($settings['includeSubcategories'] ?? false));
         $demand->setOrderField($settings['orderField'] ?? '');
         $demand->setOrderFieldAllowed($settings['orderFieldAllowed'] ?? '');
         $demand->setOrderDirection($settings['orderDirection'] ?? 'asc');
