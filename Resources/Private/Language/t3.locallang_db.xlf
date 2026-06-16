@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_plainfaq_domain_model_faq">
+        <source>Faq</source>
+        <target>crwdns332776:0crwdne332776:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.question">
+        <source>Question</source>
+        <target>crwdns332778:0crwdne332778:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.answer">
+        <source>Answer</source>
+        <target>crwdns332780:0crwdne332780:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.keywords">
+        <source>Keywords</source>
+        <target>crwdns332782:0crwdne332782:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.images">
+        <source>Images</source>
+        <target>crwdns332784:0crwdne332784:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.files">
+        <source>Files</source>
+        <target>crwdns332786:0crwdne332786:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.related">
+        <source>Related FAQs</source>
+        <target>crwdns332788:0crwdne332788:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plainfaq_domain_model_faq.categories">
+        <source>Categories</source>
+        <target>crwdns332790:0crwdne332790:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plain_faq_pi1.name">
+        <source>FAQs</source>
+        <target>crwdns332792:0crwdne332792:0</target>
+      </trans-unit>
+      <trans-unit id="tx_plain_faq_pi1.description">
+        <source/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

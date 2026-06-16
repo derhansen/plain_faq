@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-07-06T13:40:54Z" product-name="plain_faq" target-language="it">
+    <header/>
+    <body>
+      <trans-unit id="tx_plain_faq_pi1.description">
+        <source/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
